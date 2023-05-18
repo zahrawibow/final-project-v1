@@ -165,67 +165,34 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header pb-0">
-                        <!-- <h6>Assets table</h6> -->
-                        <div class="d-lg-flex">
-                            <div>
-                                <h6 class="mb-0">Perbarui Detail <?= $assets['name']; ?></h6>
-                                <p class="text-sm text-secondary mb-0">
-                                    Hanya admin yang dapat menambahkan, merubah, serta menghapus data
-                                </p>
-                            </div>
-                            <div class=" ms-auto my-auto mt-lg-0 mt-4">
-                                <div class="ms-auto my-auto">
-                                    <a href="/asset/edit" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Perbarui Detail</a>
-                                    <!-- <button type="button" class="btn btn-outline-primary btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#import">
-                                        Import
-                                    </button>
-                                    <div class="modal fade" id="import" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog mt-lg-10">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="ModalLabel">
-                                                        Import CSV
-                                                    </h5>
-                                                    <i class="fas fa-upload ms-3" aria-hidden="true"></i>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>You can browse your computer for a file.</p>
-                                                    <input type="text" placeholder="Browse file..." class="form-control mb-3" onfocus="focused(this)" onfocusout="defocused(this)" />
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="importCheck" checked="" />
-                                                        <label class="custom-control-label" for="importCheck">I accept the terms and conditions</label>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn bg-gradient-secondary btn-sm" data-bs-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <button type="button" class="btn bg-gradient-primary btn-sm">
-                                                        Upload
-                                                    </button>
-                                                </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-14">
+                                <div class="alert alert-dark" role="alert">
+                                    <div class="d-lg-flex">
+                                        <div>
+                                            <h6 class="text-white  mb-0">Perbarui Detail <?= $assets['name']; ?></h6>
+                                            <p class="text-xs text-white text-secondary mb-0">
+                                                Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                            </p>
+                                        </div>
+                                        <div class=" ms-auto my-auto mt-lg-0 mt-4">
+                                            <div class="ms-auto my-auto">
+                                                <a href="/asset/edit" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Perbarui Detail</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-outline-primary btn-sm export mb-4 mt-sm-0 mt-1" data-type="csv" type="button" name="button">
-                                        Export
-                                    </button> -->
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card-body">
-                        <!-- <h5 class="mb-4">Product Details</h5> -->
                         <div class="row">
-                            <div class="col-xl-5 col-lg-5 text-center">
+                            <div class="col-xl-5 col-lg-5 text-center mt-2">
                                 <img class="w-100 border-radius-lg shadow-lg mx-auto" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" alt="chair" />
                                 <div class="my-gallery d-flex mt-4 pt-2" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
                                     <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
                                         <a href="./productdetail_files/chair-pink.jpg" itemprop="contentUrl" data-size="500x600">
-                                            <img class="w-80 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-pink.jpg" alt="Image description" />
+                                            <img class="w-85 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-pink.jpg" alt="Image description" />
                                         </a>
                                     </figure>
                                     <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
@@ -235,12 +202,12 @@
                                     </figure>
                                     <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
                                         <a href="./productdetail_files/chair-steel.jpg" itemprop="contentUrl" data-size="500x600">
-                                            <img class="w-80 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-steel.jpg" itemprop="thumbnail" alt="Image description" />
+                                            <img class="w-75 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-steel.jpg" itemprop="thumbnail" alt="Image description" />
                                         </a>
                                     </figure>
                                     <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
                                         <a href="./productdetail_files/chair-wood.jpg" itemprop="contentUrl" data-size="500x600">
-                                            <img class="w-80 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-wood.jpg" itemprop="thumbnail" alt="Image description" />
+                                            <img class="w-90 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-wood.jpg" itemprop="thumbnail" alt="Image description" />
                                         </a>
                                     </figure>
                                 </div>
@@ -293,7 +260,7 @@
 
 
                             <div class="col-lg-5 mx-auto">
-                                <h3 class="mt-lg-0 mt-4"><?= $assets['name']; ?></h3>
+                                <h3 class="mt-lg-0 mt-1"><?= $assets['name']; ?></h3>
                                 <!-- <div class="rating">
                                     <i class="fas fa-star" aria-hidden="true"></i>
                                     <i class="fas fa-star" aria-hidden="true"></i>
@@ -306,20 +273,38 @@
                                 <h5>$1,419</h5>
                                 <span class="badge badge-success">In Stock</span>
                                 <br /> -->
-                                <label class="mt-3">Description</label>
-                                <ul>
-                                    <li>
-                                        The most beautiful curves of this swivel stool adds an
-                                        elegant touch to any environment
-                                    </li>
-                                    <li>
-                                        Memory swivel seat returns to original seat position
-                                    </li>
-                                    <li>
-                                        Comfortable integrated layered chair seat cushion design
-                                    </li>
-                                    <li>Fully assembled! No assembly required</li>
-                                </ul>
+
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <label class="mt-1 mb-0">Merk</label>
+                                        <p class="text-sm text-secondary px-1"><?= $assets['merk']; ?></p>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label class="mt-1 mb-0">Seri</label>
+                                        <p class="text-sm text-secondary px-1"><?= $assets['series']; ?></p>
+                                    </div>
+                                </div>
+
+                                <label class="mt-1 mb-0">Harga</label>
+                                <p class="text-sm text-secondary px-1">-</p>
+                                <label class="mt-1 mb-0">Tanggal Pembelian</label>
+                                <p class="text-sm text-secondary px-1">-</p>
+                                <label class="mt-1 mb-0">Jadwal Pemeliharaan Terdekat</label>
+                                <p class="text-sm text-secondary px-1">-</p>
+
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <label class="mt-1 mb-0">Kondisi</label>
+                                        <p class="text-sm text-secondary px-1"><?= $assets['condition']; ?></p>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <label class="mt-1 mb-0">Ketersediaan</label>
+                                        <p class="text-sm text-secondary px-1"><?= $assets['status']; ?></p>
+                                    </div>
+                                </div>
+
+
+
 
                                 <!-- deskripsi -->
                                 <!-- <div class="row mt-4">
@@ -442,16 +427,18 @@
                                     </div>
                                 </div> -->
 
-                                <div class="mt-5">
+
+                                <div class="d-grid gap-2 d-md-flex justify-content-md mt-0">
+
                                     <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#import" name="spec">
                                         SPEC
                                     </button>
 
-                                    <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="manual">
+                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="manual">
                                         Manual
                                     </button>
 
-                                    <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="license">
+                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="license">
                                         License
                                     </button>
                                 </div>

@@ -163,7 +163,7 @@
     </nav>
 
     <div class="container-fluid py-4">
-        <div class="row px-1">
+        <div class="row px-3">
             <div class="col-lg-6">
                 <h3>Perbarui Detail Kamera Gamma</h3>
                 <p class="text-secondary text-sm">Isi form pembaruan detail untuk merubah data inventaris aset pada Laboratorium Radiologi dan Kedokteran Nuklir</p>

@@ -29,20 +29,20 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Aset
+                        Log Aset
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Daftar Aset Laboratorium</h6>
+                <h6 class="font-weight-bolder mb-0">Form Log Penggunaan Aset</h6>
             </nav>
 
 
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <!-- search bar -->
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here..." onfocus="focused(this)" onfocusout="defocused(this)" />
-                    </div>
+                    </div> -->
                 </div>
 
                 <ul class="navbar-nav justify-content-end">
@@ -211,11 +211,83 @@
                                 <!-- <b>500</b> Messages -->
                             </li>
                         </ul>
-                        <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-4 mb-0">
+                        <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#use">
                             Get started
                         </a>
                     </div>
                 </div>
+
+                <div class="modal fade" id="use" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card card-plain">
+                                    <div class="card-header pb-0 text-left">
+                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Form Pemakaian Aset</h4>
+                                        <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang digunakan serta keterangan yang diperlukan</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <form role="form text-left">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Aset</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                    <option>Kamera Gamma Medik</option>
+                                                    <option>Pesawat Sinar X Medik</option>
+                                                    <option>Dose Calibrator</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Keperluan</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                    <option>Kunjungan biasa</option>
+                                                    <option>Kuliah/Praktikum</option>
+                                                    <option>Ujian Praktikum</option>
+                                                    <option>Penelitian</option>
+                                                    <option>Tugas Akhir</option>
+                                                    <option>Magang/PKL</option>
+                                                    <option>Sosialisasi/Kunjungan</option>
+                                                    <option>Pengabdian Masyarakat</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Laboran Pengampu</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                    <option>M. Khoiri, M.Eng</option>
+                                                    <option>Mahrus Salam, M.Eng</option>
+                                                    <option>Teguh Handoyo, Ph.D</option>
+                                                    <option>Ayu Jati Puspitasari, M.Si</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12 col-sm-6">
+                                                    <label class="form-control-label" for="example-time-input">Waktu Mulai</label>
+                                                    <input class="form-control" type="time" id="start-time">
+                                                </div>
+                                                <div class="form-group col-12 col-sm-6">
+                                                    <label class="form-control-label" for="example-time-input">Waktu Akhir</label>
+                                                    <input class="form-control" type="time" id="end-time">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Kondisi Aset Sebelum Pemakaian</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-md-4 mb-4">
@@ -266,9 +338,67 @@
                                 <!-- <b>500</b> Messages -->
                             </li>
                         </ul>
-                        <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-4 mb-0">
+                        <a class="btn bg-gradient-dark w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#loan">
                             Get started
                         </a>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="loan" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card card-plain">
+                                    <div class="card-header pb-0 text-left">
+                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Form Peminjaman Aset</h4>
+                                        <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dipinjam serta keterangan yang diperlukan</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <form role="form text-left">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Aset</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                    <option>Kamera Gamma Medik</option>
+                                                    <option>Pesawat Sinar X Medik</option>
+                                                    <option>Dose Calibrator</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Keperluan</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                    <option>Praktikum</option>
+                                                    <option>Ujian Praktikum</option>
+                                                    <option>Penelitian</option>
+                                                    <option>Tugas Akhir</option>
+                                                    <option>Magang/PKL</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-12 col-sm-6">
+                                                    <label class="form-control-label" for="example-date-input">Tanggal Peminjaman</label>
+                                                    <input class="form-control" type="date" id="example-date-input">
+                                                </div>
+                                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                                    <label for="formFileMultiple" class="form-label">Surat Peminjaman Aset</label>
+                                                    <input class="form-control" type="file" id="formFileMultiple" multiple name="laporanSingkat">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Kondisi Aset Sebelum Peminjaman</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -321,9 +451,66 @@
                                 <!-- <b>500</b> Messages -->
                             </li>
                         </ul>
-                        <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-4 mb-0">
+                        <a class="btn bg-gradient-dark w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#return">
                             Get started
                         </a>
+                    </div>
+                </div>
+                <div class="modal fade" id="return" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                <div class="card card-plain">
+                                    <div class="card-header pb-0 text-left">
+                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Form Pengembalian Aset</h4>
+                                        <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dikembalikan serta keterangan yang diperlukan</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <form role="form text-left">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Aset</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                    <option>Kamera Gamma Medik</option>
+                                                    <option>Pesawat Sinar X Medik</option>
+                                                    <option>Dose Calibrator</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Keperluan</label>
+                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                    <option>Praktikum</option>
+                                                    <option>Ujian Praktikum</option>
+                                                    <option>Penelitian</option>
+                                                    <option>Tugas Akhir</option>
+                                                    <option>Magang/PKL</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- <div class="row"> -->
+                                            <div class="form-group col-12">
+                                                <label class="form-control-label" for="example-date-input">Tanggal Pengembalian</label>
+                                                <input class="form-control" type="date" id="example-date-input">
+                                            </div>
+                                            <!-- <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                                    <label for="formFileMultiple" class="form-label">Surat Peminjaman Aset</label>
+                                                    <input class="form-control" type="file" id="formFileMultiple" multiple name="laporanSingkat">
+                                                </div> -->
+                                            <!-- </div> -->
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Kondisi Aset Setelah Peminjaman</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

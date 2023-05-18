@@ -163,120 +163,117 @@
     </nav>
 
     <div class="container-fluid py-4">
-        <div class="row px-1">
-            <div class="col-lg-6">
-                <h3>Tambah Aset</h3>
-                <p class="text-secondary text-sm">Isi form tambah aset untuk menambah data inventaris aset pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
-            </div>
-            <div class="col-lg-6 text-right d-flex flex-column justify-content-center">
-                <button type="button" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Tambah</button>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-lg-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="font-weight-bolder">Foto Aset</h5>
-                        <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                            <div class="dz-default dz-message">
-                                <input name="file" type="file" multiple />
-                                <button class="dz-button" type="button">
-                                    Drop files here to upload
-                                </button>
-                            </div>
-                        </form>
 
-
-                        <h5 class="font-weight-bolder mt-4">Spesifikasi</h5>
-                        <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                            <div class="dz-default dz-message">
-                                <input name="file" type="file" multiple />
-                                <button class="dz-button" type="button">
-                                    Drop files here to upload
-                                </button>
-                            </div>
-                        </form>
-
-
-                        <h5 class="font-weight-bolder mt-4">Buku Manual</h5>
-                        <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                            <div class="dz-default dz-message">
-                                <input name="file" type="file" multiple />
-                                <button class="dz-button" type="button">
-                                    Drop files here to upload
-                                </button>
-                            </div>
-                        </form>
-
-
-                        <h5 class="font-weight-bolder mt-4">Lisensi</h5>
-                        <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                            <div class="dz-default dz-message">
-                                <input name="file" type="file" multiple />
-                                <button class="dz-button" type="button">
-                                    Drop files here to upload
-                                </button>
-                            </div>
-                        </form>
-
-                    </div>
+        <form action="/storedasset" method="post">
+            <?= csrf_field(); ?>
+            <div class="row px-3">
+                <div class="col-lg-6">
+                    <h3>Tambah Aset</h3>
+                    <p class="text-secondary text-sm">Isi form tambah aset untuk menambah data inventaris aset pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
                 </div>
+
+                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
+                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Tambah</button>
+                </div>
+
             </div>
 
-            <div class="col-lg-8 mt-lg-0 mt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="font-weight-bolder">Informasi Aset</h5>
-
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <label>Nama</label>
-                                <input class="form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
-                            </div>
-                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                <label>Merk</label>
-                                <input class="form-control" type="number" onfocus="focused(this)" onfocusout="defocused(this)">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <label>Seri</label>
-                                <input class="form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
-                            </div>
-                            <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                <label>Harga</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">Rp</span>
-                                    <input type="text" class="form-control" aria-label="Amount (to the nearest rupiah)">
-                                    <!-- <span class="input-group-text">.00</span> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <label>Jumlah</label>
-                                <input class="form-control" type="int" onfocus="focused(this)" onfocusout="defocused(this)">
-                            </div>
-                            <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                <label class="form-control-label" for="example-date-input">Tanggal Pembelian</label>
-                                <input class="form-control" type="date" id="example-date-input">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm">
-                                <label class="mt-4">Deksripsi</label>
+            <div class="row mt-3">
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder">Foto Aset</h5>
+                            <form action="/file-upload" class="form-control" id="tool-img1" name="tool-img1">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="9"></textarea>
+                                    <label for="tool-img1" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="tool-img1" multiple name="tool-img1">
+                                </div>
+                            </form>
+
+                            <h5 class="font-weight-bolder mt-4">Spesifikasi</h5>
+                            <form action="/file-upload" class="form-control" id="spec" name="spec">
+                                <div class="form-group">
+                                    <label for="spec" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="spec" multiple name="spec">
+                                </div>
+                            </form>
+
+                            <h5 class="font-weight-bolder mt-4">Buku Manual</h5>
+                            <form action="/file-upload" class="form-control" id="manual" name="manual">
+                                <div class="form-group">
+                                    <label for="manual" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="manual" multiple name="manual">
+                                </div>
+                            </form>
+
+
+                            <h5 class="font-weight-bolder mt-4">Lisensi</h5>
+                            <form action="/file-upload" class="form-control" id="aset-photos" name="lisence">
+                                <div class="form-group">
+                                    <label for="lisence" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="lisence" multiple name="lisence">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 mt-lg-0 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder">Informasi Aset</h5>
+
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="name">Nama</label>
+                                    <input class="form-control" type="text" id="name" name="name" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label for="merk">Merk</label>
+                                    <input class="form-control" type="text" id="merk" name="merk" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="series">Seri</label>
+                                    <input class="form-control" type="text" id="series" name="series" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label for="price">Harga</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Rp</span>
+                                        <input type="text" id="price" name="price" class="form-control" aria-label="Amount (to the nearest rupiah)">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="count">Jumlah</label>
+                                    <input class="form-control" type="int" id="count" name="count" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="purchase_date">Tanggal Pembelian</label>
+                                    <input class="form-control" type="date" id="purchase_date" name="purchase_date">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <label class="mt-4" for="description">Deksripsi</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="description" name="description" rows="9"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
 
         <footer class="footer pt-3  ">
