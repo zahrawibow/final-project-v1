@@ -276,29 +276,29 @@
 
                                 <div class="row">
                                     <div class="col-12 col-sm-6">
-                                        <label class="mt-1 mb-0">Merk</label>
+                                        <label class="mt-0 mb-0">Merk</label>
                                         <p class="text-sm text-secondary px-1"><?= $assets['merk']; ?></p>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <label class="mt-1 mb-0">Seri</label>
+                                        <label class="mt-0 mb-0">Seri</label>
                                         <p class="text-sm text-secondary px-1"><?= $assets['series']; ?></p>
                                     </div>
                                 </div>
 
-                                <label class="mt-1 mb-0">Harga</label>
+                                <label class="mt-0 mb-0">Harga</label>
                                 <p class="text-sm text-secondary px-1">-</p>
-                                <label class="mt-1 mb-0">Tanggal Pembelian</label>
+                                <label class="mt-0 mb-0">Tanggal Pembelian</label>
                                 <p class="text-sm text-secondary px-1">-</p>
-                                <label class="mt-1 mb-0">Jadwal Pemeliharaan Terdekat</label>
+                                <label class="mt-0 mb-0">Jadwal Pemeliharaan Terdekat</label>
                                 <p class="text-sm text-secondary px-1">-</p>
 
                                 <div class="row">
                                     <div class="col-12 col-sm-6">
-                                        <label class="mt-1 mb-0">Kondisi</label>
+                                        <label class="mt-0 mb-0">Kondisi</label>
                                         <p class="text-sm text-secondary px-1"><?= $assets['condition']; ?></p>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <label class="mt-1 mb-0">Ketersediaan</label>
+                                        <label class="mt-0 mb-0">Ketersediaan</label>
                                         <p class="text-sm text-secondary px-1"><?= $assets['status']; ?></p>
                                     </div>
                                 </div>
@@ -613,6 +613,7 @@
                                 </div>
                             </div>
                         </div> -->
+
                     </div>
                 </div>
             </div>

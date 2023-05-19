@@ -219,7 +219,8 @@
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div>
-                                                                    <img src="../assets/img/<?= $asset['tool_img1']; ?>" class="avatar avatar-sm me-3" alt="user1">
+                                                                    <!-- <img src="../assets/img/<?= $asset['tool_img1']; ?>" class="avatar avatar-sm me-3" alt="user1"> -->
+                                                                    <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" class="avatar avatar-sm me-3" alt="user1">
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
                                                                     <h6 class="mb-0 text-sm"><?= $asset['name']; ?></h6>
