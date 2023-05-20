@@ -162,6 +162,7 @@
 
     <div class="container-fluid py-4">
 
+
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card move-on-hover card bg-cover">
@@ -217,78 +218,80 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="use" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <div class="card card-plain">
-                                    <div class="card-header pb-0 text-left">
-                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Form Pemakaian Aset</h4>
-                                        <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang digunakan serta keterangan yang diperlukan</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <form role="form text-left">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Aset</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Kamera Gamma Medik</option>
-                                                    <option>Pesawat Sinar X Medik</option>
-                                                    <option>Dose Calibrator</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Keperluan</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Kunjungan biasa</option>
-                                                    <option>Kuliah/Praktikum</option>
-                                                    <option>Ujian Praktikum</option>
-                                                    <option>Penelitian</option>
-                                                    <option>Tugas Akhir</option>
-                                                    <option>Magang/PKL</option>
-                                                    <option>Sosialisasi/Kunjungan</option>
-                                                    <option>Pengabdian Masyarakat</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Laboran Pengampu</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>M. Khoiri, M.Eng</option>
-                                                    <option>Mahrus Salam, M.Eng</option>
-                                                    <option>Teguh Handoyo, Ph.D</option>
-                                                    <option>Ayu Jati Puspitasari, M.Si</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="form-group col-12 col-sm-6">
-                                                    <label class="form-control-label" for="example-time-input">Waktu Mulai</label>
-                                                    <input class="form-control" type="time" id="start-time">
+                <form action="/storedlogs" method="post">
+                    <div class="form group modal fade" id="use" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card card-plain">
+                                        <div class="card-header pb-0 text-left">
+                                            <h4 class="font-weight-bolder text-info text-gradient text-center">Form Pemakaian Aset</h4>
+                                            <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang digunakan serta keterangan yang diperlukan</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form role="form text-left">
+                                                <div class="form-group">
+                                                    <label for="aset_id">Aset</label>
+                                                    <select class="form-control" id="aset_id" name="aset_id">
+                                                        <?php foreach ($assets as $asset) : ?>
+                                                            <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group col-12 col-sm-6">
-                                                    <label class="form-control-label" for="example-time-input">Waktu Akhir</label>
-                                                    <input class="form-control" type="time" id="end-time">
+
+                                                <div class="form-group">
+                                                    <label for="purpose">Keperluan</label>
+                                                    <select class="form-control" id="purpose" name="purpose">
+                                                        <option value="kunjungan">Kunjungan biasa</option>
+                                                        <option value="kuliah_praktikum">Kuliah/Praktikum</option>
+                                                        <option value="uprak">Ujian Praktikum</option>
+                                                        <option value="penelitian">Penelitian</option>
+                                                        <option value="ta">Tugas Akhir</option>
+                                                        <option value="magang_pkl">Magang/PKL</option>
+                                                        <option value="sosialisai">Sosialisasi/Kunjungan</option>
+                                                        <option value="pemas">Pengabdian Masyarakat</option>
+                                                    </select>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Kondisi Aset Sebelum Pemakaian</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label for="laboratorian">Laboran Pengampu</label>
+                                                    <select class="form-control" id="laboratorian" name="laboratorian">
+                                                        <option>M. Khoiri, M.Eng</option>
+                                                        <option>Mahrus Salam, M.Eng</option>
+                                                        <option>Teguh Handoyo, Ph.D</option>
+                                                        <option>Ayu Jati Puspitasari, M.Si</option>
+                                                    </select>
+                                                </div>
 
-                                            <div class="text-center">
-                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
-                                            </div>
-                                        </form>
+                                                <div class="row">
+                                                    <div class="form-group col-12 col-sm-6">
+                                                        <label class="form-control-label" for="start_time">Waktu Mulai</label>
+                                                        <input class="form-control" type="time" id="start_time" name="start_time">
+                                                    </div>
+                                                    <div class="form-group col-12 col-sm-6">
+                                                        <label class="form-control-label" for="end_time">Waktu Akhir</label>
+                                                        <input class="form-control" type="time" id="end_time" name="end_time">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="currant_condition">Kondisi Aset Sebelum Pemakaian</label>
+                                                    <textarea class="form-control" id="currant_condition" name="currant_condition" rows="2"></textarea>
+                                                </div>
+
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </form>
             </div>
+
 
             <div class="col-md-4 mb-4">
                 <div class="card move-on-hover">
@@ -344,63 +347,65 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="loan" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <div class="card card-plain">
-                                    <div class="card-header pb-0 text-left">
-                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Form Peminjaman Aset</h4>
-                                        <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dipinjam serta keterangan yang diperlukan</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <form role="form text-left">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Aset</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Kamera Gamma Medik</option>
-                                                    <option>Pesawat Sinar X Medik</option>
-                                                    <option>Dose Calibrator</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Keperluan</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Praktikum</option>
-                                                    <option>Ujian Praktikum</option>
-                                                    <option>Penelitian</option>
-                                                    <option>Tugas Akhir</option>
-                                                    <option>Magang/PKL</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="form-group col-12 col-sm-6">
-                                                    <label class="form-control-label" for="example-date-input">Tanggal Peminjaman</label>
-                                                    <input class="form-control" type="date" id="example-date-input">
+                <form action="/storedloans" method="post">
+                    <div class="form group modal fade" id="loan" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card card-plain">
+                                        <div class="card-header pb-0 text-left">
+                                            <h4 class="font-weight-bolder text-info text-gradient text-center">Form Peminjaman Aset</h4>
+                                            <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dipinjam serta keterangan yang diperlukan</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form role="form text-left">
+                                                <div class="form-group">
+                                                    <label for="aset_id">Aset</label>
+                                                    <select class="form-control" id="aset_id" name="aset_id">
+                                                        <?php foreach ($assets as $asset) : ?>
+                                                            <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                                    <label for="formFileMultiple" class="form-label">Surat Peminjaman Aset</label>
-                                                    <input class="form-control" type="file" id="formFileMultiple" multiple name="laporanSingkat">
+
+                                                <div class="form-group">
+                                                    <label for="purpose">Keperluan</label>
+                                                    <select class="form-control" id="purpose" name="purpose">
+                                                        <option value="praktikum">Praktikum</option>
+                                                        <option value="uppak">Ujian Praktikum</option>
+                                                        <option value="penelitian">Penelitian</option>
+                                                        <option value="ta">Tugas Akhir</option>
+                                                        <option value="magang_pkl">Magang/PKL</option>
+                                                    </select>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Kondisi Aset Sebelum Peminjaman</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                            </div>
+                                                <div class="row">
+                                                    <div class="form-group col-12 col-sm-6">
+                                                        <label class="form-control-label" for="loan_time">Tanggal Peminjaman</label>
+                                                        <input class="form-control" type="date" id="loan_time" name="loan_time">
+                                                    </div>
+                                                    <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                                        <label for="permission_tax" class="form-label">Surat Peminjaman Aset</label>
+                                                        <input class="form-control" type="file" id="permission_tax" multiple name="permission_tax">
+                                                    </div>
+                                                </div>
 
-                                            <div class="text-center">
-                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
-                                            </div>
-                                        </form>
+                                                <div class="form-group">
+                                                    <label for="currant_condition">Kondisi Aset Sebelum Peminjaman</label>
+                                                    <textarea class="form-control" id="currant_condition" rows="2" name="currant_condition"></textarea>
+                                                </div>
+
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <div class="col-md-4 mb-4">
@@ -456,67 +461,69 @@
                         </a>
                     </div>
                 </div>
-                <div class="modal fade" id="return" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-0">
-                                <div class="card card-plain">
-                                    <div class="card-header pb-0 text-left">
-                                        <h4 class="font-weight-bolder text-info text-gradient text-center">Form Pengembalian Aset</h4>
-                                        <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dikembalikan serta keterangan yang diperlukan</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <form role="form text-left">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Aset</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Kamera Gamma Medik</option>
-                                                    <option>Pesawat Sinar X Medik</option>
-                                                    <option>Dose Calibrator</option>
-                                                </select>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Keperluan</label>
-                                                <select class="form-control" id="exampleFormControlSelect1">
-                                                    <option>Praktikum</option>
-                                                    <option>Ujian Praktikum</option>
-                                                    <option>Penelitian</option>
-                                                    <option>Tugas Akhir</option>
-                                                    <option>Magang/PKL</option>
-                                                </select>
-                                            </div>
+                <form action="/storedretuns" method="post">
+                    <div class="form group modal fade" id="return" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body p-0">
+                                    <div class="card card-plain">
+                                        <div class="card-header pb-0 text-left">
+                                            <h4 class="font-weight-bolder text-info text-gradient text-center">Form Pengembalian Aset</h4>
+                                            <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dikembalikan serta keterangan yang diperlukan</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form role="form text-left">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">Aset</label>
+                                                    <select class="form-control" id="exampleFormControlSelect1">
+                                                        <?php foreach ($assets as $asset) : ?>
+                                                            <option><?= $asset['name']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
 
-                                            <!-- <div class="row"> -->
-                                            <div class="form-group col-12">
-                                                <label class="form-control-label" for="example-date-input">Tanggal Pengembalian</label>
-                                                <input class="form-control" type="date" id="example-date-input">
-                                            </div>
-                                            <!-- <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">Keperluan</label>
+                                                    <select class="form-control" id="exampleFormControlSelect1">
+                                                        <option>Praktikum</option>
+                                                        <option>Ujian Praktikum</option>
+                                                        <option>Penelitian</option>
+                                                        <option>Tugas Akhir</option>
+                                                        <option>Magang/PKL</option>
+                                                    </select>
+                                                </div>
+
+                                                <!-- <div class="row"> -->
+                                                <div class="form-group col-12">
+                                                    <label class="form-control-label" for="example-date-input">Tanggal Pengembalian</label>
+                                                    <input class="form-control" type="date" id="example-date-input">
+                                                </div>
+                                                <!-- <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                                     <label for="formFileMultiple" class="form-label">Surat Peminjaman Aset</label>
                                                     <input class="form-control" type="file" id="formFileMultiple" multiple name="laporanSingkat">
                                                 </div> -->
-                                            <!-- </div> -->
+                                                <!-- </div> -->
 
-                                            <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Kondisi Aset Setelah Peminjaman</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                                            </div>
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Kondisi Aset Setelah Peminjaman</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                                </div>
 
-                                            <div class="text-center">
-                                                <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
-                                            </div>
-                                        </form>
+                                                <div class="text-center">
+                                                    <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-
-
         </div>
+
 
         <!-- <div class="row">
             <div class="col-md-4 mb-4">

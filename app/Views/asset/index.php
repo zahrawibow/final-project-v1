@@ -171,7 +171,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-14">
-                                <div class="alert alert-dark" role="alert">
+                                <div class="alert alert-dark pb-0" role="alert">
                                     <div class="d-lg-flex">
                                         <div>
                                             <h6 class="text-white mb-0">Tambahkan Aset</h6>

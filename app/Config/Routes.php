@@ -36,27 +36,30 @@ $routes->get('/home', 'Home::landingPage');
 $routes->get('/', 'DashboardController::index');
 $routes->get('/iaea', 'DashboardController::radioisotope');
 $routes->get('/attendance', 'DashboardController::attendance');
+
 $routes->post('/storedattendance', 'DashboardController::stored_attendance'); //non-controller
 
 // Asset Routes
 $routes->get('/asset', 'AssetsController::index');
-// $routes->get('/asset/detail', 'AssetsController::show_detail');
 $routes->get('/asset/edit', 'AssetsController::edit');
 $routes->get('/asset/create', 'AssetsController::create');
 $routes->get('/asset/(:any)', 'AssetsController::show_detail/$1');
+// $routes->get('/asset/detail', 'AssetsController::show_detail');
 
 
 // Logbook Routes
 $routes->get('/logbook', 'LogbookController::index');
-$routes->get('/loans', 'LogbookController::create_loaning');
-$routes->get('/returns', 'LogbookController::create_returning');
-$routes->get('/logs', 'LogbookController::create_logging');
+// $routes->get('/loans', 'LogbookController::create_loaning');
+// $routes->get('/returns', 'LogbookController::create_returning');
+// $routes->get('/logs', 'LogbookController::create_logging');
+
 $routes->post('/storedloans', 'LogbookController::stored_loaning'); //non-controller
 $routes->post('/storedreturns', 'LogbookController::stored_returning'); //non-controller
 $routes->post('/storedlogs', 'LogbookController::stored_logging'); //non-controller
-$routes->post('/updatedloans', 'LogbookController::updated_loaning'); //non-controller
-$routes->post('/updatedreturns', 'LogbookController::updated_returning'); //non-controller
-$routes->post('/updatedlogs', 'LogbookController::updated_logging'); //non-controller
+
+// $routes->post('/updatedloans', 'LogbookController::updated_loaning'); //non-controller
+// $routes->post('/updatedreturns', 'LogbookController::updated_returning'); //non-controller
+// $routes->post('/updatedlogs', 'LogbookController::updated_logging'); //non-controller
 
 // Practicum Routes
 $routes->get('/practicum', 'PracticumController::index');

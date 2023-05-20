@@ -10,6 +10,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Models\AssetModel;
 
+
+
 /**
  * Class BaseController
  *
@@ -57,6 +59,7 @@ abstract class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
     }
     protected $assetModel;
+
     public function __construct()
     {
         $this->assetModel = new AssetModel();

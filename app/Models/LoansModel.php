@@ -4,24 +4,23 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AssetModel extends Model
+class LoansModel extends Model
 {
-    protected $table      = 'asset';
+    protected $table      = 'loans_assets';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'slug', 'merk', 'series', 'price', 'count', 'purchase_date', 'tool_img1', 'spec', 'manual', 'lisence', 'description', 'user_id'];
+    protected $allowedFields = ['aset_id', 'user_id', 'purpose', 'loan_time', 'permission_tax', 'currant_condition'];
 
     // protected $useAutoIncrement = true;
 
     // protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
-
     // protected $allowedFields = ['name', 'email'];
 
     // Dates
     protected $useTimestamps = true;
     // protected $dateFormat    = 'datetime';
     // protected $createdField  = 'created_at';
-    // protected $updatedField  = 'updated_at';
+    protected $updatedField  = false;
     // protected $deletedField  = 'deleted_at';
 
     // Validation
@@ -41,11 +40,4 @@ class AssetModel extends Model
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
 
-    public function getAssetData($slug = false)
-    {
-        if ($slug == false) {
-            return $this->findall();
-        }
-        return $this->where('slug', $slug)->first();
-    }
 }

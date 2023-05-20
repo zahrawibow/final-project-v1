@@ -52,7 +52,8 @@ class AssetsController extends BaseController
             'tool_img1' => $this->request->getVar('tool_img1'),
             'spec' => $this->request->getVar('spec'),
             'manual' => $this->request->getVar('manual'),
-            'lisence' => $this->request->getVar('lisence')
+            'lisence' => $this->request->getVar('lisence'),
+            'user_id' => user_id()
         ]);
 
 

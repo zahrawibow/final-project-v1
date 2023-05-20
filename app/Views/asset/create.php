@@ -262,10 +262,21 @@
                             </div>
 
                             <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="condition">Kondisi</label>
+                                    <input class="form-control" type="text" id="condition" name="condition" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="status">Status</label>
+                                    <input class="form-control" type="text" id="status" name="status">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <div class="col-sm">
                                     <label class="mt-4" for="description">Deksripsi</label>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="description" name="description" rows="9"></textarea>
+                                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                                     </div>
                                 </div>
                             </div>

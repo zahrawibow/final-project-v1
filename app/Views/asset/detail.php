@@ -168,15 +168,15 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-14">
-                                <div class="alert alert-dark" role="alert">
+                                <div class="alert alert-dark pb-0" role="alert">
                                     <div class="d-lg-flex">
                                         <div>
-                                            <h6 class="text-white  mb-0">Perbarui Detail <?= $assets['name']; ?></h6>
+                                            <h6 class="text-white mb-0">Perbarui Detail <?= $assets['name']; ?></h6>
                                             <p class="text-xs text-white text-secondary mb-0">
                                                 Hanya admin yang dapat menambahkan, merubah, serta menghapus data
                                             </p>
                                         </div>
-                                        <div class=" ms-auto my-auto mt-lg-0 mt-4">
+                                        <div class="ms-auto my-auto mt-lg-0">
                                             <div class="ms-auto my-auto">
                                                 <a href="/asset/edit" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Perbarui Detail</a>
                                             </div>
@@ -187,9 +187,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xl-5 col-lg-5 text-center mt-2">
+                            <div class="col-xl-5 col-lg-5 text-center">
                                 <img class="w-100 border-radius-lg shadow-lg mx-auto" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" alt="chair" />
-                                <div class="my-gallery d-flex mt-4 pt-2" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
+
+                                <div class="my-gallery d-flex justify-content-md-between mt-4" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
                                     <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
                                         <a href="./productdetail_files/chair-pink.jpg" itemprop="contentUrl" data-size="500x600">
                                             <img class="w-85 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-pink.jpg" alt="Image description" />
@@ -256,6 +257,20 @@
                                         </div> -->
                                     </div>
                                 </div>
+
+                                <div class="d-grid d-md-flex justify-content-md-between mt-2">
+                                    <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#import" name="spec">
+                                        SPEC
+                                    </button>
+
+                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="manual">
+                                        Manual
+                                    </button>
+
+                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="license">
+                                        License
+                                    </button>
+                                </div>
                             </div>
 
 
@@ -303,6 +318,8 @@
                                     </div>
                                 </div>
 
+                                <label class="mt-0 mb-0">Deskripsi</label>
+                                <p class="text-sm text-secondary px-1"><?= $assets['description']; ?></p>
 
 
 
@@ -426,23 +443,6 @@
                                         </div>
                                     </div>
                                 </div> -->
-
-
-                                <div class="d-grid gap-2 d-md-flex justify-content-md mt-0">
-
-                                    <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#import" name="spec">
-                                        SPEC
-                                    </button>
-
-                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="manual">
-                                        Manual
-                                    </button>
-
-                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="license">
-                                        License
-                                    </button>
-                                </div>
-
                             </div>
                         </div>
 

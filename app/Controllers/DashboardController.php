@@ -2,8 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\DashboardModel;
+
 class DashboardController extends BaseController
 {
+    protected $dashboardModel;
+
+    public function __construct()
+    {
+        $this->dashboardModel = new DashboardModel();
+    }
+
     public function index()
     {
         $data = [
@@ -26,5 +35,17 @@ class DashboardController extends BaseController
             'title' => 'Informasi Radiosiotop',
         ];
         return view('dashboard/radioisotope', $data);
+    }
+    public function stored_attendance()
+    {
+        $this->dashboardModel->save([
+            'activity' => $this->request->getVar('activity'),
+            'description' => $this->request->getVar('description'),
+            'user_id' => user_id(),
+            // 'created_at' => now()
+        ]);
+
+        return redirect()->to('/');
+        // return view('dashboard/radioisotope', $data);
     }
 }

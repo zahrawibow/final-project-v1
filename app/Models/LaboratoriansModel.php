@@ -4,11 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AssetModel extends Model
+class LaboratoriansModel extends Model
 {
-    protected $table      = 'asset';
+    protected $table      = 'laboratorians';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'slug', 'merk', 'series', 'price', 'count', 'purchase_date', 'tool_img1', 'spec', 'manual', 'lisence', 'description', 'user_id'];
+    // protected $allowedFields = ['name', 'slug', 'merk', 'series', 'price', 'count', 'purchase_date', 'tool_img1', 'spec', 'manual', 'lisence', 'description', 'user_id'];
 
     // protected $useAutoIncrement = true;
 
@@ -40,12 +40,4 @@ class AssetModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
-
-    public function getAssetData($slug = false)
-    {
-        if ($slug == false) {
-            return $this->findall();
-        }
-        return $this->where('slug', $slug)->first();
-    }
 }

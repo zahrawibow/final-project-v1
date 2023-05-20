@@ -260,6 +260,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card">
@@ -277,50 +278,57 @@
                                         <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#attendance"></i>
                                     </a>
 
-                                    <div class="modal fade" id="attendance" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-body p-0">
-                                                    <div class="card card-plain">
-                                                        <div class="card-header pb-0 text-left">
-                                                            <h4 class="font-weight-bolder text-info text-gradient text-center">Form Kunjungan</h4>
-                                                            <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai kegiatan yang akan kamu lakukan</p>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <form role="form text-left">
-                                                                <div class="form-group">
-                                                                    <label for="exampleFormControlSelect1">Kegiatan</label>
-                                                                    <select class="form-control" id="exampleFormControlSelect1">
-                                                                        <option>Kunjungan biasa</option>
-                                                                        <option>Kuliah/Praktikum</option>
-                                                                        <option>Ujian Praktikum</option>
-                                                                        <option>Penelitian</option>
-                                                                        <option>Tugas Akhir</option>
-                                                                        <option>Magang/PKL</option>
-                                                                        <option>Rapat/Pertemuan</option>
-                                                                        <option>Sosialisasi/Kunjungan</option>
-                                                                        <option>Pengabdian Masyarakat</option>
-                                                                        <option>Perawatan Alat</option>
-                                                                        <option>Peminjaman Alat</option>
-                                                                        <option>Pengembalian Alat</option>
-                                                                        <option>Lainnya</option>
-                                                                    </select>
-                                                                </div>
+                                    <form action="/storedattendance" method="post">
+                                        <div class="form group modal fade" id="attendance" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body p-0">
+                                                        <div class="card card-plain">
+                                                            <div class="card-header pb-0 text-left">
+                                                                <h4 class="font-weight-bolder text-info text-gradient text-center">Form Kunjungan</h4>
+                                                                <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai kegiatan yang akan kamu lakukan</p>
+                                                            </div>
+
+                                                            <div class="card-body">
+                                                                <form role="form text-left" class="form-control" id="activity">
+                                                                    <div class="form-group">
+                                                                        <label for="activity">Kegiatan</label>
+                                                                        <select class="form-control" id="activity" name="activity">
+                                                                            <option value="1">Kunjungan biasa</option>
+                                                                            <option value="2">Kuliah/Praktikum</option>
+                                                                            <option value="3">Ujian Praktikum</option>
+                                                                            <option value="4">Penelitian</option>
+                                                                            <option value="5">Tugas Akhir</option>
+                                                                            <option value="6">Magang/PKL</option>
+                                                                            <option value="7">Rapat/Pertemuan</option>
+                                                                            <option value="8">Sosialisasi/Kunjungan</option>
+                                                                            <option value="9">Pengabdian Masyarakat</option>
+                                                                            <option value="10">Perawatan Alat</option>
+                                                                            <option value="11">Peminjaman Alat</option>
+                                                                            <option value="12">Pengembalian Alat</option>
+                                                                            <option value="13">Lainnya</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </form>
 
                                                                 <div class="form-group">
-                                                                    <label for="exampleFormControlTextarea1">Keterangan</label>
-                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                    <!-- <form class="form-control" id="description" name="description"> -->
+                                                                    <label for="description">Keterangan</label>
+                                                                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                                                    <!-- </form> -->
                                                                 </div>
-                                                                <div class="text-center">
-                                                                    <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Submit</button>
+
+                                                                <div class="form group text-center">
+                                                                    <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Submit</button>
                                                                 </div>
-                                                            </form>
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
 
                                 </div>
                             </div>
