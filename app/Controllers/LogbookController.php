@@ -6,6 +6,7 @@ use App\Models\LogsModel;
 use App\Models\AssetModel;
 use App\Models\LaboratoriansModel;
 use App\Models\LoansModel;
+use App\Models\ReturnsModel;
 
 class LogbookController extends BaseController
 {
@@ -13,6 +14,7 @@ class LogbookController extends BaseController
     protected $assetModel;
     protected $laboratoriansModel;
     protected $loansModel;
+    protected $returnsModel;
 
     public function __construct()
     {
@@ -20,6 +22,7 @@ class LogbookController extends BaseController
         $this->assetModel = new AssetModel();
         $this->laboratoriansModel = new LaboratoriansModel();
         $this->loansModel = new LoansModel();
+        $this->returnsModel = new ReturnsModel();
     }
 
     public function index()
@@ -27,7 +30,7 @@ class LogbookController extends BaseController
         $data = [
             'title' => 'Log Aset',
             'assets' => $this->assetModel->getAssetData(),
-            // 'laboratorians' => $this->laboratoriansModel->getLaboratoriansData()
+            'laboratorians' => $this->laboratoriansModel->getLaboratoriansData()
         ];
         return view('logbook/mainContent', $data);
     }
@@ -57,6 +60,21 @@ class LogbookController extends BaseController
             'currant_condition' => $this->request->getVar('currant_condition'),
             'permission_tax' => $this->request->getVar('permission_tax')
         ]);
+
+        return redirect()->to('/logbook');
+    }
+
+    public function stored_returning()
+    {
+        $this->returnsModel->save([
+            'aset_id' => $this->request->getVar('aset_id'),
+            'user_id' => user_id(),
+            'purpose' => $this->request->getVar('purpose'),
+            'return_date' => $this->request->getVar('return_date'),
+            'currant_condition' => $this->request->getVar('currant_condition'),
+            'permission_tax' => $this->request->getVar('permission_tax')
+        ]);
+
 
         return redirect()->to('/logbook');
     }

@@ -256,6 +256,15 @@
                                                 <div class="form-group">
                                                     <label for="laboratorian">Laboran Pengampu</label>
                                                     <select class="form-control" id="laboratorian" name="laboratorian">
+                                                        <?php foreach ($laboratorians as $laboratorian) : ?>
+                                                            <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['name']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="laboratorian">Laboran Pengampu</label>
+                                                    <select class="form-control" id="laboratorian" name="laboratorian">
                                                         <option>M. Khoiri, M.Eng</option>
                                                         <option>Mahrus Salam, M.Eng</option>
                                                         <option>Teguh Handoyo, Ph.D</option>
@@ -462,7 +471,7 @@
                     </div>
                 </div>
 
-                <form action="/storedretuns" method="post">
+                <form action="/storedreturns" method="post">
                     <div class="form group modal fade" id="return" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -475,43 +484,39 @@
                                         <div class="card-body">
                                             <form role="form text-left">
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Aset</label>
-                                                    <select class="form-control" id="exampleFormControlSelect1">
+                                                    <label for="aset_id">Aset</label>
+                                                    <select class="form-control" id="aset_id" name="aset_id">
                                                         <?php foreach ($assets as $asset) : ?>
-                                                            <option><?= $asset['name']; ?></option>
+                                                            <option <?= $asset['id']; ?>><?= $asset['name']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Keperluan</label>
-                                                    <select class="form-control" id="exampleFormControlSelect1">
-                                                        <option>Praktikum</option>
-                                                        <option>Ujian Praktikum</option>
-                                                        <option>Penelitian</option>
-                                                        <option>Tugas Akhir</option>
-                                                        <option>Magang/PKL</option>
+                                                    <label for="purpose">Keperluan</label>
+                                                    <select class="form-control" id="purpose" name="purpose">
+                                                        <option value="praktikum">Praktikum</option>
+                                                        <option value="uprak">Ujian Praktikum</option>
+                                                        <option value="penelitian">Penelitian</option>
+                                                        <option value="ta">Tugas Akhir</option>
+                                                        <option value="magang_pkl">Magang/PKL</option>
                                                     </select>
                                                 </div>
 
                                                 <!-- <div class="row"> -->
                                                 <div class="form-group col-12">
-                                                    <label class="form-control-label" for="example-date-input">Tanggal Pengembalian</label>
-                                                    <input class="form-control" type="date" id="example-date-input">
+                                                    <label class="form-control-label" for="return_date">Tanggal Pengembalian</label>
+                                                    <input class="form-control" type="date" id="return_date" name="return_date">
                                                 </div>
-                                                <!-- <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                                    <label for="formFileMultiple" class="form-label">Surat Peminjaman Aset</label>
-                                                    <input class="form-control" type="file" id="formFileMultiple" multiple name="laporanSingkat">
-                                                </div> -->
-                                                <!-- </div> -->
+
 
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlTextarea1">Kondisi Aset Setelah Peminjaman</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                                    <label for="currant_condition">Kondisi Aset Setelah Peminjaman</label>
+                                                    <textarea class="form-control" id="currant_condition" rows="2" name="currant_condition"></textarea>
                                                 </div>
 
                                                 <div class="text-center">
-                                                    <button type="button" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
+                                                    <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
                                                 </div>
                                             </form>
                                         </div>
