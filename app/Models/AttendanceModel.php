@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DashboardModel extends Model
+class AttendanceModel extends Model
 {
     protected $table      = 'attendance';
     protected $primaryKey = 'id';

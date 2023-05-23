@@ -148,77 +148,165 @@
         </div>
     </nav>
 
-    <!-- <div class="wrap animate pop">
-        <div class="overlay">
-            <div class="overlay-content animate slide-left delay-2">
-                <h1 class="animate slide-left pop delay-4">Trees</h1>
-                <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
-            </div>
-            <div class="image-content animate slide delay-5"></div>
-            <div class="dots animate">
-                <div class="dot animate slide-up delay-6"></div>
-                <div class="dot animate slide-up delay-7"></div>
-                <div class="dot animate slide-up delay-8"></div>
-            </div>
-        </div>
-        <div class="text">
-            <p>Trees are woody perennial plants that are a member of the kingdom <em>Plantae</em>. All species of trees are grouped by their genus, family, and order. This helps make identifying and studying trees easier.</p>
-            <p>Apart from providing oxygen for the planet and beauty when they bloom or turn color, trees are very useful. Certain species of hardwood and softwood trees are excellent for timber, making furniture, and paper.</p>
-            <p>When managed properly, trees are a good source of renewable energy and construction material.</p>
-        </div>
-    </div> -->
-
     <div class="container-fluid py-4">
         <div class="row">
-            <?php foreach ($practicum as $prac) : ?>
+            <div class="col-12">
+                <!-- <div class="card mb-4"> -->
+                <div class="card">
 
-                <div class="col-md-4 mb-4">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="front">
-                                <div class="cover">
-                                    <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
-                                </div>
-                                <!-- <div class="user">
-                                <img class="img-circle" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
-                            </div> -->
-                                <div class="content">
-                                    <div class="main text-center">
-                                        <h5><strong><?= $prac['title']; ?></strong></h5>
-                                        <p class="mt-3 text-sm"><?= $prac['laboratorian']; ?></p>
+                    <!-- tabel aset -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-14">
+                                <div class="alert alert-dark pb-0" role="alert">
+                                    <div class="d-lg-flex">
+                                        <div>
+                                            <h6 class="text-white mb-0">Tambahkan Praktikum</h6>
+                                            <p class="text-white text-xs text-secondary mb-0">
+                                                Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                            </p>
+                                        </div>
 
-                                        <!-- <p class="profession">Pengampu Praktikum</p> -->
-                                        <!-- <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p> -->
-                                    </div>
-                                    <div class="footer text-xs mt-3">
-                                        <i class="fa fa-mail-forward text-center"></i> Auto Rotation
+                                        <div class="ms-auto my-auto mt-lg-0 mt-4">
+                                            <div class="ms-auto my-auto">
+                                                <a href="/manageprac/create" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end front panel -->
 
-                            <div class="back">
-                                <div class="header">
-                                    <h4 class="motto mt-4">Deskripsi Singkat</h4>
+                            <!-- Harusnya sweet alert -->
+                            <!-- <?php if (session()->getFlashdata('succes')) : ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Berhasil!!</strong> <?= session()->getFlashdata('succes'); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="content">
-                                    <div class="main pt-0">
-                                        <h6 class="text-center text-xs px-1"><?= $prac['description']; ?></h6>
+                            <?php endif; ?> -->
+
+
+
+                            <div class="table-responsive p-0">
+                                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                                    <div class="dataTable-container">
+                                        <table class="table align-items-center mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Pengampu</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aset yang Digunakan</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jadwal</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lokasi</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tim</i></th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Modul</i></th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</i></th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></i></th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></i></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <?php foreach ($practicum as $prac) : ?>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex px-2 py-1">
+                                                                <div class="d-flex flex-column justify-content-center">
+                                                                    <h6 class="mb-0 text-sm"><?= $prac['title']; ?></h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['laboratorian']; ?></p>
+                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['aset_id']; ?></p>
+                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['schedule']; ?></p>
+                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['location']; ?></p>
+                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['team']; ?></p>
+                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
+                                                        </td>
+                                                        <td class="align-middle text-center">
+                                                            <a href="/asset/<?= $prac['module']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                                <i class="fas fa-light fa-eye"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-gradient-success"><?= $prac['status']; ?></span>
+                                                        </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-warning">Ubah</span>
+                                                        </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-danger">Hapus</span>
+                                                        </td>
+                                                        <!-- <td>
+                                                            <button class="btn btn-icon btn-warning btn-sm align-middle" type="button">
+                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-icon btn-danger btn-sm justify-content-middle" type="button">
+                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
+                                                            </button>
+                                                        </td> -->
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-3 mb-0" data-bs-toggle="modal" data-bs-target="#use">
-                                        Get started
-                                    </a>
                                 </div>
-                            </div> <!-- end back panel -->
-                        </div> <!-- end card -->
-                    </div> <!-- end card-container -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <?php endforeach; ?>
+            </div>
+
+            <footer class="footer pt-3  ">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-6 mb-lg-0 mb-4">
+                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                                © <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                made with <i class="fa fa-heart"></i> by
+                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                                for a better web.
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </div>
+        <!-- Assets Table End -->
+
+
 
 </main>
-
-<script src="../../assets/js/plugins/threejs.js"></script>
-<script src="../../assets/js/plugins/orbit-controls.js"></script>
 <?= $this->endSection(); ?>

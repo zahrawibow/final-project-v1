@@ -27,15 +27,15 @@ class AssetsController extends BaseController
         // echo "hello";
     }
 
-    public function edit()
-    {
-        $data = [
-            'title' => 'Edit Detail',
-            //udah pake getAsset di model
-            // 'assets' => $this->assetModel->getAssetData()
-        ];
-        return view('asset/edit', $data);
-    }
+    // public function edit()
+    // {
+    //     $data = [
+    //         'title' => 'Edit Detail',
+    //         //udah pake getAsset di model
+    //         // 'assets' => $this->assetModel->getAssetData()
+    //     ];
+    //     return view('asset/edit', $data);
+    // }
 
     public function stored_asset()
     {

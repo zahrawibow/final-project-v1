@@ -147,78 +147,154 @@
             </div>
         </div>
     </nav>
-
-    <!-- <div class="wrap animate pop">
-        <div class="overlay">
-            <div class="overlay-content animate slide-left delay-2">
-                <h1 class="animate slide-left pop delay-4">Trees</h1>
-                <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
-            </div>
-            <div class="image-content animate slide delay-5"></div>
-            <div class="dots animate">
-                <div class="dot animate slide-up delay-6"></div>
-                <div class="dot animate slide-up delay-7"></div>
-                <div class="dot animate slide-up delay-8"></div>
-            </div>
-        </div>
-        <div class="text">
-            <p>Trees are woody perennial plants that are a member of the kingdom <em>Plantae</em>. All species of trees are grouped by their genus, family, and order. This helps make identifying and studying trees easier.</p>
-            <p>Apart from providing oxygen for the planet and beauty when they bloom or turn color, trees are very useful. Certain species of hardwood and softwood trees are excellent for timber, making furniture, and paper.</p>
-            <p>When managed properly, trees are a good source of renewable energy and construction material.</p>
-        </div>
-    </div> -->
-
     <div class="container-fluid py-4">
-        <div class="row">
-            <?php foreach ($practicum as $prac) : ?>
 
-                <div class="col-md-4 mb-4">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="front">
-                                <div class="cover">
-                                    <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
+        <form action="/storedprac" method="post">
+            <?= csrf_field(); ?>
+            <div class="row px-3">
+                <div class="col-lg-6">
+                    <h3>Tambah Praktikum</h3>
+                    <p class="text-secondary text-sm">Isi form tambah praktikum untuk menambah data praktikum pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
+                </div>
+
+                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
+                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Tambah</button>
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder mt-4">Modul Praktikum</h5>
+                            <form action="/file-upload" class="form-control" id="spec" name="spec">
+                                <div class="form-group">
+                                    <label for="spec" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="spec" multiple name="spec">
                                 </div>
-                                <!-- <div class="user">
-                                <img class="img-circle" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
-                            </div> -->
-                                <div class="content">
-                                    <div class="main text-center">
-                                        <h5><strong><?= $prac['title']; ?></strong></h5>
-                                        <p class="mt-3 text-sm"><?= $prac['laboratorian']; ?></p>
+                            </form>
 
-                                        <!-- <p class="profession">Pengampu Praktikum</p> -->
-                                        <!-- <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p> -->
+                            <h5 class="font-weight-bolder mt-4">Dokumen Lain</h5>
+                            <form action="/file-upload" class="form-control" id="manual" name="manual">
+                                <div class="form-group">
+                                    <label for="manual" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="manual" multiple name="manual">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 mt-lg-0 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder">Informasi Praktikum</h5>
+
+
+                            <div class="form-group">
+                                <label for="title">Judul</label>
+                                <input class="form-control" type="text" id="title" name="title" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="laboratorian">Laboran Pengampu</label>
+                                        <select class="form-control" id="laboratorian" name="laboratorian">
+                                            <?php foreach ($laboratorians as $laboratorian) : ?>
+                                                <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
-                                    <div class="footer text-xs mt-3">
-                                        <i class="fa fa-mail-forward text-center"></i> Auto Rotation
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <div class="form-group">
+                                        <label for="aset_id">Aset</label>
+                                        <select class="form-control" id="aset_id" name="aset_id">
+                                            <?php foreach ($assets as $asset) : ?>
+                                                <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end front panel -->
 
-                            <div class="back">
-                                <div class="header">
-                                    <h4 class="motto mt-4">Deskripsi Singkat</h4>
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="team">Kelompok</label>
+                                    <input class="form-control" type="text" id="team" name="team" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
-                                <div class="content">
-                                    <div class="main pt-0">
-                                        <h6 class="text-center text-xs px-1"><?= $prac['description']; ?></h6>
+                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="schedule">Jadwal</label>
+                                    <input class="form-control" type="date" id="schedule" name="schedule">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="location">Lokasi</label>
+                                    <input class="form-control" type="text" id="location" name="location" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="status">Status</label>
+                                    <input class="form-control" type="text" id="status" name="status">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <label class="mt-2" for="description">Deksripsi</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                                     </div>
-                                    <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-3 mb-0" data-bs-toggle="modal" data-bs-target="#use">
-                                        Get started
-                                    </a>
                                 </div>
-                            </div> <!-- end back panel -->
-                        </div> <!-- end card -->
-                    </div> <!-- end card-container -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
+            </div>
+        </form>
+
+
+        <footer class="footer pt-3  ">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="copyright text-center text-sm text-muted text-lg-start">
+                            © <script>
+                                document.write(new Date().getFullYear())
+                            </script>2023,
+                            made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                            <a href="https://www.creative-tim.com/" class="font-weight-bold" target="_blank">Creative Tim</a>
+                            for a better web.
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script src="../../assets/js/plugins/dropzone.min.js"></script>
+        </footer>
     </div>
 
 </main>
 
-<script src="../../assets/js/plugins/threejs.js"></script>
-<script src="../../assets/js/plugins/orbit-controls.js"></script>
+
+
 <?= $this->endSection(); ?>

@@ -262,16 +262,6 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for="laboratorian">Laboran Pengampu</label>
-                                                    <select class="form-control" id="laboratorian" name="laboratorian">
-                                                        <option>M. Khoiri, M.Eng</option>
-                                                        <option>Mahrus Salam, M.Eng</option>
-                                                        <option>Teguh Handoyo, Ph.D</option>
-                                                        <option>Ayu Jati Puspitasari, M.Si</option>
-                                                    </select>
-                                                </div>
-
                                                 <div class="row">
                                                     <div class="form-group col-12 col-sm-6">
                                                         <label class="form-control-label" for="start_time">Waktu Mulai</label>
@@ -421,9 +411,9 @@
                 <div class="card move-on-hover">
                     <div class="card-header bg-gradient-dark text-center pt-4 pb-5 position-relative">
                         <div class="z-index-1 position-relative">
-                            <h4 class="text-white">K E M B A L I</h4>
+                            <h4 class="text-white">R A D I A S I</h4>
                             <h6 class="text-white mt-2 mb-0 text-sm">
-                                <small>Form Pengembalian Aset Laboratorium</small>
+                                <small>Form Pelaporan Dosis Radiasi</small>
                             </h6>
                             <h6 class="text-white"> </h6>
                         </div>
@@ -471,15 +461,15 @@
                     </div>
                 </div>
 
-                <form action="/storedreturns" method="post">
+                <form action="/storedradiation" method="post">
                     <div class="form group modal fade" id="return" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-body p-0">
                                     <div class="card card-plain">
                                         <div class="card-header pb-0 text-left">
-                                            <h4 class="font-weight-bolder text-info text-gradient text-center">Form Pengembalian Aset</h4>
-                                            <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dikembalikan serta keterangan yang diperlukan</p>
+                                            <h4 class="font-weight-bolder text-info text-gradient text-center">Form Dosis Radiasi</h4>
+                                            <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan dosis radiasi yang diperoleh selama berkegiatan menggunakan sumber radioisotop di Laboratorium Radiologi dan Kedokteran Nuklir</p>
                                         </div>
                                         <div class="card-body">
                                             <form role="form text-left">
@@ -487,14 +477,21 @@
                                                     <label for="aset_id">Aset</label>
                                                     <select class="form-control" id="aset_id" name="aset_id">
                                                         <?php foreach ($assets as $asset) : ?>
-                                                            <option <?= $asset['id']; ?>><?= $asset['name']; ?></option>
+                                                            <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="purpose">Keperluan</label>
-                                                    <select class="form-control" id="purpose" name="purpose">
+                                                    <label for="radioisotope">Sumber Radioisotop</label>
+                                                    <select class="form-control" id="radioisotope" name="radioisotope">
+                                                        <option value="praktikum">////</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="activity">Keperluan</label>
+                                                    <select class="form-control" id="activity" name="activity">
                                                         <option value="praktikum">Praktikum</option>
                                                         <option value="uprak">Ujian Praktikum</option>
                                                         <option value="penelitian">Penelitian</option>
@@ -503,16 +500,29 @@
                                                     </select>
                                                 </div>
 
-                                                <!-- <div class="row"> -->
-                                                <div class="form-group col-12">
-                                                    <label class="form-control-label" for="return_date">Tanggal Pengembalian</label>
-                                                    <input class="form-control" type="date" id="return_date" name="return_date">
+                                                <div class="form-group">
+                                                    <label for="laboratorian">Laboran Pengampu</label>
+                                                    <select class="form-control" id="laboratorian" name="laboratorian">
+                                                        <?php foreach ($laboratorians as $laboratorian) : ?>
+                                                            <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['name']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
 
+                                                <div class="row">
+                                                    <div class="form-group col-12 col-sm-6">
+                                                        <label class="form-control-label" for="start_time">Waktu Mulai</label>
+                                                        <input class="form-control" type="time" id="start_time" name="start_time">
+                                                    </div>
+                                                    <div class="form-group col-12 col-sm-6">
+                                                        <label class="form-control-label" for="end_time">Waktu Akhir</label>
+                                                        <input class="form-control" type="time" id="end_time" name="end_time">
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
-                                                    <label for="currant_condition">Kondisi Aset Setelah Peminjaman</label>
-                                                    <textarea class="form-control" id="currant_condition" rows="2" name="currant_condition"></textarea>
+                                                    <label class="form-control-label" for="radiation">Radiasi</label>
+                                                    <input class="form-control" type="text" id="radiation" name="radiation">
                                                 </div>
 
                                                 <div class="text-center">

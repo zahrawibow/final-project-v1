@@ -56,6 +56,7 @@ $routes->get('/logbook', 'LogbookController::index');
 $routes->post('/storedloans', 'LogbookController::stored_loaning'); //non-controller
 $routes->post('/storedreturns', 'LogbookController::stored_returning'); //non-controller
 $routes->post('/storedlogs', 'LogbookController::stored_logging'); //non-controller
+$routes->post('/storedradiation', 'LogbookController::stored_radiation'); //non-controller
 
 // $routes->post('/updatedloans', 'LogbookController::updated_loaning'); //non-controller
 // $routes->post('/updatedreturns', 'LogbookController::updated_returning'); //non-controller
@@ -99,16 +100,22 @@ $routes->post('/storedasset', 'AssetsController::stored_asset'); //non-controlle
 $routes->post('/updatedasset', 'AssetsController::updated_asset'); //non-controller
 
 // Manage Practicum Routes
-$routes->get('/modules/create', 'PracticumController::create_module'); //non-controller
-$routes->get('/schedules/create', 'PracticumController::create_schedule'); //non-controller
-$routes->get('/teams/create', 'PracticumController::create_team'); //non-controller
-$routes->post('/storedmodules', 'PracticumController::stored_module'); //non-controller
-$routes->post('/storedschedules', 'PracticumController::stored_schedule'); //non-controller
-$routes->post('/storedteams', 'PracticumController::stored_team'); //non-controller
-$routes->post('/updatedmodules', 'PracticumController::updated_module'); //non-controller
-$routes->post('/updatedschedules', 'PracticumController::updated_schedule'); //non-controller
-$routes->post('/updatedteams', 'PracticumController::updated_team'); //non-controller
+$routes->get('/manageprac', 'ManagePracticumController::index'); //non-controller
+$routes->get('/manageprac/create', 'ManagePracticumController::create'); //non-controller
+$routes->post('/storedprac', 'ManagePracticumController::stored_practicum'); //non-controller
+// $routes->get('/modules/create', 'PracticumController::create_module'); //non-controller
+// $routes->get('/schedules/create', 'PracticumController::create_schedule'); //non-controller
+// $routes->get('/teams/create', 'PracticumController::create_team'); //non-controller
+// $routes->post('/storedmodules', 'PracticumController::stored_module'); //non-controller
+// $routes->post('/storedschedules', 'PracticumController::stored_schedule'); //non-controller
+// $routes->post('/storedteams', 'PracticumController::stored_team'); //non-controller
+// $routes->post('/updatedmodules', 'PracticumController::updated_module'); //non-controller
+// $routes->post('/updatedschedules', 'PracticumController::updated_schedule'); //non-controller
+// $routes->post('/updatedteams', 'PracticumController::updated_team'); //non-controller
 
+$routes->get('/manageatten', 'ManageAttendanceController::index'); //non-controller
+$routes->get('/manageloan', 'ManageLoansController::create'); //non-controller
+$routes->get('/managelogs', 'ManageLogsController::create'); //non-controller
 
 /*
  * --------------------------------------------------------------------

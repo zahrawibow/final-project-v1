@@ -4,11 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LaboratoriansModel extends Model
+class PracticumModel extends Model
 {
-    protected $table      = 'laboratorians';
+    protected $table      = 'practicum';
     protected $primaryKey = 'id';
-    // protected $allowedFields = ['name', 'slug', 'merk', 'series', 'price', 'count', 'purchase_date', 'tool_img1', 'spec', 'manual', 'lisence', 'description', 'user_id'];
+    protected $allowedFields = ['id', 'aset_id', 'laboratorian', 'title', 'module', 'schedule', 'team', 'user_id', 'description', 'status', 'location'];
 
     // protected $useAutoIncrement = true;
 
@@ -21,7 +21,7 @@ class LaboratoriansModel extends Model
     protected $useTimestamps = true;
     // protected $dateFormat    = 'datetime';
     // protected $createdField  = 'created_at';
-    // protected $updatedField  = 'updated_at';
+    protected $updatedField  = false;
     // protected $deletedField  = 'deleted_at';
 
     // Validation
@@ -40,7 +40,7 @@ class LaboratoriansModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
-    public function getLaboratoriansData()
+    public function getPracticumData()
     {
         return $this->findAll();
     }

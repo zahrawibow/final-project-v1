@@ -243,6 +243,12 @@
                                                                 <i class="fas fa-light fa-eye"></i>
                                                             </a>
                                                         </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-warning">Ubah</span>
+                                                        </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="badge badge-sm bg-danger">Hapus</span>
+                                                        </td>
                                                     <?php endforeach; ?>
                                                     </tr>
                                             </tbody>

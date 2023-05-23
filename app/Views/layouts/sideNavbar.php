@@ -38,31 +38,35 @@
                 <div class="collapse show" id="dashboardsExamples">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item active">
-                            <a class="nav-link active" href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/default.html">
-                                <span class="sidenav-mini-icon"> </span>
+                            <a class="nav-link active" href="/managedash"> </span>
                                 <span class="sidenav-normal">Kelola Pagu Utama</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/automotive.html">
-                                <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal">Kelola Aset</span>
+                            <a class="nav-link" href="/manageatten"> </span>
+                                <span class="sidenav-normal">Kelola Daftar Kunjungan</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/automotive.html">
+                            <a class="nav-link" href="/managelogs">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal">Kelola Log Aset</span>
+                                <span class="sidenav-normal">Kelola Log Pemakaian Aset</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/smart-home.html">
+                            <a class="nav-link" href="/manageloanl">
+                                <span class="sidenav-mini-icon"> </span>
+                                <span class="sidenav-normal">Kelola Log Peminjaman Aset</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/managesche">
                                 <span class="sidenav-mini-icon"> S </span>
                                 <span class="sidenav-normal">Kelola Agenda Kegiatan </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/default.html#vrExamples">
+                            <a class="nav-link" href="/manageprac">
                                 <span class="sidenav-mini-icon"> V </span>
                                 <span class="sidenav-normal">Kelola Perkuliahan<b class="caret"></b></span>
                             </a>

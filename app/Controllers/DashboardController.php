@@ -2,15 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Models\DashboardModel;
+use App\Models\AttendanceModel;
 
 class DashboardController extends BaseController
 {
-    protected $dashboardModel;
+    protected $attendanceModel;
 
     public function __construct()
     {
-        $this->dashboardModel = new DashboardModel();
+        $this->attendanceModel = new AttendanceModel();
     }
 
     public function index()
@@ -19,14 +19,6 @@ class DashboardController extends BaseController
             'title' => 'Pagu Utama',
         ];
         return view('dashboard/index', $data);
-    }
-
-    public function attendanceCreate()
-    {
-        $data = [
-            'title' => 'Kunjungan',
-        ];
-        return view('dashboard/attendance', $data);
     }
 
     public function radioisotope()
@@ -38,7 +30,7 @@ class DashboardController extends BaseController
     }
     public function stored_attendance()
     {
-        $this->dashboardModel->save([
+        $this->attendanceModel->save([
             'activity' => $this->request->getVar('activity'),
             'description' => $this->request->getVar('description'),
             'user_id' => user_id(),

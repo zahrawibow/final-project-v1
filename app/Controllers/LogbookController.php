@@ -7,6 +7,7 @@ use App\Models\AssetModel;
 use App\Models\LaboratoriansModel;
 use App\Models\LoansModel;
 use App\Models\ReturnsModel;
+use App\Models\RadiationModel;
 
 class LogbookController extends BaseController
 {
@@ -15,6 +16,7 @@ class LogbookController extends BaseController
     protected $laboratoriansModel;
     protected $loansModel;
     protected $returnsModel;
+    protected $radiationModel;
 
     public function __construct()
     {
@@ -23,6 +25,7 @@ class LogbookController extends BaseController
         $this->laboratoriansModel = new LaboratoriansModel();
         $this->loansModel = new LoansModel();
         $this->returnsModel = new ReturnsModel();
+        $this->radiationModel = new RadiationModel();
     }
 
     public function index()
@@ -75,6 +78,22 @@ class LogbookController extends BaseController
             'permission_tax' => $this->request->getVar('permission_tax')
         ]);
 
+
+        return redirect()->to('/logbook');
+    }
+
+    public function stored_radiation()
+    {
+        $this->radiationModel->save([
+            'aset_id' => $this->request->getVar('aset_id'),
+            'user_id' => user_id(),
+            'activity' => $this->request->getVar('activity'),
+            'laboratorian' => $this->request->getVar('laboratorian'),
+            'start_time' => $this->request->getVar('start_time'),
+            'end_time' => $this->request->getVar('end_time'),
+            'radioisotope' => $this->request->getVar('radioisotope'),
+            'radiation' => $this->request->getVar('radiation')
+        ]);
 
         return redirect()->to('/logbook');
     }
