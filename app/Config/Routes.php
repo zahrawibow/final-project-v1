@@ -40,10 +40,17 @@ $routes->get('/attendance', 'DashboardController::attendance');
 $routes->post('/storedattendance', 'DashboardController::stored_attendance'); //non-controller
 
 // Asset Routes
-$routes->get('/asset', 'AssetsController::index');
-$routes->get('/asset/edit', 'AssetsController::edit');
-$routes->get('/asset/create', 'AssetsController::create');
-$routes->get('/asset/(:any)', 'AssetsController::show_detail/$1');
+$routes->group('asset', static function ($routes) {
+    // View
+    $routes->get('/', 'AssetsController::index', ['as' => 'asset.index']);
+    $routes->get('/(:any)', 'AssetsController::show_detail/$1');
+    $routes->get('/edit', 'AssetsController::edit', ['as' => 'asset.edit']);
+    $routes->get('/create', 'AssetsController::create', ['as' => 'asset.create']);
+});
+// $routes->get('/asset', 'AssetsController::index');
+// $routes->get('/asset/edit', 'AssetsController::edit');
+// $routes->get('/asset/create', 'AssetsController::create');
+// $routes->get('/asset/(:any)', 'AssetsController::show_detail/$1');
 // $routes->get('/asset/detail', 'AssetsController::show_detail');
 
 
