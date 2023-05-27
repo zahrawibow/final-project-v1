@@ -64,7 +64,7 @@
                                     <form role="form">
                                         <label for="signin">Username</label>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="signin" placeholder="Username" aria-label="Username" aria-describedby="username-addon" />
+                                            <input type="text" class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="Username" aria-label="Username" aria-describedby="username-addon" />
                                             <div class="invalid-feedback">
                                                 <?= session('errors.login') ?>
                                             </div>
