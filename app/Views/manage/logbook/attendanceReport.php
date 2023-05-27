@@ -24,13 +24,13 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item text-sm">
-                        <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
+                        <a class="opacity-5 text-dark" href="javascript:;">Pagu Admin</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Praktikum
+                        Kelola Daftar Kunjungan
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
+                <h6 class="font-weight-bolder mb-0">Daftar Kunjungan</h6>
             </nav>
 
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -157,25 +157,6 @@
                     <!-- tabel aset -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-14">
-                                <div class="alert alert-dark pb-0" role="alert">
-                                    <div class="d-lg-flex">
-                                        <div>
-                                            <h6 class="text-white mb-0">Tambahkan Praktikum</h6>
-                                            <p class="text-white text-xs text-secondary mb-0">
-                                                Hanya admin yang dapat menambahkan, merubah, serta menghapus data
-                                            </p>
-                                        </div>
-
-                                        <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                            <div class="ms-auto my-auto">
-                                                <a href="/manageprac/create" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Harusnya sweet alert -->
                             <!-- <?php if (session()->getFlashdata('succes')) : ?>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -192,76 +173,32 @@
                                         <table class="table align-items-center mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Pengampu</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aset yang Digunakan</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jadwal</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lokasi</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tim</i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Modul</i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></i></th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama User</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Aktivitas</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deskripsi</th>
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <?php foreach ($practicum as $prac) : ?>
+                                                <?php foreach ($attendances as $attendance) : ?>
                                                     <tr>
                                                         <td>
-                                                            <div class="d-flex px-2 py-1">
+                                                            <div class="d-flex px-3 py-1">
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm"><?= $prac['title']; ?></h6>
+                                                                    <h6 class="mb-0 text-sm"><?= $attendance['user_id']; ?></h6>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['laboratorian']; ?></p>
-                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $attendance['activity']; ?></p>
                                                         </td>
                                                         <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['aset_id']; ?></p>
-                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $attendance['description']; ?></p>
                                                         </td>
-                                                        <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['schedule']; ?></p>
-                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                        </td>
-                                                        <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['location']; ?></p>
-                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                        </td>
-                                                        <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['team']; ?></p>
-                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                        </td>
-                                                        <td class="align-middle text-center">
-                                                            <a href="/asset/<?= $prac['module']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                                <i class="fas fa-light fa-eye"></i>
-                                                            </a>
-                                                        </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-gradient-success"><?= $prac['status']; ?></span>
-                                                        </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-warning">Ubah</span>
-                                                        </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-danger">Hapus</span>
-                                                        </td>
-                                                        <!-- <td>
-                                                            <button class="btn btn-icon btn-warning btn-sm align-middle" type="button">
-                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button class="btn btn-icon btn-danger btn-sm justify-content-middle" type="button">
-                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
-                                                            </button>
-                                                        </td> -->
+                                                    <?php endforeach; ?>
                                                     </tr>
-                                                <?php endforeach; ?>
                                             </tbody>
+
                                         </table>
                                     </div>
                                 </div>
@@ -304,9 +241,6 @@
                 </div>
             </footer>
         </div>
-        <!-- Assets Table End -->
 
 
-
-</main>
-<?= $this->endSection(); ?>
+        <?= $this->endSection(); ?>

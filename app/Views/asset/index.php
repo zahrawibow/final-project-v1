@@ -244,10 +244,10 @@
                                                             </a>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-warning">Ubah</span>
+                                                            <a class="badge badge-sm bg-warning" href="#">Ubah</a>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-danger">Hapus</span>
+                                                            <a class="badge badge-sm bg-danger" href="#">Hapus</a>
                                                         </td>
                                                     <?php endforeach; ?>
                                                     </tr>
@@ -255,30 +255,6 @@
 
                                         </table>
                                     </div>
-                                    <!-- <div class="dataTable-bottom">
-                                    <div class="dataTable-info">
-                                        Showing 1 to 7 of 15 entries
-                                    </div>
-                                    <nav class="dataTable-pagination">
-                                        <ul class="dataTable-pagination-list">
-                                            <li class="pager">
-                                                <a href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/ecommerce/products/products-list.html#" data-page="1">‹</a>
-                                            </li>
-                                            <li class="active">
-                                                <a href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/ecommerce/products/products-list.html#" data-page="1">1</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/ecommerce/products/products-list.html#" data-page="2">2</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/ecommerce/products/products-list.html#" data-page="3">3</a>
-                                            </li>
-                                            <li class="pager">
-                                                <a href="https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/ecommerce/products/products-list.html#" data-page="2">›</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div> -->
                                 </div>
                             </div>
                         </div>

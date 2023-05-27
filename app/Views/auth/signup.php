@@ -67,7 +67,7 @@
                                         <input type="text" class="form-control" placeholder="Full Name" aria-label="fullName" name="fullname" />
                                     </div>
                                     <div class="mb-3">
-                                        <input type="int" class="form-control" placeholder="Identity Number" aria-label="identity number" name="identity_number" />
+                                        <input type="text" class="form-control" placeholder="Identity Number" aria-label="identity number" name="identity_number" />
                                     </div>
 
                                     <div class="mb-3">
@@ -94,7 +94,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <input type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" name="email" placeholder="Email" aria-label="Email" aria-describedby="email-addon" value="<?= old('email') ?>" />
+                                        <input type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif; ?>" name="email" placeholder="Email" aria-label="Email" aria-describedby="email-addon" value="<?= old('email') ?>" />
                                     </div>
 
                                     <div class="mb-3">

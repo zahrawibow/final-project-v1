@@ -40,4 +40,8 @@ class LogsModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
+    public function getLogsData()
+    {
+        return $this->findAll();
+    }
 }

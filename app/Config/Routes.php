@@ -115,7 +115,7 @@ $routes->post('/storedprac', 'ManagePracticumController::stored_practicum'); //n
 
 $routes->get('/manageatten', 'ManageAttendanceController::index'); //non-controller
 $routes->get('/manageloan', 'ManageLoansController::create'); //non-controller
-$routes->get('/managelogs', 'ManageLogsController::create'); //non-controller
+$routes->get('/managelogs', 'ManageLogsController::index'); //non-controller
 
 /*
  * --------------------------------------------------------------------
