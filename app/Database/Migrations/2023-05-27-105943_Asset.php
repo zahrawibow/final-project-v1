@@ -90,6 +90,11 @@ class Asset extends Migration
                 'type' => 'int',
                 'null' => true,
             ],
+            'user_id' => [
+                'type' => 'int',
+                'unsigned' => true,
+                'null' => false
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'default' => new RawSql('CURRENT_TIMESTAMP')
@@ -104,6 +109,7 @@ class Asset extends Migration
             ],
         ];
         $this->forge->addField('id');
+        $this->forge->addForeignKey('user_id', 'users', 'id');
         $this->forge->addField($fields);
 
         $this->forge->createTable('assets');
