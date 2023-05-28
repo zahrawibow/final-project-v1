@@ -23,5 +23,11 @@ class UserSeeder extends Seeder
         ];
 
         $this->db->table('users')->insert($data);
+
+        $data = [
+            'user_id' => 2,
+            'group_id' => 2
+        ];
+        $this->db->table('auth_groups_users')->insert($data);
     }
 }
