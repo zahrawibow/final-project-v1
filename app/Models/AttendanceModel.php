@@ -40,4 +40,8 @@ class AttendanceModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
+    public function getAttendanceData()
+    {
+        return $this->findAll();
+    }
 }
