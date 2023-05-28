@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class AssetModel extends Model
 {
-    protected $table      = 'asset';
+    protected $table      = 'assets';
     protected $primaryKey = 'id';
     protected $allowedFields = ['name', 'slug', 'merk', 'series', 'price', 'count', 'purchase_date', 'tool_img1', 'spec', 'manual', 'lisence', 'description', 'user_id'];
 
