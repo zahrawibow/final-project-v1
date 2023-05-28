@@ -37,7 +37,11 @@ $routes->get('/', 'DashboardController::index');
 $routes->get('/iaea', 'DashboardController::radioisotope');
 $routes->get('/attendance', 'DashboardController::attendance');
 
-$routes->post('/storedattendance', 'DashboardController::stored_attendance'); //non-controller
+$routes->group('attendance', static function ($routes) {
+    $routes->post('store', 'DashboardController::stored_attendance', ['as' => 'attendance.store']); //non-controller
+
+    $routes->get('manage', 'ManageAttendanceController::index', ['as' => 'attendance.manage', 'filter' => 'role:admin']); //non-controller
+});
 
 // Asset Routes
 $routes->group('asset', static function ($routes) {
@@ -90,21 +94,24 @@ $routes->get('/myprofile', 'ProfileController::index');
 
 //---------------------------ADMIN ROLE-------------------------------
 // Manage Maintenance Routes
-$routes->get('/maintenance', 'MaintenanceController::index');
-$routes->get('/maintenance/detail', 'MaintenanceController::show_detail');
-$routes->get('/maintenance/create', 'MaintenanceController::create');
-$routes->get('/maintenance/edit', 'MaintenanceController::edit');
-$routes->post('/storedmaintenance', 'MaintenanceController::stored_maintenance'); //non-controller
-$routes->post('/updatedmaintenance', 'MaintenanceController::updated_maintenance'); //non-controller
+$routes->group('maintenance', ['filter' => 'role:admin'], static function ($routes) {
+    $routes->get('/', 'MaintenanceController::index');
+    $routes->get('detail', 'MaintenanceController::show_detail');
+    $routes->get('create', 'MaintenanceController::create');
+    $routes->get('edit', 'MaintenanceController::edit');
+    $routes->post('storedmaintenance', 'MaintenanceController::stored_maintenance'); //non-controller
+    $routes->post('updatedmaintenance', 'MaintenanceController::updated_maintenance'); //non-controller
+});
 
 // Manage Account Routes
-$routes->get('/manageacc', 'AccountController::index');
-$routes->get('/manageacc/detail', 'AccountController::show_detail');
-$routes->get('/manageacc/edit', 'AccountController::edit');
-$routes->get('/manageacc/create', 'AccountController::create');
-$routes->post('/updatedacc', 'AccountController::updated_acc'); //non-controller
-$routes->post('/storedacc', 'AccountController::stored_acc'); //non-controller
-
+$routes->group('manage-account', ['filter' => 'role:admin'], static function ($routes) {
+    $routes->get('/', 'AccountController::index');
+    $routes->get('detail', 'AccountController::show_detail');
+    $routes->get('edit', 'AccountController::edit');
+    $routes->get('create', 'AccountController::create');
+    $routes->post('updatedacc', 'AccountController::updated_acc'); //non-controller
+    $routes->post('storedacc', 'AccountController::stored_acc'); //non-controller
+});
 
 
 // Manage Practicum Routes
@@ -121,7 +128,7 @@ $routes->post('/storedprac', 'ManagePracticumController::stored_practicum'); //n
 // $routes->post('/updatedschedules', 'PracticumController::updated_schedule'); //non-controller
 // $routes->post('/updatedteams', 'PracticumController::updated_team'); //non-controller
 
-$routes->get('/manageatten', 'ManageAttendanceController::index'); //non-controller
+
 $routes->get('/manageloan', 'ManageLoansController::create'); //non-controller
 $routes->get('/managelogs', 'ManageLogsController::index'); //non-controller
 

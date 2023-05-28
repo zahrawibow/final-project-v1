@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/manageatten"> </span>
+                            <a class="nav-link" href="<?= url_to('attendance.manage'); ?>"> </span>
                                 <span class="sidenav-normal">Kelola Daftar Kunjungan</span>
                             </a>
                         </li>

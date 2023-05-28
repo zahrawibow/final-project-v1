@@ -480,7 +480,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form action="/storedattendance" method="post" id="attendance-form">
+                                <form action="<?= url_to('attendance.store'); ?>" method="post" id="attendance-form">
                                     <form role="form text-left" class="form-control" id="activity">
                                         <div class="form-group">
                                             <label for="activity">Kegiatan</label>
