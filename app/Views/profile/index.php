@@ -63,13 +63,13 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="./profile_files/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm" />
+                        <img src="<?= base_url("assets/img/" . (user()->user_image ?? 'default-pic.png')); ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm" />
                     </div>
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
-                        <h5 class="mb-1">Alec Thompson</h5>
-                        <p class="mb-0 font-weight-bold text-sm">CEO / Co-Founder</p>
+                        <h5 class="mb-1"><?= user()->fullname; ?></h5>
+                        <p class="mb-0 font-weight-bold text-sm"><?= user()->username; ?> / <?= user()->email; ?></p>
                     </div>
                 </div>
 
@@ -150,16 +150,12 @@
                     </div>
                     <div class="card-body p-3">
                         <p class="text-sm">
-                            Hi, I’m Alec Thompson, Decisions: If you can’t decide, the
-                            answer is no. If two equally difficult paths, choose the one
-                            more painful in the short term (pain avoidance is creating an
-                            illusion of equality).
+                            <?= (user()->description ?? 'Kosong'); ?>
                         </p>
                         <hr class="horizontal gray-light my-4" />
                         <ul class="list-group">
                             <li class="list-group-item border-0 ps-0 pt-0 text-sm">
-                                <strong class="text-dark">Full Name:</strong> &nbsp; Alec M.
-                                Thompson
+                                <strong class="text-dark">Nama Lengkap :</strong> &nbsp; <?= user()->fullname; ?>
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
                                 <strong class="text-dark">Mobile:</strong> &nbsp; (44) 123
@@ -167,7 +163,7 @@
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
                                 <strong class="text-dark">Email:</strong> &nbsp;
-                                alecthompson@mail.com
+                                <?= user()->email; ?>
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
                                 <strong class="text-dark">Location:</strong> &nbsp; USA

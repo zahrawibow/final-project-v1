@@ -9,6 +9,7 @@ class AdminSeeder extends Seeder
 {
     public function run()
     {
+        $faker = \Faker\Factory::create();
         // data admin
         $data = [
             'username' => 'admin',
@@ -20,7 +21,8 @@ class AdminSeeder extends Seeder
             'active' => 1,
             'password_hash' => password_hash(base64_encode(hash('sha384', 'password', true)), PASSWORD_DEFAULT),
             'created_at' => Time::now(),
-            'updated_at' => Time::now()
+            'updated_at' => Time::now(),
+            'description' => $faker->paragraph(4)
         ];
 
         $this->db->table('users')->insert($data);
