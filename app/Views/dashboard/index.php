@@ -480,7 +480,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form action="/storedattendance" method="post">
+                                <form action="/storedattendance" method="post" id="attendance-form">
                                     <form role="form text-left" class="form-control" id="activity">
                                         <div class="form-group">
                                             <label for="activity">Kegiatan</label>
@@ -500,17 +500,17 @@
                                                 <option value="13">Lainnya</option>
                                             </select>
                                         </div>
+
+                                        <div class="form-group">
+                                            <!-- <form class="form-control" id="description" name="description"> -->
+                                            <label for="description">Keterangan</label>
+                                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                            <!-- </form> -->
+                                        </div>
                                     </form>
 
-                                    <div class="form-group">
-                                        <!-- <form class="form-control" id="description" name="description"> -->
-                                        <label for="description">Keterangan</label>
-                                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                                        <!-- </form> -->
-                                    </div>
-
                                     <div class="form group text-center">
-                                        <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Submit</button>
+                                        <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0" form="attendance-form">Submit</button>
                                     </div>
                                 </form>
 
