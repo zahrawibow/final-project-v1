@@ -50,13 +50,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/managelogs">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal">Kelola Log Pemakaian Aset</span>
+                                <span class="sidenav-normal">Kelola Log Pemakaian</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/manageloanl">
+                            <a class="nav-link" href="/manageloan">
                                 <span class="sidenav-mini-icon"> </span>
-                                <span class="sidenav-normal">Kelola Log Peminjaman Aset</span>
+                                <span class="sidenav-normal">Kelola Log Peminjaman</span>
                             </a>
                         </li>
                         <li class="nav-item">
