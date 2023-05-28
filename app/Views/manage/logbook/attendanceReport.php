@@ -185,7 +185,7 @@
                                                         <td>
                                                             <div class="d-flex px-3 py-1">
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm"><?= $attendance['user_id']; ?></h6>
+                                                                    <h6 class="mb-0 text-sm"><?= $attendance['fullname']; ?></h6>
                                                                 </div>
                                                             </div>
                                                         </td>
