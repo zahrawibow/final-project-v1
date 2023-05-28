@@ -175,7 +175,7 @@
                                                 Pengunjung
                                             </p>
                                             <h5 class="font-weight-bolder mb-0">
-                                                $53,000
+                                                <?= $visitors; ?>
                                                 <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
                                             </h5>
                                         </div>
@@ -221,7 +221,7 @@
                                                 Aset Lab
                                             </p>
                                             <h5 class="font-weight-bolder mb-0">
-                                                +3,462
+                                                <?= $asset_count; ?>
                                                 <!-- <span class="text-danger text-sm font-weight-bolder">-2%</span> -->
                                             </h5>
                                         </div>
