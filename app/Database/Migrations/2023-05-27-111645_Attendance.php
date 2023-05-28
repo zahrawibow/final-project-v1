@@ -25,7 +25,7 @@ class Attendance extends Migration
                 'null' => true,
             ],
             'created_at' => [
-                'type' => 'timestamp',
+                'type' => 'datetime',
                 'null' => true
             ],
         ];

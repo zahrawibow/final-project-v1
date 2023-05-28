@@ -175,6 +175,7 @@
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama User</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Aktivitas</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Waktu</th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deskripsi</th>
                                                 </tr>
                                             </thead>
@@ -183,14 +184,13 @@
                                                 <?php foreach ($attendances as $attendance) : ?>
                                                     <tr>
                                                         <td>
-                                                            <div class="d-flex px-3 py-1">
-                                                                <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm"><?= $attendance['fullname']; ?></h6>
-                                                                </div>
-                                                            </div>
+                                                            <h6 class="mb-0 text-sm"><?= $attendance['fullname']; ?></h6>
                                                         </td>
                                                         <td>
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $attendance['activity']; ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $attendance['created_at']; ?></p>
                                                         </td>
                                                         <td>
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $attendance['description']; ?></p>

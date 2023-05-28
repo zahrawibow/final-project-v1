@@ -14,7 +14,7 @@ class ManageAttendanceController extends BaseController
         // $this->attendanceModel = new AttendanceModel();
         $db      = \Config\Database::connect();
         $builder = $db->table('attendances');
-        $this->attendances = $builder->select('attendances.user_id, attendances.activity,attendances.description, users.fullname')
+        $this->attendances = $builder->select('attendances.*, users.fullname')
             ->join('users', 'attendances.user_id = users.id')
             ->get()
             ->getResultArray();
