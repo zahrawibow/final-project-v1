@@ -169,7 +169,7 @@
 
                                         <div class="ms-auto my-auto mt-lg-0 mt-4">
                                             <div class="ms-auto my-auto">
-                                                <a href="/manageprac/create" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
+                                                <a href="<?= url_to('practicum.create'); ?>" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
                                             </div>
                                         </div>
                                     </div>

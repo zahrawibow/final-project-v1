@@ -58,6 +58,22 @@ $routes->group('asset', static function ($routes) {
     });
 });
 
+// Practicum Routes
+// Manage Practicum Routes
+$routes->group('practicum', static function ($routes) {
+    $routes->get('/', 'PracticumController::index', ['as' => 'practicum.index']);
+    $routes->get('modules', 'PracticumController::show_module', ['as' => 'practicum.module']);
+    $routes->get('schedules', 'PracticumController::show_schedule', ['as' => 'practicum.schedule']);
+    $routes->get('teams', 'PracticumController::show_team', ['as' => 'practicum.teams']);
+
+    // Manage practicum & admin previleges
+    $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
+        $routes->get('manage', 'ManagePracticumController::index', ['as' => 'practicum.manage']); //non-controller
+        $routes->get('create', 'ManagePracticumController::create', ['as' => 'practicum.create']); //non-controller
+        $routes->post('store', 'ManagePracticumController::stored_practicum', ['as' => 'practicum.store']); //non-controller
+    });
+});
+
 // $routes->get('/asset/detail', 'AssetsController::show_detail');
 
 
@@ -76,20 +92,11 @@ $routes->post('/storedradiation', 'LogbookController::stored_radiation'); //non-
 // $routes->post('/updatedreturns', 'LogbookController::updated_returning'); //non-controller
 // $routes->post('/updatedlogs', 'LogbookController::updated_logging'); //non-controller
 
-// Practicum Routes
-$routes->get('/practicum', 'PracticumController::index');
-$routes->get('/modules', 'PracticumController::show_module');
-$routes->get('/schedules', 'PracticumController::show_schedule');
-$routes->get('/teams', 'PracticumController::show_team');
-
 // Schedule Routes
 $routes->get('/schedule', 'ScheduleController::index');
 
 // Profile Routes
 $routes->get('/myprofile', 'ProfileController::index');
-
-
-
 
 
 //---------------------------ADMIN ROLE-------------------------------
@@ -114,10 +121,7 @@ $routes->group('manage-account', ['filter' => 'role:admin'], static function ($r
 });
 
 
-// Manage Practicum Routes
-$routes->get('/manageprac', 'ManagePracticumController::index'); //non-controller
-$routes->get('/manageprac/create', 'ManagePracticumController::create'); //non-controller
-$routes->post('/storedprac', 'ManagePracticumController::stored_practicum'); //non-controller
+
 // $routes->get('/modules/create', 'PracticumController::create_module'); //non-controller
 // $routes->get('/schedules/create', 'PracticumController::create_schedule'); //non-controller
 // $routes->get('/teams/create', 'PracticumController::create_team'); //non-controller
