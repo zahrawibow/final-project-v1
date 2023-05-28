@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\I18n\Time;
+
 class AssetsController extends BaseController
 {
     public function index()
@@ -39,7 +41,7 @@ class AssetsController extends BaseController
 
     public function stored_asset()
     {
-        $slug = url_title($this->request->getVar('name'), '-', true);
+        $slug = url_title($this->request->getVar('name'), '-', true) . Time::now()->getTimeStamp();
         $this->assetModel->save([
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
@@ -47,12 +49,14 @@ class AssetsController extends BaseController
             'series' => $this->request->getVar('series'),
             'price' => $this->request->getVar('price'),
             'count' => $this->request->getVar('count'),
+            'status' => $this->request->getVar('status'),
+            'condition' => $this->request->getVar('condition'),
             'purchase_date' => $this->request->getVar('purchase_date'),
             'description' => $this->request->getVar('description'),
-            'tool_img1' => $this->request->getVar('tool_img1'),
-            'spec' => $this->request->getVar('spec'),
+            // 'tool_img1' => $this->request->getVar('tool_img1'),
+            // 'spec' => $this->request->getVar('spec'),
             'manual' => $this->request->getVar('manual'),
-            'lisence' => $this->request->getVar('lisence'),
+            // 'lisence' => $this->request->getVar('lisence'),
             'user_id' => user_id()
         ]);
 
