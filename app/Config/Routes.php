@@ -40,10 +40,20 @@ $routes->get('/attendance', 'DashboardController::attendance');
 $routes->post('/storedattendance', 'DashboardController::stored_attendance'); //non-controller
 
 // Asset Routes
-$routes->get('/asset', 'AssetsController::index');
-$routes->get('/asset/edit', 'AssetsController::edit');
-$routes->get('/asset/create', 'AssetsController::create');
-$routes->get('/asset/(:any)', 'AssetsController::show_detail/$1');
+$routes->group('asset', static function ($routes) {
+    $routes->get('/', 'AssetsController::index', ['as' => 'asset.index']);
+    $routes->get('detail/(:any)', 'AssetsController::show_detail/$1', ['as' => 'asset.detail']);
+
+    // Manage Assets Routes & Admin previleges
+    $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
+        $routes->get('create', 'AssetsController::create', ['as' => 'asset.create']);
+        $routes->post('storedasset', 'AssetsController::stored_asset', ['as' => 'asset.store']);
+
+        $routes->get('edit', 'AssetsController::edit', ['as' => 'asset.edit']);
+        $routes->post('updatedasset', 'AssetsController::updated_asset', ['as' => 'asset.update']);
+    });
+});
+
 // $routes->get('/asset/detail', 'AssetsController::show_detail');
 
 
@@ -95,9 +105,7 @@ $routes->get('/manageacc/create', 'AccountController::create');
 $routes->post('/updatedacc', 'AccountController::updated_acc'); //non-controller
 $routes->post('/storedacc', 'AccountController::stored_acc'); //non-controller
 
-// Manage Assets Routes
-$routes->post('/storedasset', 'AssetsController::stored_asset'); //non-controller
-$routes->post('/updatedasset', 'AssetsController::updated_asset'); //non-controller
+
 
 // Manage Practicum Routes
 $routes->get('/manageprac', 'ManagePracticumController::index'); //non-controller

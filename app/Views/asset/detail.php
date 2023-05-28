@@ -166,25 +166,27 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-14">
-                                <div class="alert alert-dark pb-0" role="alert">
-                                    <div class="d-lg-flex">
-                                        <div>
-                                            <h6 class="text-white mb-0">Perbarui Detail <?= $assets['name']; ?></h6>
-                                            <p class="text-xs text-white text-secondary mb-0">
-                                                Hanya admin yang dapat menambahkan, merubah, serta menghapus data
-                                            </p>
-                                        </div>
-                                        <div class="ms-auto my-auto mt-lg-0">
-                                            <div class="ms-auto my-auto">
-                                                <a href="/asset/edit" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Perbarui Detail</a>
+                        <?php if (in_groups('admin')) : ?>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-dark pb-0" role="alert">
+                                        <div class="d-lg-flex">
+                                            <div>
+                                                <h6 class="text-white mb-0">Perbarui Detail <?= $assets['name']; ?></h6>
+                                                <p class="text-xs text-white text-secondary mb-0">
+                                                    Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                                </p>
+                                            </div>
+                                            <div class="ms-auto my-auto mt-lg-0">
+                                                <div class="ms-auto my-auto">
+                                                    <a href="/asset/edit" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Perbarui Detail</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
 
                         <div class="row">
                             <div class="col-xl-5 col-lg-5 text-center">
@@ -282,8 +284,8 @@
                                             </a>
                                         </li>
 
-                                        <li class="nav-item">
-                                            <a class="nav-link mb-0 px-0 py-1 text-xs" data-bs-toggle="tab" data-bs-target="#maintenance" role="tab" aria-controls="dashboard" aria-selected="false" id="maintenance-tab">
+                                        <li class="nav-item" type="button">
+                                            <a class="nav-link mb-0 px-0 py-1 text-xs" data-bs-toggle="tab" data-bs-target="#maintenance" role="tab" aria-controls="tab" aria-selected="false" id="maintenance-tab">
                                                 Perawatan
                                             </a>
                                         </li>
