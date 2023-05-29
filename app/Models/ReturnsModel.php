@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ReturnsModel extends Model
 {
-    protected $table      = 'returns_assets';
+    protected $table      = 'asset_returns';
     protected $primaryKey = 'id';
     protected $allowedFields = ['aset_id', 'user_id', 'purpose', 'return_date', 'currant_condition'];
 

@@ -2,22 +2,28 @@
 
 namespace App\Controllers;
 
+use App\Models\AssetModel;
 use App\Models\AttendanceModel;
 
 class DashboardController extends BaseController
 {
     protected $attendanceModel;
+    protected $assetCount;
 
     public function __construct()
     {
         $this->attendanceModel = new AttendanceModel();
+        $this->assetCount = (new AssetModel())->countAllResults();
     }
 
     public function index()
     {
         $data = [
             'title' => 'Pagu Utama',
+            'asset_count' => $this->assetCount,
+            'visitors' => $this->attendanceModel->countAllResults()
         ];
+
         return view('dashboard/index', $data);
     }
 

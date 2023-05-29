@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class LoansModel extends Model
 {
-    protected $table      = 'loans_assets';
+    protected $table      = 'asset_loans';
     protected $primaryKey = 'id';
     protected $allowedFields = ['aset_id', 'user_id', 'purpose', 'loan_time', 'permission_tax', 'currant_condition'];
 

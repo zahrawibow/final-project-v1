@@ -169,25 +169,28 @@
 
                     <!-- tabel aset -->
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-14">
-                                <div class="alert alert-dark pb-0" role="alert">
-                                    <div class="d-lg-flex">
-                                        <div>
-                                            <h6 class="text-white mb-0">Tambahkan Aset</h6>
-                                            <p class="text-white text-xs text-secondary mb-0">
-                                                Hanya admin yang dapat menambahkan, merubah, serta menghapus data
-                                            </p>
-                                        </div>
 
-                                        <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                            <div class="ms-auto my-auto">
-                                                <a href="/asset/create" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
+                        <div class="row">
+                            <?php if (in_groups('admin')) : ?>
+                                <div class="col-12">
+                                    <div class="alert alert-dark pb-0" role="alert">
+                                        <div class="d-lg-flex">
+                                            <div>
+                                                <h6 class="text-white mb-0">Tambahkan Aset</h6>
+                                                <p class="text-white text-xs text-secondary mb-0">
+                                                    Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                                </p>
+                                            </div>
+
+                                            <div class="ms-auto my-auto mt-lg-0 mt-4">
+                                                <div class="ms-auto my-auto">
+                                                    <a href="/asset/create" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endif; ?>
 
                             <!-- Harusnya sweet alert -->
                             <!-- <?php if (session()->getFlashdata('succes')) : ?>
@@ -219,7 +222,7 @@
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div>
-                                                                    <!-- <img src="../assets/img/<?= $asset['tool_img1']; ?>" class="avatar avatar-sm me-3" alt="user1"> -->
+                                                                    <!-- <img src="../assets/img/nama foto" class="avatar avatar-sm me-3" alt="user1"> -->
                                                                     <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" class="avatar avatar-sm me-3" alt="user1">
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
@@ -239,16 +242,18 @@
                                                             <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
                                                         </td>
                                                         <td class="align-middle text-center">
-                                                            <a href="/asset/<?= $asset['slug']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                            <a href="<?= url_to('asset.detail', $asset['slug']); ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                                 <i class="fas fa-light fa-eye"></i>
                                                             </a>
                                                         </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <a class="badge badge-sm bg-warning" href="#">Ubah</a>
-                                                        </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <a class="badge badge-sm bg-danger" href="#">Hapus</a>
-                                                        </td>
+                                                        <?php if (in_groups('admin')) : ?>
+                                                            <td class="align-middle text-center text-sm">
+                                                                <a class="badge badge-sm bg-warning" href="#">Ubah</a>
+                                                            </td>
+                                                            <td class="align-middle text-center text-sm">
+                                                                <a class="badge badge-sm bg-danger" href="#">Hapus</a>
+                                                            </td>
+                                                        <?php endif; ?>
                                                     <?php endforeach; ?>
                                                     </tr>
                                             </tbody>
