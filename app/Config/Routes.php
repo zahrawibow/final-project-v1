@@ -37,10 +37,21 @@ $routes->get('/', 'DashboardController::index');
 $routes->get('/iaea', 'DashboardController::radioisotope');
 $routes->get('/attendance', 'DashboardController::attendance');
 
+// Attendance Manage Routes (Admin previleges)
 $routes->group('attendance', static function ($routes) {
     $routes->post('store', 'DashboardController::stored_attendance', ['as' => 'attendance.store']); //non-controller
-
     $routes->get('manage', 'ManageAttendanceController::index', ['as' => 'attendance.manage', 'filter' => 'role:admin']); //non-controller
+});
+
+// Logbook Routes
+$routes->get('/logbook', 'LogbookController::index');
+
+
+
+// Logbook Manage Routes (Admin previleges)
+$routes->group('log', static function ($routes) {
+    $routes->post('store', 'LogbookController::stored_logging', ['as' => 'log.store']); //non-controller
+    $routes->get('manage', 'ManageLogsController::index', ['as' => 'log.manage', 'filter' => 'role:admin']); //non-controller
 });
 
 // Asset Routes
@@ -60,7 +71,6 @@ $routes->group('asset', static function ($routes) {
 });
 
 // Practicum Routes
-// Manage Practicum Routes
 $routes->group('practicum', static function ($routes) {
     $routes->get('/', 'PracticumController::index', ['as' => 'practicum.index']);
     $routes->get('modules', 'PracticumController::show_module', ['as' => 'practicum.module']);
@@ -76,18 +86,15 @@ $routes->group('practicum', static function ($routes) {
     });
 });
 
-// $routes->get('/asset/detail', 'AssetsController::show_detail');
-
 
 // Logbook Routes
-$routes->get('/logbook', 'LogbookController::index');
+
 // $routes->get('/loans', 'LogbookController::create_loaning');
 // $routes->get('/returns', 'LogbookController::create_returning');
 // $routes->get('/logs', 'LogbookController::create_logging');
 
 $routes->post('/storedloans', 'LogbookController::stored_loaning'); //non-controller
-$routes->post('/storedreturns', 'LogbookController::stored_returning'); //non-controller
-$routes->post('/storedlogs', 'LogbookController::stored_logging'); //non-controller
+$routes->post('/storedreturns', 'LogbookController::stored_returning'); //non-controller              
 $routes->post('/storedradiation', 'LogbookController::stored_radiation'); //non-controller
 
 // $routes->post('/updatedloans', 'LogbookController::updated_loaning'); //non-controller

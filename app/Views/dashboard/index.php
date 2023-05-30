@@ -243,7 +243,7 @@
                                                 Status
                                             </p>
                                             <h5 class="font-weight-bolder mb-0">
-                                                $103,430
+                                                <Table>Dapat Dikunjungi</Table>
                                                 <!-- <span class="text-success text-sm font-weight-bolder">+5%</span> -->
                                             </h5>
                                         </div>
@@ -485,19 +485,19 @@
                                         <div class="form-group">
                                             <label for="activity">Kegiatan</label>
                                             <select class="form-control" id="activity" name="activity">
-                                                <option value="1">Kunjungan biasa</option>
-                                                <option value="2">Kuliah/Praktikum</option>
-                                                <option value="3">Ujian Praktikum</option>
-                                                <option value="4">Penelitian</option>
-                                                <option value="5">Tugas Akhir</option>
-                                                <option value="6">Magang/PKL</option>
-                                                <option value="7">Rapat/Pertemuan</option>
-                                                <option value="8">Sosialisasi/Kunjungan</option>
-                                                <option value="9">Pengabdian Masyarakat</option>
-                                                <option value="10">Perawatan Alat</option>
-                                                <option value="11">Peminjaman Alat</option>
-                                                <option value="12">Pengembalian Alat</option>
-                                                <option value="13">Lainnya</option>
+                                                <option value="Kunjungan Biasa">Kunjungan biasa</option>
+                                                <option value="Kuliah/Praktikum">Kuliah/Praktikum</option>
+                                                <option value="Ujian Praktikum">Ujian Praktikum</option>
+                                                <option value="Penelitian">Penelitian</option>
+                                                <option value="Tugas Akhir">Tugas Akhir</option>
+                                                <option value="Magang/PKL">Magang/PKL</option>
+                                                <option value="Rapat/Pertemuan">Rapat/Pertemuan</option>
+                                                <option value="Sosialisasi">Sosialisasi/Kunjungan</option>
+                                                <option value="Pengabdian Masyarakat">Pengabdian Masyarakat</option>
+                                                <option value="Perawatan Alat">Perawatan Alat</option>
+                                                <option value="Peminjaman Alat">Peminjaman Alat</option>
+                                                <option value="Pengembalian Alat">Pengembalian Alat</option>
+                                                <option value="Lainnya">Lainnya</option>
                                             </select>
                                         </div>
 

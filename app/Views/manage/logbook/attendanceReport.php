@@ -156,16 +156,7 @@
 
                     <!-- tabel aset -->
                     <div class="card-body">
-                        <div class="row">
-                            <!-- Harusnya sweet alert -->
-                            <!-- <?php if (session()->getFlashdata('succes')) : ?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Berhasil!!</strong> <?= session()->getFlashdata('succes'); ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php endif; ?> -->
-
-
+                        <div class="row"> 
 
                             <div class="table-responsive p-0">
                                 <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
@@ -176,7 +167,8 @@
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama User</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Aktivitas</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Waktu</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deskripsi</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Deskripsi</th>
+                                                   
                                                 </tr>
                                             </thead>
 
@@ -184,7 +176,7 @@
                                                 <?php foreach ($attendances as $attendance) : ?>
                                                     <tr>
                                                         <td>
-                                                            <h6 class="mb-0 text-sm"><?= $attendance['fullname']; ?></h6>
+                                                            <h6 class="mb-0 text-sm ms-3"><?= $attendance['fullname']; ?></h6>
                                                         </td>
                                                         <td>
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $attendance['activity']; ?></p>

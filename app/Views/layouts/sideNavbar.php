@@ -62,6 +62,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/manageloan">
+                                    <span class="sidenav-mini-icon"> </span>
+                                    <span class="sidenav-normal">Kelola Log Radiasi</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/managesche">
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal">Kelola Agenda Kegiatan </span>

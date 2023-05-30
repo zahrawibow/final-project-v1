@@ -242,14 +242,14 @@
                                                 <div class="form-group">
                                                     <label for="purpose">Keperluan</label>
                                                     <select class="form-control" id="purpose" name="purpose">
-                                                        <option value="kunjungan">Kunjungan biasa</option>
-                                                        <option value="kuliah_praktikum">Kuliah/Praktikum</option>
-                                                        <option value="uprak">Ujian Praktikum</option>
-                                                        <option value="penelitian">Penelitian</option>
-                                                        <option value="ta">Tugas Akhir</option>
-                                                        <option value="magang_pkl">Magang/PKL</option>
-                                                        <option value="sosialisai">Sosialisasi/Kunjungan</option>
-                                                        <option value="pemas">Pengabdian Masyarakat</option>
+                                                        <option value="Kunjungan Biasa">Kunjungan biasa</option>
+                                                        <option value="Kuliah Praktikum">Kuliah/Praktikum</option>
+                                                        <option value="Ujian Praktikum">Ujian Praktikum</option>
+                                                        <option value="Penelitian">Penelitian</option>
+                                                        <option value="Tugas Akhir">Tugas Akhir</option>
+                                                        <option value="Magang/PKL">Magang/PKL</option>
+                                                        <option value="Sosialisasi/Kunjungan">Sosialisasi/Kunjungan</option>
+                                                        <option value="Pengabdian Masyarakat">Pengabdian Masyarakat</option>
                                                     </select>
                                                 </div>
 
@@ -370,11 +370,11 @@
                                                 <div class="form-group">
                                                     <label for="purpose">Keperluan</label>
                                                     <select class="form-control" id="purpose" name="purpose">
-                                                        <option value="praktikum">Praktikum</option>
-                                                        <option value="uppak">Ujian Praktikum</option>
-                                                        <option value="penelitian">Penelitian</option>
-                                                        <option value="ta">Tugas Akhir</option>
-                                                        <option value="magang_pkl">Magang/PKL</option>
+                                                        <option value="Praktikum">Praktikum</option>
+                                                        <option value="Ujian Praktikum">Ujian Praktikum</option>
+                                                        <option value="Penelitian">Penelitian</option>
+                                                        <option value="Tugas Akhir">Tugas Akhir</option>
+                                                        <option value="Magang/PKL">Magang/PKL</option>
                                                     </select>
                                                 </div>
 
@@ -492,11 +492,11 @@
                                                 <div class="form-group">
                                                     <label for="activity">Keperluan</label>
                                                     <select class="form-control" id="activity" name="activity">
-                                                        <option value="praktikum">Praktikum</option>
-                                                        <option value="uprak">Ujian Praktikum</option>
-                                                        <option value="penelitian">Penelitian</option>
-                                                        <option value="ta">Tugas Akhir</option>
-                                                        <option value="magang_pkl">Magang/PKL</option>
+                                                        <option value="Praktikum">Praktikum</option>
+                                                        <option value="Ujian Praktikum">Ujian Praktikum</option>
+                                                        <option value="Penelitian">Penelitian</option>
+                                                        <option value="Tugas Akhir">Tugas Akhir</option>
+                                                        <option value="Magang/PKL">Magang/PKL</option>
                                                     </select>
                                                 </div>
 
