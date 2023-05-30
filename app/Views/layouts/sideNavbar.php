@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
 
-            <!-- main side navbar start -->\
+            <!-- main side navbar start -->
             <?php if (in_groups('admin')) : ?>
                 <!-- admin tab -->
                 <li class="nav-item">

@@ -73,4 +73,10 @@ class AssetsController extends BaseController
         ];
         return view('asset/detail', $data);
     }
+
+    public function delete($id)
+    {
+        $this->assetModel->delete($id);
+        return redirect()->to('/asset');
+    }
 }

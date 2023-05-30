@@ -164,7 +164,7 @@
 
     <div class="container-fluid py-4">
 
-        <form action="/storedasset" method="post">
+        <form action="<?= url_to('asset.store'); ?>" method="post">
             <?= csrf_field(); ?>
             <div class="row px-3">
                 <div class="col-lg-6">

@@ -216,11 +216,11 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['laboratorian']; ?></p>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['fullname']; ?></p>
                                                             <!-- <p class="text-xs text-secondary mb-0"></p> -->
                                                         </td>
                                                         <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['aset_id']; ?></p>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['name']; ?></p>
                                                             <!-- <p class="text-xs text-secondary mb-0"></p> -->
                                                         </td>
                                                         <td>
@@ -246,9 +246,14 @@
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="badge badge-sm bg-warning">Ubah</span>
                                                         </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-danger">Hapus</span>
-                                                        </td>
+
+                                                        <form action="<?= url_to('practicum.delete', $prac['id']); ?>" method="post">
+                                                            <td class="align-middle text-center text-sm">
+                                                                <?= csrf_field(); ?>
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>
+                                                            </td>
+                                                        </form>
                                                         <!-- <td>
                                                             <button class="btn btn-icon btn-warning btn-sm align-middle" type="button">
                                                                 <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>

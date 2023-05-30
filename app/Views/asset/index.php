@@ -250,9 +250,14 @@
                                                             <td class="align-middle text-center text-sm">
                                                                 <a class="badge badge-sm bg-warning" href="#">Ubah</a>
                                                             </td>
-                                                            <td class="align-middle text-center text-sm">
-                                                                <a class="badge badge-sm bg-danger" href="#">Hapus</a>
-                                                            </td>
+
+                                                            <form action="<?= url_to('asset.delete', $asset['id']); ?>" method="post">
+                                                                <td class="align-middle text-center text-sm">
+                                                                    <?= csrf_field(); ?>
+                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                    <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>
+                                                                </td>
+                                                            </form>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                     </tr>

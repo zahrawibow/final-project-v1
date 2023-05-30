@@ -8,7 +8,7 @@ class PracticumModel extends Model
 {
     protected $table      = 'practicums';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id', 'aset_id', 'laboratorian', 'title', 'module', 'schedule', 'team', 'user_id', 'description', 'status', 'location'];
+    protected $allowedFields = ['id', 'asset_id', 'laboratorian', 'title', 'module', 'schedule', 'team', 'user_id', 'description', 'status', 'location'];
 
     // protected $useAutoIncrement = true;
 

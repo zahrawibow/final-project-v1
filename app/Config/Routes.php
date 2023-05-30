@@ -52,9 +52,10 @@ $routes->group('asset', static function ($routes) {
     $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
         $routes->get('create', 'AssetsController::create', ['as' => 'asset.create']);
         $routes->post('storedasset', 'AssetsController::stored_asset', ['as' => 'asset.store']);
-
         $routes->get('edit', 'AssetsController::edit', ['as' => 'asset.edit']);
         $routes->post('updatedasset', 'AssetsController::updated_asset', ['as' => 'asset.update']);
+        $routes->delete('delete/(:num)', 'AssetsController::delete/$1', ['as' => 'asset.delete']);
+        // $routes->get('delete/(:any)', 'AssetsController::delete/$1', ['as' => 'asset.delete']);
     });
 });
 
@@ -71,6 +72,7 @@ $routes->group('practicum', static function ($routes) {
         $routes->get('manage', 'ManagePracticumController::index', ['as' => 'practicum.manage']); //non-controller
         $routes->get('create', 'ManagePracticumController::create', ['as' => 'practicum.create']); //non-controller
         $routes->post('store', 'ManagePracticumController::stored_practicum', ['as' => 'practicum.store']); //non-controller
+        $routes->delete('delete/(:num)', 'ManagePracticumController::delete/$1', ['as' => 'practicum.delete']);
     });
 });
 

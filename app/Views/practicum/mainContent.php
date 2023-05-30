@@ -185,7 +185,7 @@
                                 <div class="content">
                                     <div class="main text-center">
                                         <h5><strong><?= $prac['title']; ?></strong></h5>
-                                        <p class="mt-3 text-sm"><?= $prac['laboratorian']; ?></p>
+                                        <p class="mt-3 text-sm"><?= $prac['fullname']; ?></p>
 
                                         <!-- <p class="profession">Pengampu Praktikum</p> -->
                                         <!-- <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p> -->
@@ -205,7 +205,7 @@
                                     <div class="main pt-0">
                                         <h6 class="text-center text-xs px-1"><?= $prac['description']; ?></h6>
                                     </div>
-                                    <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-3 mb-0" data-bs-toggle="modal" data-bs-target="#use">
+                                    <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-2 mb-0" data-bs-toggle="modal" data-bs-target="#use">
                                         Get started
                                     </a>
                                 </div>

@@ -149,7 +149,7 @@
     </nav>
     <div class="container-fluid py-4">
 
-        <form action="/storedprac" method="post">
+        <form action="<?= url_to('practicum.store'); ?>" method="post">
             <?= csrf_field(); ?>
             <div class="row px-3">
                 <div class="col-lg-6">
@@ -203,7 +203,7 @@
                                         <label for="laboratorian">Laboran Pengampu</label>
                                         <select class="form-control" id="laboratorian" name="laboratorian">
                                             <?php foreach ($laboratorians as $laboratorian) : ?>
-                                                <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['name']; ?></option>
+                                                <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['fullname']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
