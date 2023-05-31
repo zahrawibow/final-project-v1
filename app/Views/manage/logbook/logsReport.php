@@ -27,10 +27,10 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Pagu Admin</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Kelola Daftar Peminjaman
+                        Kelola Daftar Pemakaian
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Daftar Peminjaman</h6>
+                <h6 class="font-weight-bolder mb-0">Daftar Pemakaian</h6>
             </nav>
 
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -178,7 +178,6 @@
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama User</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Nama Aset</th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aktivitas</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Laboratorian</th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Waktu Mulai</th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Waktu Akhir</th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kondisi Akhir Aset</th>
@@ -191,18 +190,15 @@
                                                         <td>
                                                             <div class="d-flex px-3 py-1">
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm"><?= $log['user_id']; ?></h6>
+                                                                    <h6 class="mb-0 text-sm"><?= $log['fullname']; ?></h6>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $log['aset_id']; ?></p>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $log['name']; ?></p>
                                                         </td>
                                                         <td>
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $log['purpose']; ?></p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $log['laboratorian']; ?></p>
                                                         </td>
                                                         <td>
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $log['start_time']; ?></p>

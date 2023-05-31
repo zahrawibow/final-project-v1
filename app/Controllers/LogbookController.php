@@ -30,10 +30,17 @@ class LogbookController extends BaseController
 
     public function index()
     {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('laboratorians');
+        $laboratorian = $builder->select('laboratorians.*, users.fullname')
+            ->join('users', 'laboratorians.user_id = users.id')
+            ->get()
+            ->getResultArray();
+
         $data = [
             'title' => 'Log Aset',
             'assets' => $this->assetModel->getAssetData(),
-            'laboratorians' => $this->laboratoriansModel->getLaboratoriansData()
+            'laboratorians' => $laboratorian
         ];
         return view('logbook/mainContent', $data);
     }
@@ -41,10 +48,10 @@ class LogbookController extends BaseController
     public function stored_logging()
     {
         $this->logsModel->save([
-            'aset_id' => $this->request->getVar('aset_id'),
+            'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
             'purpose' => $this->request->getVar('purpose'),
-            'laboratorian' => $this->request->getVar('laboratorian'),
+            'laboratorian_id' => $this->request->getVar('laboratorian_id'),
             'start_time' => $this->request->getVar('start_time'),
             'end_time' => $this->request->getVar('end_time'),
             'currant_condition' => $this->request->getVar('currant_condition')

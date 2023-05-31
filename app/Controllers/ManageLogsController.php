@@ -15,9 +15,18 @@ class ManageLogsController extends BaseController
 
     public function index()
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('asset_logs');
+        $logs = $builder->select('asset_logs.*, laboratorians.user_id as userlaboratorian, users.*, assets.*')
+            ->join('laboratorians', 'asset_logs.laboratorian_id = laboratorians.id')
+            ->join('users', 'users.id = laboratorians.user_id')
+            ->join('assets', 'asset_logs.asset_id = assets.id') // Tambahkan operasi JOIN untuk tabel assets
+            ->get()
+            ->getResultArray();
+      
         $data = [
             'title' => 'Manage logs',
-            'logs' => $this->logsModel->getLogsData(),
+            'logs' => $logs
         ];
         return view('manage/logbook/logsReport', $data);
     }

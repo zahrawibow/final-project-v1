@@ -217,8 +217,8 @@
                         </a>
                     </div>
                 </div>
-
-                <form action="/storedlogs" method="post">
+                
+                <form action="<?= url_to('log.store') ?>" method="post">
                     <div class="form group modal fade" id="use" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -231,8 +231,8 @@
                                         <div class="card-body">
                                             <form role="form text-left">
                                                 <div class="form-group">
-                                                    <label for="aset_id">Aset</label>
-                                                    <select class="form-control" id="aset_id" name="aset_id">
+                                                    <label for="asset_id">Aset</label>
+                                                    <select class="form-control" id="asset_id" name="asset_id">
                                                         <?php foreach ($assets as $asset) : ?>
                                                             <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
                                                         <?php endforeach; ?>
@@ -250,15 +250,6 @@
                                                         <option value="Magang/PKL">Magang/PKL</option>
                                                         <option value="Sosialisasi/Kunjungan">Sosialisasi/Kunjungan</option>
                                                         <option value="Pengabdian Masyarakat">Pengabdian Masyarakat</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="laboratorian">Laboran Pengampu</label>
-                                                    <select class="form-control" id="laboratorian" name="laboratorian">
-                                                        <?php foreach ($laboratorians as $laboratorian) : ?>
-                                                            <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['name']; ?></option>
-                                                        <?php endforeach; ?>
                                                     </select>
                                                 </div>
 
@@ -504,7 +495,7 @@
                                                     <label for="laboratorian">Laboran Pengampu</label>
                                                     <select class="form-control" id="laboratorian" name="laboratorian">
                                                         <?php foreach ($laboratorians as $laboratorian) : ?>
-                                                            <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['name']; ?></option>
+                                                            <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['fullname']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>

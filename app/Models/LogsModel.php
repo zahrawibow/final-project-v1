@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class LogsModel extends Model
 {
-    protected $table      = 'logs_assets';
+    protected $table      = 'asset_logs';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'aset_id', 'user_id', 'purpose', 'laboratorian', 'start_time', 'end_time', 'currant_condition'];
+    protected $allowedFields = ['name', 'asset_id', 'user_id', 'purpose', 'laboratorian_id', 'start_time', 'end_time', 'currant_condition'];
 
     // protected $useAutoIncrement = true;
 
