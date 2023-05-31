@@ -50,19 +50,20 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/managelogs">
+                                <a class="nav-link" href="<?= url_to('log.manage'); ?>">
                                     <span class="sidenav-mini-icon"> </span>
                                     <span class="sidenav-normal">Kelola Log Pemakaian</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="/manageloan">
                                     <span class="sidenav-mini-icon"> </span>
                                     <span class="sidenav-normal">Kelola Log Peminjaman</span>
                                 </a>
-                            </li>
+                            </li> -->
+
                             <li class="nav-item">
-                                <a class="nav-link" href="/manageloan">
+                                <a class="nav-link" href="<?= url_to('radiation.manage'); ?>">
                                     <span class="sidenav-mini-icon"> </span>
                                     <span class="sidenav-normal">Kelola Log Radiasi</span>
                                 </a>

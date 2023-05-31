@@ -8,7 +8,7 @@ class RadiationModel extends Model
 {
     protected $table      = 'radiation_history';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id', 'aset_id', 'user_id', 'radioisotope', 'laboratorian', 'activity', 'radiation', 'start_time', 'end_time', 'created_at'];
+    protected $allowedFields = ['id', 'asset_id', 'user_id', 'radioisotope', 'laboratorian_id', 'activity', 'radiation', 'start_time', 'end_time', 'created_at'];
 
     // protected $useAutoIncrement = true;
 

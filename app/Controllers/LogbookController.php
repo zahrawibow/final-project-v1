@@ -74,28 +74,14 @@ class LogbookController extends BaseController
         return redirect()->to('/logbook');
     }
 
-    public function stored_returning()
-    {
-        $this->returnsModel->save([
-            'aset_id' => $this->request->getVar('aset_id'),
-            'user_id' => user_id(),
-            'purpose' => $this->request->getVar('purpose'),
-            'return_date' => $this->request->getVar('return_date'),
-            'currant_condition' => $this->request->getVar('currant_condition'),
-            'permission_tax' => $this->request->getVar('permission_tax')
-        ]);
-
-
-        return redirect()->to('/logbook');
-    }
 
     public function stored_radiation()
     {
         $this->radiationModel->save([
-            'aset_id' => $this->request->getVar('aset_id'),
+            'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
             'activity' => $this->request->getVar('activity'),
-            'laboratorian' => $this->request->getVar('laboratorian'),
+            'laboratorian_id' => $this->request->getVar('laboratorian_id'),
             'start_time' => $this->request->getVar('start_time'),
             'end_time' => $this->request->getVar('end_time'),
             'radioisotope' => $this->request->getVar('radioisotope'),
@@ -104,19 +90,4 @@ class LogbookController extends BaseController
 
         return redirect()->to('/logbook');
     }
-
-    // public function create_loaning()
-    // {
-    //     return view('logbook/loan');
-    // }
-
-    // public function create_returning()
-    // {
-    //     return view('logbook/return');
-    // }
-
-    // public function create_logging()
-    // {
-    //     return view('logbook/use');
-    // }
 }

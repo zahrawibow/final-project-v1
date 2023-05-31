@@ -17,13 +17,13 @@ class ManageLogsController extends BaseController
     {
         $db = \Config\Database::connect();
         $builder = $db->table('asset_logs');
-        $logs = $builder->select('asset_logs.*, laboratorians.user_id as userlaboratorian, users.*, assets.*')
-            ->join('laboratorians', 'asset_logs.laboratorian_id = laboratorians.id')
-            ->join('users', 'users.id = laboratorians.user_id')
+        $logs = $builder->select('asset_logs.*, users.*, assets.*')
+            ->join('users', 'users.id = asset_logs.user_id')
             ->join('assets', 'asset_logs.asset_id = assets.id') // Tambahkan operasi JOIN untuk tabel assets
             ->get()
             ->getResultArray();
-      
+
+        // dd($logs);
         $data = [
             'title' => 'Manage logs',
             'logs' => $logs

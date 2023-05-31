@@ -3,8 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\PracticumModel;
-use App\Models\AssetModel;
-use App\Models\LaboratoriansModel;
 
 class PracticumController extends BaseController
 {

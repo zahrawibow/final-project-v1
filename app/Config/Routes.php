@@ -46,12 +46,16 @@ $routes->group('attendance', static function ($routes) {
 // Logbook Routes
 $routes->get('/logbook', 'LogbookController::index');
 
-
-
 // Logbook Manage Routes (Admin previleges)
 $routes->group('log', static function ($routes) {
     $routes->post('store', 'LogbookController::stored_logging', ['as' => 'log.store']); //non-controller
     $routes->get('manage', 'ManageLogsController::index', ['as' => 'log.manage', 'filter' => 'role:admin']); //non-controller
+});
+
+// Radiation Manage Routes (Admin previleges)
+$routes->group('radiation', static function ($routes) {
+    $routes->post('store', 'LogbookController::stored_radiation', ['as' => 'radiation.store']); //non-controller
+    $routes->get('manage', 'ManageRadiationController::index', ['as' => 'radiation.manage', 'filter' => 'role:admin']); //non-controller
 });
 
 // Asset Routes
@@ -87,20 +91,6 @@ $routes->group('practicum', static function ($routes) {
 });
 
 
-// Logbook Routes
-
-// $routes->get('/loans', 'LogbookController::create_loaning');
-// $routes->get('/returns', 'LogbookController::create_returning');
-// $routes->get('/logs', 'LogbookController::create_logging');
-
-$routes->post('/storedloans', 'LogbookController::stored_loaning'); //non-controller
-$routes->post('/storedreturns', 'LogbookController::stored_returning'); //non-controller              
-$routes->post('/storedradiation', 'LogbookController::stored_radiation'); //non-controller
-
-// $routes->post('/updatedloans', 'LogbookController::updated_loaning'); //non-controller
-// $routes->post('/updatedreturns', 'LogbookController::updated_returning'); //non-controller
-// $routes->post('/updatedlogs', 'LogbookController::updated_logging'); //non-controller
-
 // Schedule Routes
 $routes->get('/schedule', 'ScheduleController::index');
 
@@ -128,22 +118,6 @@ $routes->group('manage-account', ['filter' => 'role:admin'], static function ($r
     $routes->post('updatedacc', 'AccountController::updated_acc'); //non-controller
     $routes->post('storedacc', 'AccountController::stored_acc'); //non-controller
 });
-
-
-
-// $routes->get('/modules/create', 'PracticumController::create_module'); //non-controller
-// $routes->get('/schedules/create', 'PracticumController::create_schedule'); //non-controller
-// $routes->get('/teams/create', 'PracticumController::create_team'); //non-controller
-// $routes->post('/storedmodules', 'PracticumController::stored_module'); //non-controller
-// $routes->post('/storedschedules', 'PracticumController::stored_schedule'); //non-controller
-// $routes->post('/storedteams', 'PracticumController::stored_team'); //non-controller
-// $routes->post('/updatedmodules', 'PracticumController::updated_module'); //non-controller
-// $routes->post('/updatedschedules', 'PracticumController::updated_schedule'); //non-controller
-// $routes->post('/updatedteams', 'PracticumController::updated_team'); //non-controller
-
-
-$routes->get('/manageloan', 'ManageLoansController::create'); //non-controller
-$routes->get('/managelogs', 'ManageLogsController::index'); //non-controller
 
 /*
  * --------------------------------------------------------------------

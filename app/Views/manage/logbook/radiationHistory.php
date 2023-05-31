@@ -24,13 +24,13 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item text-sm">
-                        <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
+                        <a class="opacity-5 text-dark" href="javascript:;">Pagu Admin</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Praktikum
+                        Kelola Daftar Radiasi
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
+                <h6 class="font-weight-bolder mb-0">Daftar Radiasi</h6>
             </nav>
 
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -147,107 +147,63 @@
             </div>
         </div>
     </nav>
+
     <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <!-- <div class="card mb-4"> -->
+                <div class="card">
 
-        <form action="<?= url_to('practicum.store'); ?>" method="post">
-            <?= csrf_field(); ?>
-            <div class="row px-3">
-                <div class="col-lg-6">
-                    <h3>Tambah Praktikum</h3>
-                    <p class="text-secondary text-sm">Isi form tambah praktikum untuk menambah data praktikum pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
-                </div>
+                    <!-- tabel aset -->
+                    <div class="card-body">
+                        <div class="row">
 
-                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
-                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Tambah</button>
-                </div>
+                            <div class="table-responsive p-0">
+                                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                                    <div class="dataTable-container">
+                                        <table class="table align-items-center mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama User</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Aktivitas</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Waktu Awal</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Waktu Akhir</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Aset</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Radioisotop</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Radiasi</th>
 
-            </div>
+                                                </tr>
+                                            </thead>
 
-            <div class="row mt-3">
-                <div class="col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="font-weight-bolder mt-4">Modul Praktikum</h5>
-                            <form action="/file-upload" class="form-control" id="spec" name="spec">
-                                <div class="form-group">
-                                    <label for="spec" class="form-label"> Jatuhkan atau Pilih File Disini</label>
-                                    <input class="form-control" type="file" id="spec" multiple name="spec">
-                                </div>
-                            </form>
+                                            <tbody>
+                                                <?php foreach ($radiations as $radiation) : ?>
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="mb-0 text-sm ms-3"><?= $radiation['fullname']; ?></h6>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $radiation['activity']; ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $radiation['start_time']; ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $radiation['end_time']; ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $radiation['name']; ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $radiation['radioisotope']; ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $radiation['radiation']; ?></p>
+                                                        </td>
+                                                    <?php endforeach; ?>
+                                                    </tr>
+                                            </tbody>
 
-                            <h5 class="font-weight-bolder mt-4">Dokumen Lain</h5>
-                            <form action="/file-upload" class="form-control" id="manual" name="manual">
-                                <div class="form-group">
-                                    <label for="manual" class="form-label"> Jatuhkan atau Pilih File Disini</label>
-                                    <input class="form-control" type="file" id="manual" multiple name="manual">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-8 mt-lg-0 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="font-weight-bolder">Informasi Praktikum</h5>
-
-
-                            <div class="form-group">
-                                <label for="title">Judul</label>
-                                <input class="form-control" type="text" id="title" name="title" onfocus="focused(this)" onfocusout="defocused(this)">
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="laboratorian_id">Laboran Pengampu</label>
-                                        <select class="form-control" id="laboratorian_id" name="laboratorian_id">
-                                            <?php foreach ($laboratorians as $laboratorian) : ?>
-                                                <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['fullname']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <div class="form-group">
-                                        <label for="aset_id">Aset</label>
-                                        <select class="form-control" id="aset_id" name="aset_id">
-                                            <?php foreach ($assets as $asset) : ?>
-                                                <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12 col-sm-6">
-                                    <label for="team">Kelompok</label>
-                                    <input class="form-control" type="text" id="team" name="team" onfocus="focused(this)" onfocusout="defocused(this)">
-                                </div>
-                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="schedule">Jadwal</label>
-                                    <input class="form-control" type="date" id="schedule" name="schedule">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <div class="col-12 col-sm-6">
-                                    <label for="prac_location">Lokasi</label>
-                                    <input class="form-control" type="text" id="prac_location" name="prac_location" onfocus="focused(this)" onfocusout="defocused(this)">
-                                </div>
-                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="prac_status">Status</label>
-                                    <input class="form-control" type="text" id="prac_status" name="prac_status">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm">
-                                    <label class="mt-2" for="description">Deksripsi</label>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -255,46 +211,40 @@
                     </div>
                 </div>
             </div>
-        </form>
 
-
-        <footer class="footer pt-3  ">
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
-                        <div class="copyright text-center text-sm text-muted text-lg-start">
-                            © <script>
-                                document.write(new Date().getFullYear())
-                            </script>2023,
-                            made with <i class="fa fa-heart" aria-hidden="true"></i> by
-                            <a href="https://www.creative-tim.com/" class="font-weight-bold" target="_blank">Creative Tim</a>
-                            for a better web.
+            <footer class="footer pt-3  ">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-6 mb-lg-0 mb-4">
+                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                                © <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                made with <i class="fa fa-heart"></i> by
+                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                                for a better web.
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
-            <script src="../../assets/js/plugins/dropzone.min.js"></script>
-        </footer>
-    </div>
-
-</main>
+            </footer>
+        </div>
 
 
-
-<?= $this->endSection(); ?>
+        <?= $this->endSection(); ?>

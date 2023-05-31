@@ -31,6 +31,8 @@ class ManagePracticumController extends BaseController
             ->get()
             ->getResultArray();
 
+
+
         $data = [
             'title' => 'Manage Practicum',
             'practicum' => $practicum,
@@ -63,12 +65,12 @@ class ManagePracticumController extends BaseController
             'title' => $this->request->getVar('title'),
             'asset_id' => $this->request->getVar('aset_id'),
             'user_id' => user_id(),
-            'laboratorian_id' => $this->request->getVar('laboratorian'),
+            'laboratorian_id' => $this->request->getVar('laboratorian_id'),
             'team' => $this->request->getVar('team'),
             'schedule' => $this->request->getVar('schedule'),
-            'location' => $this->request->getVar('location'),
+            'prac_location' => $this->request->getVar('prac_location'),
             'description' => $this->request->getVar('description'),
-            'status' => $this->request->getVar('status')
+            'prac_status' => $this->request->getVar('prac_status')
         ]);
 
         return redirect()->to(url_to('practicum.manage'));

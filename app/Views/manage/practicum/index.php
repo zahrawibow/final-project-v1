@@ -211,7 +211,7 @@
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm"><?= $prac['title']; ?></h6>
+                                                                    <h6 class="mb-0 text-sm ms-2"><?= $prac['title']; ?></h6>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -228,7 +228,7 @@
                                                             <!-- <p class="text-xs text-secondary mb-0"></p> -->
                                                         </td>
                                                         <td>
-                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['location']; ?></p>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $prac['prac_location']; ?></p>
                                                             <!-- <p class="text-xs text-secondary mb-0"></p> -->
                                                         </td>
                                                         <td>
@@ -241,7 +241,7 @@
                                                             </a>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-gradient-success"><?= $prac['status']; ?></span>
+                                                            <span class="badge badge-sm bg-gradient-success"><?= $prac['prac_status']; ?></span>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="badge badge-sm bg-warning">Ubah</span>
