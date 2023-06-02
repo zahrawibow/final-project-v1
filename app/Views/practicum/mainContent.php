@@ -180,17 +180,18 @@
                                     <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
                                 </div>
                                 <!-- <div class="user">
-                                <img class="img-circle" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
-                            </div> -->
+                                    <img class="img-circle" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
+                                    <div class="text-ms text-center"><?= $prac['team']; ?></div>
+                                </div> -->
                                 <div class="content">
-                                    <div class="main text-center">
+                                    <div class="main text-center mt-2">
                                         <h5><strong><?= $prac['title']; ?></strong></h5>
-                                        <p class="mt-3 text-sm"><?= $prac['fullname']; ?></p>
+                                        <p class="mt-2 mb-0 text-sm"><?= $prac['fullname']; ?></p>
 
                                         <!-- <p class="profession">Pengampu Praktikum</p> -->
                                         <!-- <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p> -->
                                     </div>
-                                    <div class="footer text-xs mt-3">
+                                    <div class="footer text-xs mt-2">
                                         <i class="fa fa-mail-forward text-center"></i> Auto Rotation
                                     </div>
                                 </div>
@@ -205,7 +206,7 @@
                                     <div class="main pt-0">
                                         <h6 class="text-center text-xs px-1"><?= $prac['description']; ?></h6>
                                     </div>
-                                    <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-2 mb-0" data-bs-toggle="modal" data-bs-target="#use">
+                                    <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-5 mb-0" data-bs-toggle="modal" data-bs-target="#use">
                                         Get started
                                     </a>
                                 </div>

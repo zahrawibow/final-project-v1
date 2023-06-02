@@ -1,10 +1,8 @@
 <?= $this->extend('layouts/index'); ?>
 <?= $this->section('content'); ?>
 
-<!-- Main content dashboard -->
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
 
-    <!-- Header page start-->
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
     <nav class="navbar navbar-main navbar-expand-lg blur position-sticky mt-4 top-1 px-0 mx-4 border-radius-xl z-index-sticky shadow-none" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
@@ -29,23 +27,19 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        <a class="opacity-5 text-dark" href="/asset">Daftar Aset</a>
-                    </li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Perbarui Detail
+                        Praktikum
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Perbarui Detail</h6>
+                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
             </nav>
-
 
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <!-- search bar -->
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <!-- <div class="input-group">
+                    <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here..." onfocus="focused(this)" onfocusout="defocused(this)" />
-                    </div> -->
+                    </div>
                 </div>
 
                 <ul class="navbar-nav justify-content-end">
@@ -56,15 +50,7 @@
                         </a>
                     </li>
 
-                    <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
-                            <div class="sidenav-toggler-inner">
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                            </div>
-                        </a>
-                    </li> -->
+
                     <!-- notifikasi -->
                     <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
@@ -161,71 +147,41 @@
             </div>
         </div>
     </nav>
-
     <div class="container-fluid py-4">
 
-        <form action="/asset/update/<?= $assets['id']; ?>" method="post">
+        <form action="/practicum/update/<?= $practicum['id']; ?>" method="post">
             <?= csrf_field(); ?>
             <div class="row px-3">
                 <div class="col-lg-6">
-                    <h3>Perbarui Detail Kamera Gamma</h3>
-                    <p class="text-secondary text-sm">Isi form pembaruan detail untuk merubah data inventaris aset pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
+                    <h3>Ubah Praktikum</h3>
+                    <p class="text-secondary text-sm">Isi form ubah praktikum untuk mengubah data praktikum pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
                 </div>
-                <div class="col-lg-6 text-right d-flex flex-column justify-content-center">
-                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Perbarui</button>
+
+                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
+                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Ubah</button>
                 </div>
             </div>
 
-
-            <input type="hidden" name="slug" value="<?= $assets['slug']; ?>">
 
             <div class="row mt-3">
                 <div class="col-lg-4">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h5 class="font-weight-bolder">Foto Aset</h5>
-                            <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                                <div class="dz-default dz-message">
-                                    <input name="file" type="file" multiple />
-                                    <button class="dz-button" type="button">
-                                        Drop files here to upload
-                                    </button>
+                            <h5 class="font-weight-bolder mt-4">Modul Praktikum</h5>
+                            <form action="/file-upload" class="form-control" id="spec" name="spec">
+                                <div class="form-group">
+                                    <label for="spec" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="spec" multiple name="spec">
                                 </div>
                             </form>
 
-
-                            <h5 class="font-weight-bolder mt-4">Spesifikasi</h5>
-                            <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                                <div class="dz-default dz-message">
-                                    <input name="file" type="file" multiple />
-                                    <button class="dz-button" type="button">
-                                        Drop files here to upload
-                                    </button>
+                            <h5 class="font-weight-bolder mt-4">Dokumen Lain</h5>
+                            <form action="/file-upload" class="form-control" id="manual" name="manual">
+                                <div class="form-group">
+                                    <label for="manual" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                    <input class="form-control" type="file" id="manual" multiple name="manual">
                                 </div>
                             </form>
-
-
-                            <h5 class="font-weight-bolder mt-4">Buku Manual</h5>
-                            <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                                <div class="dz-default dz-message">
-                                    <input name="file" type="file" multiple />
-                                    <button class="dz-button" type="button">
-                                        Drop files here to upload
-                                    </button>
-                                </div>
-                            </form>
-
-
-                            <h5 class="font-weight-bolder mt-4">Lisensi</h5>
-                            <form action="/file-upload" class="form-control dropzone dz-clickable" id="dropzone">
-                                <div class="dz-default dz-message">
-                                    <input name="file" type="file" multiple />
-                                    <button class="dz-button" type="button">
-                                        Drop files here to upload
-                                    </button>
-                                </div>
-                            </form>
-
                         </div>
                     </div>
                 </div>
@@ -233,74 +189,69 @@
                 <div class="col-lg-8 mt-lg-0 mt-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="font-weight-bolder">Informasi Aset</h5>
+                            <h5 class="font-weight-bolder">Informasi Praktikum</h5>
 
-                            <div class="row">
-                                <div class="col-12 col-sm-6">
-                                    <label for="name">Nama</label>
-                                    <input class="form-control" type="text" id="name" name="name" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['name']; ?>">
-                                </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label for="merk">Merk</label>
-                                    <input class="form-control" type="text" id="merk" name="merk" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['merk']; ?>">
-                                </div>
+
+                            <div class="form-group">
+                                <label for="title">Judul</label>
+                                <input class="form-control" type="text" id="title" name="title" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['title']; ?>">
                             </div>
 
-                            <div class="row">
+                            <div class="form-group row">
                                 <div class="col-12 col-sm-6">
-                                    <label for="series">Seri</label>
-                                    <input class="form-control" type="text" id="series" name="series" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['series']; ?>">
+                                    <div class="form-group">
+                                        <label for="laboratorian_id">Laboran Pengampu</label>
+                                        <select class="form-control" id="laboratorian_id" name="laboratorian_id">
+                                            <?php foreach ($laboratorians as $laboratorian) : ?>
+                                                <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['fullname']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label for="price">Harga</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">Rp</span>
-                                        <input type="text" class="form-control" id="price" name="price" aria-label="Amount (to the nearest rupiah)" value="<?= $assets['price']; ?>">
-                                        <!-- <span class="input-group-text">.00</span> -->
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <div class="form-group">
+                                        <label for="aset_id">Aset</label>
+                                        <select class="form-control" id="aset_id" name="aset_id">
+                                            <?php foreach ($assets as $asset) : ?>
+                                                <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-4">
+                                    <label for="team">Kelompok</label>
+                                    <input class="form-control" type="text" id="team" name="team" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['team']; ?>">
+                                </div>
+                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="schedule">Jadwal</label>
+                                    <input class="form-control" type="date" id="schedule" name="schedule" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['schedule']; ?>">
+                                </div>
+                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="time">Waktu</label>
+                                    <input class="form-control" type="time" id="time" name="time" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['time']; ?>">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
                                 <div class="col-12 col-sm-6">
-                                    <label for="count">Jumlah</label>
-                                    <input class="form-control" type="number" id="count" name="count" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['count']; ?>">
+                                    <label for="prac_location">Lokasi</label>
+                                    <input class="form-control" type="text" id="prac_location" name="prac_location" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['prac_location']; ?>">
                                 </div>
                                 <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="purchase_date">Tanggal Pembelian</label>
-                                    <input class="form-control" type="date" id="purchase_date" name="purchase_date" value="<?= $assets['purchase_date']; ?>">
+                                    <label class="form-control-label" for="prac_status">Status</label>
+                                    <input class="form-control" type="text" id="prac_status" name="prac_status" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['prac_status']; ?>">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-12 col-sm-6">
-                                    <label for="condition">Kondisi</label>
-                                    <input class="form-control" type="text" id="condition" name="condition" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['condition']; ?>">
-                                </div>
-                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="status">Status</label>
-                                    <input class="form-control" type="text" id="status" name="status" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['status']; ?>">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12 col-sm-6">
-                                    <label class="form-control-label" for="location">Lokasi</label>
-                                    <input class="form-control" type="text" id="location" name="location" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['location']; ?>">
-                                </div>
-                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="inventory_number">Nomor Inventaris</label>
-                                    <input class="form-control" type="text" id="inventory_number" name="inventory_number" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $assets['inventory_number']; ?>">
-                                </div>
-                            </div>
-
-
-                            <div class="row">
                                 <div class="col-sm">
-                                    <label class="mt-4" for="description">Deksripsi</label>
+                                    <label class="mt-2" for="description">Deksripsi</label>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="description" name="description" rows="9"><?= $assets['description']; ?>
-                                        </textarea>
+                                        <textarea class="form-control" id="description" name="description" rows="4"><?= $practicum['description']; ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -346,7 +297,8 @@
         </footer>
     </div>
 
-
-
 </main>
+
+
+
 <?= $this->endSection(); ?>

@@ -221,13 +221,17 @@
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-4">
                                     <label for="team">Kelompok</label>
                                     <input class="form-control" type="text" id="team" name="team" onfocus="focused(this)" onfocusout="defocused(this)">
                                 </div>
-                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
                                     <label class="form-control-label" for="schedule">Jadwal</label>
                                     <input class="form-control" type="date" id="schedule" name="schedule">
+                                </div>
+                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="time">Waktu</label>
+                                    <input class="form-control" type="time" id="time" name="time">
                                 </div>
                             </div>
 
@@ -242,6 +246,7 @@
                                     <input class="form-control" type="text" id="prac_status" name="prac_status">
                                 </div>
                             </div>
+
 
                             <div class="form-group row">
                                 <div class="col-sm">

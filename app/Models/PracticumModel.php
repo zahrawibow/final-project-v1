@@ -8,7 +8,20 @@ class PracticumModel extends Model
 {
     protected $table      = 'practicums';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id', 'asset_id', 'laboratorian_id', 'title', 'module', 'schedule', 'team', 'user_id', 'description', 'prac_status', 'prac_location'];
+    protected $allowedFields = [
+        'id',
+        'asset_id',
+        'laboratorian_id',
+        'title',
+        'module',
+        'schedule',
+        'time',
+        'team',
+        'user_id',
+        'description',
+        'prac_status',
+        'prac_location'
+    ];
 
     // protected $useAutoIncrement = true;
 
@@ -40,8 +53,17 @@ class PracticumModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
-    public function getPracticumData()
+
+    // public function getPracticumData()
+    // {
+    //     return $this->findAll();
+    // }
+
+    public function getPracticumData($id = false)
     {
-        return $this->findAll();
+        if ($id == false) {
+            return $this->findall();
+        }
+        return $this->where('id', $id)->first();
     }
 }

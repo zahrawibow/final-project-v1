@@ -192,16 +192,6 @@
                                 </div>
                             <?php endif; ?>
 
-                            <!-- Harusnya sweet alert -->
-                            <!-- <?php if (session()->getFlashdata('succes')) : ?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Berhasil!!</strong> <?= session()->getFlashdata('succes'); ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            <?php endif; ?> -->
-
-
-
                             <div class="table-responsive p-0">
                                 <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                                     <div class="dataTable-container">
@@ -226,7 +216,7 @@
                                                                     <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" class="avatar avatar-sm me-3" alt="user1">
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm"><?= $asset['name']; ?></h6>
+                                                                    <h6 class="mb-0"><?= $asset['name']; ?></h6>
                                                                     <p class="text-xs text-secondary mb-0"><?= $asset['merk']; ?></p>
                                                                 </div>
                                                             </div>
@@ -246,14 +236,17 @@
                                                                 <i class="fas fa-light fa-eye"></i>
                                                             </a>
                                                         </td>
+
                                                         <?php if (in_groups('admin')) : ?>
-                                                            <td class="align-middle text-center text-sm">
-                                                                <a class="badge badge-sm bg-warning" href="#">Ubah</a>
-                                                            </td>
+                                                            <!-- <td class="align-middle text-center text-sm">
+                                                                <a href="/asset/edit/<?= $asset['slug']; ?>">
+                                                                    <button type="submit" class="badge badge-sm bg-warning border-0">Ubah</button>
+                                                                </a>
+                                                            </td> -->
 
                                                             <form action="<?= url_to('asset.delete', $asset['id']); ?>" method="post">
+                                                                <?= csrf_field(); ?>
                                                                 <td class="align-middle text-center text-sm">
-                                                                    <?= csrf_field(); ?>
                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                     <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>
                                                                 </td>

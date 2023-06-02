@@ -102,27 +102,31 @@ body {
   width: 100%;
 }
 .card .user {
+  /* background-color: #eeeeee; */
   border-radius: 50%;
+  /* display: flexbox; */
   display: block;
-  height: 120px;
-  margin: -55px auto 0;
-  overflow: hidden;
-  width: 120px;
+  height: 50px;
+  margin: -55px 260px 0px;
+  overflow: visible;
+  width: 50px;
 }
 .card .user img {
-  background: none repeat scroll 0 0 #ffffff;
-  border: 4px solid #ffffff;
+  background-color: #eeeeee;
+  /* border: 4px solid #ffffff; */
   width: 100%;
 }
 
 .card .content {
-  height: 300px;
+  height: 50px;
   background-color: rgba(0, 0, 0, 0);
   box-shadow: none;
-  padding: 20px 20px 20px;
+  padding: 10px 20px 20px;
 }
 .card .content .main {
-  min-height: 50px;
+  max-height: 90px;
+  min-height: 90px;
+  text-align: center;
 }
 .card .back .content .main {
   height: 115px;

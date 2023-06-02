@@ -272,6 +272,17 @@
                             </div>
 
                             <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="location">Lokasi</label>
+                                    <input class="form-control" type="text" id="location" name="location" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="inventory_number">Nomor Inventaris</label>
+                                    <input class="form-control" type="text" id="inventory_number" name="inventory_number">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <div class="col-sm">
                                     <label class="mt-4" for="description">Deksripsi</label>
                                     <div class="form-group">

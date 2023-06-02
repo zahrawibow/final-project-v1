@@ -23,7 +23,9 @@ class AssetModel extends Model
         'manual',
         'lisence',
         'description',
-        'user_id'
+        'user_id',
+        'location',
+        'inventory_number'
     ];
 
     // protected $useAutoIncrement = true;

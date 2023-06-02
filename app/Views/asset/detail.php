@@ -174,12 +174,14 @@
                                             <div>
                                                 <h6 class="text-white mb-0">Perbarui Detail <?= $assets['name']; ?></h6>
                                                 <p class="text-xs text-white text-secondary mb-0">
-                                                    Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                                    <em>
+                                                        Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                                    </em>
                                                 </p>
                                             </div>
                                             <div class="ms-auto my-auto mt-lg-0">
                                                 <div class="ms-auto my-auto">
-                                                    <a href="/asset/edit" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Perbarui Detail</a>
+                                                    <a href="/asset/edit/<?= $assets['slug']; ?>" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Perbarui Detail</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -295,7 +297,9 @@
                                 <div class="tab-content tab-content-basic">
 
                                     <div id="detail" class="tab-pane fade show active" role="tabpanel" aria-labelledby="detail-tab">
-                                        <h4 class="mt-lg-0 mt-3"><?= $assets['name']; ?></h4>
+                                        <h2 class="mt-lg-0 mt-3 px-1">
+                                            <?= $assets['name']; ?>
+                                        </h2>
 
                                         <div class="row">
                                             <div class="col-12 col-sm-6">
@@ -311,7 +315,7 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-6">
                                                 <label class="mt-0 mb-0">Harga</label>
-                                                <p class="text-sm text-secondary px-1"><?= $assets['price']; ?></p>
+                                                <p class="text-sm text-secondary px-1">Rp <?= $assets['price']; ?></p>
                                             </div>
                                             <div class="col-12 col-sm-6">
                                                 <label class="mt-0 mb-0">Tanggal Pembelian</label>
@@ -321,8 +325,8 @@
 
                                         <div class="row">
                                             <div class="col-12 col-sm-6">
-                                                <label class="mt-0 mb-0">Jadwal Pemeliharaan Terdekat</label>
-                                                <p class="text-sm text-secondary px-1">-</p>
+                                                <label class="mt-0 mb-0">Nomor Inventaris</label>
+                                                <p class="text-sm text-secondary px-1"><?= $assets['inventory_number']; ?></p>
                                             </div>
                                             <div class="col-12 col-sm-6">
                                                 <label class="mt-0 mb-0">Lokasi</label>
