@@ -36,6 +36,7 @@ $routes->get('/home', 'Home::landingPage');
 $routes->get('/', 'DashboardController::index');
 $routes->get('/iaea', 'DashboardController::radioisotope');
 $routes->get('/attendance', 'DashboardController::attendance');
+$routes->get('/testing', 'DashboardController::testing');
 
 // Attendance Manage Routes (Admin previleges)
 $routes->group('attendance', static function ($routes) {
@@ -113,12 +114,12 @@ $routes->group('maintenance', ['filter' => 'role:admin'], static function ($rout
 
 // Manage Account Routes
 $routes->group('manage-account', ['filter' => 'role:admin'], static function ($routes) {
-    $routes->get('/', 'AccountController::index');
-    $routes->get('detail', 'AccountController::show_detail');
-    $routes->get('edit', 'AccountController::edit');
-    $routes->get('create', 'AccountController::create');
-    $routes->post('updatedacc', 'AccountController::updated_acc'); //non-controller
-    $routes->post('storedacc', 'AccountController::stored_acc'); //non-controller
+    $routes->get('/', 'ManageAccountController::index', ['as' => 'account.manage']);
+    // $routes->get('detail', 'AccountController::show_detail');
+    // $routes->get('edit', 'AccountController::edit');
+    // $routes->get('create', 'AccountController::create');
+    // $routes->post('updatedacc', 'AccountController::updated_acc'); //non-controller
+    // $routes->post('storedacc', 'AccountController::stored_acc'); //non-controller
 });
 
 /*

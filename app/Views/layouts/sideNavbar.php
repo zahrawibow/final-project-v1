@@ -40,7 +40,7 @@
                     <div class="collapse" id="adminNavBar">
                         <ul class="nav ms-4 ps-3">
                             <li class="nav-item active">
-                                <a class="nav-link active" href="/managedash"> </span>
+                                <a class="nav-link active" href="/testing"> </span>
                                     <span class="sidenav-normal">Kelola Pagu Utama</span>
                                 </a>
                             </li>
@@ -81,7 +81,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/manageacc">
+                                <a class="nav-link" href="<?= url_to('account.manage'); ?>">
                                     <span class="sidenav-mini-icon"> C </span>
                                     <span class="sidenav-normal">Kelola Akun</span>
                                 </a>

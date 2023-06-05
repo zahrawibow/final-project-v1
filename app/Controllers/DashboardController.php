@@ -27,6 +27,15 @@ class DashboardController extends BaseController
         return view('dashboard/index', $data);
     }
 
+    public function testing()
+    {
+        $data = [
+            'title' => 'Testing'
+        ];
+
+        return view('dashboard/testing', $data);
+    }
+
     public function radioisotope()
     {
         $data = [

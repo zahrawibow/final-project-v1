@@ -13,9 +13,8 @@
 
     <link href='<?= base_url('assets/css/rotating-card.css'); ?>' rel='stylesheet' />
     <link href='<?= base_url('assets/css/card.css'); ?>' rel='stylesheet' />
-    <link href='<?= base_url('assets/css/soft-ui-dashboard.css'); ?>' rel='stylesheet' />
 
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <meta charset="utf-8" />
 
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -29,7 +28,8 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- CSS Files -->
-    <link id="pagestyle" href="<?= base_url('assets/css/soft-ui-dashboard.css?v=1.0.6'); ?>" rel="stylesheet" />
+    <!-- <link id="pagestyle" href="" rel="stylesheet" /> -->
+    <link id="pagestyle" href="<?= base_url('assets/css/soft-ui-dashboard.min.css'); ?>" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -123,6 +123,7 @@
     <script src="<?= base_url('assets/js/plugins/perfect-scrollbar.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/plugins/smooth-scrollbar.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/plugins/chartjs.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/multistep-form.js'); ?>"></script>
     <script>
         var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -325,7 +326,7 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="<?= base_url('assets/js/soft-ui-dashboard.min.js?v=1.0.6'); ?>"></script>
+    <script src="<?= base_url('assets/js/soft-ui-dashboard.min.js'); ?>"></script>
 </body>
 
 </html>
