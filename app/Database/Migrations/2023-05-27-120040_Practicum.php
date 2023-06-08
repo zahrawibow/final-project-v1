@@ -44,15 +44,19 @@ class Practicum extends Migration
                 'null' => true
             ],
             'schedule' => [
-                'type' => 'datetime',
+                'type' => 'date',
                 'null' => false
             ],
-            'location' => [
+            'time' => [
+                'type' => 'time',
+                'null' => false
+            ],
+            'prac_location' => [
                 'type' => 'varchar',
                 'constraint' => 255,
                 'null' => true
             ],
-            'status' => [
+            'prac_status' => [
                 'type' => 'varchar',
                 'constraint' => 255,
                 'null' => true

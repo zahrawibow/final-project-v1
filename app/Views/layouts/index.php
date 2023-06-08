@@ -31,6 +31,11 @@
     <!-- <link id="pagestyle" href="" rel="stylesheet" /> -->
     <link id="pagestyle" href="<?= base_url('assets/css/soft-ui-dashboard.min.css'); ?>" rel="stylesheet" />
 </head>
+<style>
+    .uppercase-text {
+        text-transform: uppercase;
+    }
+</style>
 
 <body class="g-sidenav-show bg-gray-100">
     <!-- side navbar start -->

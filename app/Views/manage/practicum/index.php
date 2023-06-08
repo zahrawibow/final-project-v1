@@ -201,7 +201,6 @@
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tim</i></th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Modul</i></th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</i></th>
-
                                                 </tr>
                                             </thead>
 
@@ -209,9 +208,9 @@
                                                 <?php foreach ($practicum as $prac) : ?>
                                                     <tr>
                                                         <td>
-                                                            <div class="d-flex px-2 py-1">
-                                                                <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm ms-2"><?= $prac['title']; ?></h6>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex flex-column">
+                                                                    <h6 class="mb-0 text-sm"><?= $prac['title']; ?></h6>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -248,13 +247,13 @@
                                                             <span class="badge badge-sm bg-gradient-success"><?= $prac['prac_status']; ?></span>
                                                         </td>
 
-                                                        <td class="align-middle text-center text-sm">
+                                                        <td class="align-middle text-center text-sm py-0 px-0">
                                                             <a href="<?= url_to('practicum.edit', $prac['id']); ?>">
                                                                 <button type="submit" class="badge badge-sm bg-warning border-0">Ubah</button>
                                                             </a>
                                                         </td>
                                                         <form action="<?= url_to('practicum.delete', $prac['id']); ?>" method="post">
-                                                            <td class="align-middle text-center text-sm">
+                                                            <td class="align-middle text-center text-sm py-0">
                                                                 <?= csrf_field(); ?>
                                                                 <input type="hidden" name="_method" value="DELETE">
                                                                 <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>

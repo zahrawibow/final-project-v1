@@ -1,8 +1,10 @@
 <?= $this->extend('layouts/index'); ?>
 <?= $this->section('content'); ?>
 
+<!-- Main content dashboard -->
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
 
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
+    <!-- Header page start-->
     <nav class="navbar navbar-main navbar-expand-lg blur position-sticky mt-4 top-1 px-0 mx-4 border-radius-xl z-index-sticky shadow-none" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
@@ -27,19 +29,20 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Praktikum
+                        Peminjaman Aset
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
+                <h6 class="font-weight-bolder mb-0">Form Peminjaman Aset</h6>
             </nav>
+
 
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <!-- search bar -->
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here..." onfocus="focused(this)" onfocusout="defocused(this)" />
-                    </div>
+                    </div> -->
                 </div>
 
                 <ul class="navbar-nav justify-content-end">
@@ -50,7 +53,15 @@
                         </a>
                     </li>
 
-
+                    <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                            </div>
+                        </a>
+                    </li> -->
                     <!-- notifikasi -->
                     <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
@@ -147,130 +158,190 @@
             </div>
         </div>
     </nav>
+    <!-- Header Page end-->
+
+
     <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="multisteps-form">
+                    <div class="row">
+                        <div class="col-12 col-lg-8 mx-auto mt-5 mb-sm-5 mb-3">
+                            <!-- <div class="multisteps-form__progress">
+                                <button class="multisteps-form__progress-btn js-active" type="button" title="Product Info">
+                                    <span>1. Product Info</span>
+                                </button>
+                                <button class="multisteps-form__progress-btn js-active" type="button" title="Media">
+                                    2. Media
+                                </button>
+                                <button class="multisteps-form__progress-btn js-active" type="button" title="Socials">
+                                    3. Socials
+                                </button>
+                                <button class="multisteps-form__progress-btn" type="button" title="Pricing">
+                                    4. Pricing
+                                </button>
+                            </div> -->
+                            <div class="multisteps-form__progress">
+                                <button class="multisteps-form__progress-btn js-active" type="button" title="Product Info">
+                                    <span>Form Peminjaman</span>
+                                </button>
+                                <button class="multisteps-form__progress-btn" type="button" title="Media">
+                                    Konfirmasi Peminjaman
+                                </button>
+                                <button class="multisteps-form__progress-btn" type="button" title="Socials">
+                                    Keterangan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-        <form action="/practicum/update/<?= $practicum['id']; ?>" method="post">
-            <?= csrf_field(); ?>
-            <div class="row px-3">
-                <div class="col-lg-6">
-                    <h3>Ubah Praktikum</h3>
-                    <p class="text-secondary text-sm">Isi form ubah praktikum untuk mengubah data praktikum pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
-                </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-8 m-auto">
+                            <form class="multisteps-form__form mb-8" style="height: 395px">
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Form Peminjaman</h5>
+                                    <div class="multisteps-form__content">
+                                        <div class="row mt-3">
 
-                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
-                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Ubah</button>
-                </div>
-            </div>
+                                            <div class="row">
+                                                <div class="form-group col-12 col-sm-6">
+                                                    <label for="asset_id">Aset</label>
+                                                    <select class="form-control" id="aset_id" name="asset_id">
+                                                        <?php foreach ($assets as $asset) : ?>
+                                                            <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                                    <label for="purpose">Keperluan</label>
+                                                    <select class="form-control" id="purpose" name="purpose">
+                                                        <option value="Praktikum">Praktikum</option>
+                                                        <option value="Ujian Praktikum">Ujian Praktikum</option>
+                                                        <option value="Penelitian">Penelitian</option>
+                                                        <option value="Tugas Akhir">Tugas Akhir</option>
+                                                        <option value="Magang/PKL">Magang/PKL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
+                                            <div class="row">
+                                                <div class="form-group col-12 col-sm-6">
+                                                    <label class="form-control-label" for="loan_time">Tanggal Peminjaman</label>
+                                                    <input class="form-control" type="date" id="loan_time" name="loan_time">
+                                                </div>
+                                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                                    <label for="permission_tax" class="form-label">Surat Peminjaman Aset</label>
+                                                    <input class="form-control" type="file" id="permission_tax" multiple name="permission_tax">
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <div class="row mt-3">
-                <div class="col-lg-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="font-weight-bolder">Modul Praktikum</h5>
-                            <form action="/file-upload" class="form-control" id="spec" name="spec">
-                                <div class="form-group">
-                                    <label for="spec" class="form-label"> Jatuhkan atau Pilih File Disini</label>
-                                    <input class="form-control" type="file" id="spec" multiple name="spec">
+                                        <div class="button-row d-flex mt-4">
+                                            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">
+                                                Next
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
 
-                            <h5 class="font-weight-bolder mt-4">Dokumen Lain</h5>
-                            <form action="/file-upload" class="form-control" id="manual" name="manual">
-                                <div class="form-group">
-                                    <label for="manual" class="form-label"> Jatuhkan atau Pilih File Disini</label>
-                                    <input class="form-control" type="file" id="manual" multiple name="manual">
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Media</h5>
+                                    <div class="multisteps-form__content">
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <label>Product images</label>
+                                                <div action="/file-upload" class="form-control dropzone dz-clickable" id="productImg">
+                                                    <div class="dz-default dz-message">
+                                                        <button class="dz-button" type="button">
+                                                            Drop files here to upload
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button-row d-flex mt-4">
+                                            <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">
+                                                Prev
+                                            </button>
+                                            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">
+                                                Next
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Socials</h5>
+                                    <div class="multisteps-form__content">
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <label>Shoppify Handle</label>
+                                                <input class="multisteps-form__input form-control" type="text" placeholder="@soft" onfocus="focused(this)" onfocusout="defocused(this)" />
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <label>Facebook Account</label>
+                                                <input class="multisteps-form__input form-control" type="text" placeholder="https://..." onfocus="focused(this)" onfocusout="defocused(this)" />
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <label>Instagram Account</label>
+                                                <input class="multisteps-form__input form-control" type="text" placeholder="https://..." onfocus="focused(this)" onfocusout="defocused(this)" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="button-row d-flex mt-4 col-12">
+                                                <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">
+                                                    Prev
+                                                </button>
+                                                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">
+                                                    Next
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white h-100" data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Pricing</h5>
+                                    <div class="multisteps-form__content mt-3">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <label>Price</label>
+                                                <input class="multisteps-form__input form-control" type="text" placeholder="99.00" onfocus="focused(this)" onfocusout="defocused(this)" />
+                                            </div>
+
+                                            <div class="col-5">
+                                                <label>SKU</label>
+                                                <input class="multisteps-form__input form-control" type="text" placeholder="71283476591" onfocus="focused(this)" onfocusout="defocused(this)" />
+                                            </div>
+                                        </div>
+
+                                        <div class="button-row d-flex mt-4">
+                                            <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">
+                                                Prev
+                                            </button>
+                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">
+                                                Send
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-8 mt-lg-0 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="font-weight-bolder">Informasi Praktikum</h5>
-
-
-                            <div class="form-group">
-                                <label for="title">Judul</label>
-                                <input class="form-control" type="text" id="title" name="title" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['title']; ?>">
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="laboratorian_id">Laboran Pengampu</label>
-                                        <select class="form-control" id="laboratorian_id" name="laboratorian_id">
-                                            <?php foreach ($laboratorians as $laboratorian) : ?>
-                                                <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['fullname']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <div class="form-group">
-                                        <label for="asset_id">Aset</label>
-                                        <select class="form-control" id="asset_id" name="asset_id">
-                                            <?php foreach ($assets as $asset) : ?>
-                                                <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-12 col-sm-4">
-                                    <label for="team">Kelompok</label>
-                                    <input class="form-control" type="text" id="team" name="team" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['team']; ?>">
-                                </div>
-                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="schedule">Jadwal</label>
-                                    <input class="form-control" type="date" id="schedule" name="schedule" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['schedule']; ?>">
-                                </div>
-                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="time">Waktu</label>
-                                    <input class="form-control" type="time" id="time" name="time" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['time']; ?>">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <div class="col-12 col-sm-6">
-                                    <label for="prac_location">Lokasi</label>
-                                    <input class="form-control" type="text" id="prac_location" name="prac_location" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['prac_location']; ?>">
-                                </div>
-                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                    <label class="form-control-label" for="prac_status">Status</label>
-                                    <input class="form-control" type="text" id="prac_status" name="prac_status" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $practicum['prac_status']; ?>">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm">
-                                    <label class="mt-2" for="description">Deksripsi</label>
-                                    <div class="form-group">
-                                        <textarea class="form-control" id="description" name="description" rows="4"><?= $practicum['description']; ?></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </form>
-
-
-        <footer class="footer pt-3  ">
+        </div>
+        <footer class="footer pt-3">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-6 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
-                            © <script>
-                                document.write(new Date().getFullYear())
-                            </script>2023,
-                            made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            2023, made with
+                            <i class="fa fa-heart" aria-hidden="true"></i> by
                             <a href="https://www.creative-tim.com/" class="font-weight-bold" target="_blank">Creative Tim</a>
                             for a better web.
                         </div>
@@ -293,12 +364,7 @@
                     </div>
                 </div>
             </div>
-            <script src="../../assets/js/plugins/dropzone.min.js"></script>
         </footer>
     </div>
-
 </main>
-
-
-
 <?= $this->endSection(); ?>

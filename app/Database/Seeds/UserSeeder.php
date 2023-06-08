@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
 
             $user = $this->db->table('users')->insert($data);
             $role = [
-                'user_id' => $user,
+                'user_id' => $i + 3,
                 'group_id' => 2
             ];
             $this->db->table('auth_groups_users')->insert($role);

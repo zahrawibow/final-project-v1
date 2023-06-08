@@ -179,7 +179,7 @@
                                                 <?php foreach ($radiations as $radiation) : ?>
                                                     <tr>
                                                         <td>
-                                                            <h6 class="mb-0 text-sm ms-3"><?= $radiation['fullname']; ?></h6>
+                                                            <h6 class="mb-0 text-sm"><?= $radiation['fullname']; ?></h6>
                                                         </td>
                                                         <td>
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $radiation['activity']; ?></p>

@@ -63,7 +63,7 @@ class ManagePracticumController extends BaseController
     {
         $this->practicumModel->save([
             'title' => $this->request->getVar('title'),
-            'asset_id' => $this->request->getVar('aset_id'),
+            'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
             'laboratorian_id' => $this->request->getVar('laboratorian_id'),
             'team' => $this->request->getVar('team'),
@@ -134,7 +134,7 @@ class ManagePracticumController extends BaseController
         $this->practicumModel->save([
             'id' => $id,
             'title' => $this->request->getVar('title'),
-            'asset_id' => $this->request->getVar('aset_id'),
+            'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
             'laboratorian_id' => $this->request->getVar('laboratorian_id'),
             'team' => $this->request->getVar('team'),

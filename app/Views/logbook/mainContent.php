@@ -331,7 +331,7 @@
                                 <!-- <b>500</b> Messages -->
                             </li>
                         </ul>
-                        <a class="btn bg-gradient-dark w-100 mt-4 mb-0" data-bs-toggle="modal" data-bs-target="#loan">
+                        <a class="btn bg-gradient-dark w-100 mt-4 mb-0" href="/assetloans">
                             Get started
                         </a>
                     </div>

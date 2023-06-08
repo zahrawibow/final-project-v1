@@ -86,10 +86,10 @@
                                     <div class="mb-3">
                                         <small class="form-text text-muted">Choose your major</small>
                                         <select class="form-control" name="major">
-                                            <option value="1">Teknokimia Nuklir</option>
-                                            <option value="2">Elektronika Instrumentasi</option>
-                                            <option value="3">Elektronika Mekanika</option>
-                                            <option value="4">Lecturer</option>
+                                            <option value="Teknokimia Nuklir">Teknokimia Nuklir</option>
+                                            <option value="Elektronika Instrumentasi">Elektronika Instrumentasi</option>
+                                            <option value="Elektronika Mekanika">Elektronika Mekanika</option>
+                                            <option value="Lecturer">Lecturer</option>
                                         </select>
                                     </div>
 

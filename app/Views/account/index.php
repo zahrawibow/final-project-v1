@@ -166,25 +166,40 @@
             <div class="col-lg-8">
                 <?php foreach ($accounts as $account) : ?>
                     <div class="card card-frame mb-3">
-                        <div class="card-body d-flex gap-3">
 
-                            <div class="avatar avatar-xl position-relative">
+                        <div class="card-body d-flex gap-4">
+                            <div class="avatar-xxl position-relative">
                                 <img src="<?= base_url("assets/img/" . (user()->user_image ?? 'default-pic.png')); ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm" />
-                            </div>
 
+                                <div class="position-relative d-flex justify-content-center gap-1 mt-1">
+                                    <a href="<?= url_to('account.edit', $account->userid); ?>" class="align-middle text-center text-md">
+                                        <button type="submit" class="badge badge-sm bg-warning border-0">Ubah</button>
+                                    </a>
+                                    <form action="<?= url_to('account.delete', $account->userid); ?>" method="post" class="align-middle text-center text-md">
+                                        <?= csrf_field(); ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
                             <div>
                                 <h5 class="mb-0"><strong><?= $account->fullname; ?></strong></h5>
-                                <p class="mb-0 font-weight-bold text-sm"><?= $account->username; ?> / <?= $account->email; ?></p>
-                                <p class="mb-0 font-weight-bold text-xs"><?= $account->identifier; ?> <?= $account->identity_number; ?></p>
-                                <p class="mb-0 font-weight-bold text-xs"><?= $account->major; ?> / <?= $account->status; ?></p>
+                                <p class="mb-0 font-weight-bold text-md mt-2"><?= $account->username; ?>/<?= $account->email; ?></p>
+                                <p class="mb-0 font-weight-bold text-md"><?= $account->identifier; ?> <?= $account->identity_number; ?></p>
+                                <p class="mb-0 font-weight-bold text-md"><?= $account->major; ?>/<?= $account->status; ?></p>
+                                <p class="mb-0 font-weight-bold text-md uppercase-text"><?= $account->name; ?></p>
                             </div>
                         </div>
+
+
                     </div>
                 <?php endforeach; ?>
             </div>
 
+            <!-- <nav class="navbar navbar-main navbar-expand-lg blur position-sticky mt-4 top-1 px-0 mx-4 border-radius-xl z-index-sticky shadow-none" id="navbarBlur" data-scroll="true"> -->
+
             <div class="col-lg-4 mt-4 mt-lg-0">
-                <div class="card bg-gradient-dark">
+                <div class="card bg-gradient-dark ">
                     <div class="card-header bg-transparent pb-0">
                         <h6 class="text-white">Timeline dark with dashed line</h6>
                     </div>
@@ -202,9 +217,7 @@
                                         22 DEC 7:20 PM
                                     </p>
                                     <p class="text-secondary text-sm mt-3 mb-2">
-                                        People care about how you see the world, how you think,
-                                        what motivates you, what you’re struggling with or
-                                        afraid of.
+
                                     </p>
                                     <span class="badge badge-sm bg-gradient-success">Design</span>
                                 </div>
@@ -221,9 +234,7 @@
                                         21 DEC 11 PM
                                     </p>
                                     <p class="text-secondary text-sm mt-3 mb-2">
-                                        People care about how you see the world, how you think,
-                                        what motivates you, what you’re struggling with or
-                                        afraid of.
+
                                     </p>
                                     <span class="badge badge-sm bg-gradient-danger">Order</span>
                                     <span class="badge badge-sm bg-gradient-danger">#1832412</span>
@@ -241,9 +252,7 @@
                                         21 DEC 9:34 PM
                                     </p>
                                     <p class="text-secondary text-sm mt-3 mb-2">
-                                        People care about how you see the world, how you think,
-                                        what motivates you, what you’re struggling with or
-                                        afraid of.
+
                                     </p>
                                     <span class="badge badge-sm bg-gradient-info">Server</span>
                                     <span class="badge badge-sm bg-gradient-info">Payments</span>
@@ -253,6 +262,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

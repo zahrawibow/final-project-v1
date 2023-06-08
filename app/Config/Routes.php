@@ -46,6 +46,13 @@ $routes->group('attendance', static function ($routes) {
 
 // Logbook Routes
 $routes->get('/logbook', 'LogbookController::index');
+$routes->get('/assetloans', 'LogbookController::asset_loans');
+
+// Logbook Manage Routes (Admin previleges)
+$routes->group('loans', static function ($routes) {
+    $routes->post('store', 'LogbookController::stored_loaning', ['as' => 'loan.store']); //non-controller
+    $routes->get('manage', 'ManageLogsController::index', ['as' => 'log.manage', 'filter' => 'role:admin']); //non-controller
+});
 
 // Logbook Manage Routes (Admin previleges)
 $routes->group('log', static function ($routes) {
@@ -115,6 +122,9 @@ $routes->group('maintenance', ['filter' => 'role:admin'], static function ($rout
 // Manage Account Routes
 $routes->group('manage-account', ['filter' => 'role:admin'], static function ($routes) {
     $routes->get('/', 'ManageAccountController::index', ['as' => 'account.manage']);
+    $routes->get('edit/(:segment)', 'ManageAccountController::edit/$1', ['as' => 'account.edit']);
+    $routes->post('update/(:segment)', 'ManageAccountController::update/$1', ['as' => 'account.update']);
+    $routes->delete('delete/(:num)', 'ManageAccountController::delete/$1', ['as' => 'account.delete']);
     // $routes->get('detail', 'AccountController::show_detail');
     // $routes->get('edit', 'AccountController::edit');
     // $routes->get('create', 'AccountController::create');

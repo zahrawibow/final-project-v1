@@ -45,6 +45,15 @@ class LogbookController extends BaseController
         return view('logbook/mainContent', $data);
     }
 
+    public function asset_loans()
+    {
+        $data = [
+            'title' => 'Peminjaman Aset',
+            'assets' => $this->assetModel->getAssetData()
+        ];
+        return view('logbook/asset_loans', $data);
+    }
+
     public function stored_logging()
     {
         $this->logsModel->save([
@@ -63,11 +72,10 @@ class LogbookController extends BaseController
     public function stored_loaning()
     {
         $this->loansModel->save([
-            'aset_id' => $this->request->getVar('aset_id'),
+            'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
             'purpose' => $this->request->getVar('purpose'),
             'loan_time' => $this->request->getVar('loan_time'),
-            'currant_condition' => $this->request->getVar('currant_condition'),
             'permission_tax' => $this->request->getVar('permission_tax')
         ]);
 
