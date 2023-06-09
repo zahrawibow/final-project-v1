@@ -1,8 +1,10 @@
 <?= $this->extend('layouts/index'); ?>
 <?= $this->section('content'); ?>
 
+<!-- Main content dashboard -->
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
 
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ps ps--active-y">
+    <!-- Header page start-->
     <nav class="navbar navbar-main navbar-expand-lg blur position-sticky mt-4 top-1 px-0 mx-4 border-radius-xl z-index-sticky shadow-none" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
@@ -27,11 +29,12 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Praktikum
+                        Kelola Akun
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
+                <h6 class="font-weight-bolder mb-0">Daftar Akun Pengguna</h6>
             </nav>
+
 
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <!-- search bar -->
@@ -50,7 +53,15 @@
                         </a>
                     </li>
 
-
+                    <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                            </div>
+                        </a>
+                    </li> -->
                     <!-- notifikasi -->
                     <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
@@ -147,122 +158,140 @@
             </div>
         </div>
     </nav>
+    <!-- Header Page end-->
 
+    <!-- Assets Table Start-->
     <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-12">
-                <!-- <div class="card mb-4"> -->
-                <div class="card">
+        <div class="row gx-4">
+            <div class="col-lg-7">
+                <?php foreach ($accounts as $account) : ?>
+                    <div class="card card-frame mb-3">
+                        <div class="card-body d-flex gap-4">
+                            <div class="avatar-xxl position-relative">
+                                <img src="<?= base_url("assets/img/" . (user()->user_image ?? 'default-pic.png')); ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm" />
 
-                    <!-- tabel aset -->
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-14">
-                                <div class="alert alert-dark pb-0" role="alert">
-                                    <div class="d-lg-flex">
-                                        <div>
-                                            <h6 class="text-white mb-0">Tambahkan Praktikum</h6>
-                                            <p class="text-white text-xs text-secondary mb-0">
-                                                Hanya admin yang dapat menambahkan, merubah, serta menghapus data
-                                            </p>
-                                        </div>
+                                <div class="position-relative d-flex justify-content-center gap-1">
+                                    <a href="<?= url_to('account.edit', $account->userid); ?>" class="align-middle text-center text-md mt-2 mb-2">
+                                        <button type="submit" class="badge badge-sm bg-warning border-0">Ubah</button>
+                                    </a>
+                                    <form action="<?= url_to('account.delete', $account->userid); ?>" method="post" class="align-middle text-center text-md mt-2 mb-2">
+                                        <?= csrf_field(); ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="badge badge-sm bg-danger border-0 ">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="mb-0"><strong><?= $account->fullname; ?></strong></h5>
+                                <p class="mb-0 font-weight-bold text-sm mt-2"><?= $account->username; ?>/<?= $account->email; ?></p>
+                                <p class="mb-0 font-weight-bold text-sm"><?= $account->identifier; ?> <?= $account->identity_number; ?></p>
+                                <p class="mb-0 font-weight-bold text-sm"><?= $account->major; ?></p>
+                                <?php if ($account->status == "Aktif") : ?>
+                                    <p class="mb-0 font-weight-bold text-sm">Aktif</p>
+                                <?php else : ?>
+                                    <p class="mb-0 font-weight-bold text-sm">Tidak Aktif</p>
+                                <?php endif; ?>
 
-                                        <div class="ms-auto my-auto mt-lg-0 mt-4">
-                                            <div class="ms-auto my-auto">
-                                                <a href="<?= url_to('practicum.create'); ?>" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
-                                            </div>
-                                        </div>
+                                <?php if ($account->name == "admin") : ?>
+                                    <span class="badge badge-sm bg-gradient-primary">Admin</span>
+                                <?php else : ?>
+                                    <span class="badge badge-sm bg-gradient-secondary">Pengguna</span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="col">
+                <div class="col-lg-12 mt-4 mb-4 mt-lg-0">
+                    <div class="card bg-gradient-dark">
+                        <div class="card-header bg-transparent pb-0">
+                            <p class="text-white text-sm text-center"><strong>DAFTAR PERAN AKUN</strong></p>
+                        </div>
+                        <div class="card-body bg-gradient-dark p-3">
+                            <div class="accordion" id="accordionRental">
+                                <div class="accordion-item mb-3">
+                                    <p class="accordion-header text-xs" id="headingOne">
+                                        <button class="accordion-button font-weight-bold text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            Akun Admin
+                                            <i class="collapse-close fa fa-plus text-xs text-white pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                            <i class="collapse-open fa fa-minus text-xs text-white pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                        </button>
+                                    </p>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental">
+                                        <ul class="list-group bg-dark">
+                                            <?php foreach ($accounts as $account) {
+                                                if ($account->group_id == "1") { ?>
+                                                    <li class="list-group-item bg-primary text-white text-xs">
+                                                        <?= $account->fullname; ?>/<?= $account->username; ?>
+                                                    </li>
+                                            <?php }
+                                            } ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-item mb-3">
+                                    <p class="accordion-header text-xs" id="headingTwo">
+                                        <button class="accordion-button font-weight-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Akun Pengguna
+                                            <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                            <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                        </button>
+                                    </p>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionRental">
+                                        <ul class="list-group bg-dark">
+                                            <?php foreach ($accounts as $account) {
+                                                if ($account->group_id == "2") { ?>
+                                                    <li class="list-group-item bg-secondary text-white text-xs">
+                                                        <?= $account->fullname; ?>/<?= $account->username; ?>
+                                                    </li>
+                                            <?php }
+                                            } ?>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <!-- Harusnya sweet alert -->
-                            <!-- <?php if (session()->getFlashdata('succes')) : ?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Berhasil!!</strong> <?= session()->getFlashdata('succes'); ?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="col-lg-12 mt-4 mt-lg-0">
+                    <div class="card bg-gradient-dark">
+                        <div class="card-header bg-transparent pb-0">
+                            <p class="text-white text-sm text-center"><strong>DAFTAR HAK AKSES PERAN</strong></p>
+                        </div>
+                        <div class="card-body bg-gradient-dark p-3">
+                            <div class="col">
+                                <button class="btn btn-primary w-100 text-xs" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleadmin" aria-expanded="false" aria-controls="collapseExample">
+                                    Hak Akses Admin
+                                </button>
+                                <div class="collapse mb-4" id="collapseExampleadmin">
+                                    <div class="card card-body pb-0">
+                                        <?php foreach ($accounts as $account) {
+                                            if ($account->group_id == "2") { ?>
+                                                <p class="text-xs"><?= $account->fullname; ?>/<?= $account->username; ?></p>
+                                        <?php }
+                                        } ?>
+                                        <button class="btn btn-secondary w-100" type="button">
+                                            +&nbsp; Tambahkan Hak Akses Admin
+                                        </button>
+                                    </div>
                                 </div>
-                            <?php endif; ?> -->
 
-
-
-                            <div class="table-responsive p-0">
-                                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                    <div class="dataTable-container">
-                                        <table class="table align-items-center mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Pengampu</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aset yang Digunakan</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jadwal</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lokasi</th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tim</i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Modul</i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></i></th>
-                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></i></th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">-</h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <p class="text-xs font-weight-bold mb-0 align-middle text-center">-</p>
-                                                        <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                    </td>
-                                                    <td>
-                                                        <p class="text-xs font-weight-bold mb-0 align-middle text-center">-</p>
-                                                        <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                    </td>
-                                                    <td>
-                                                        <p class="text-xs font-weight-bold mb-0 align-middle text-center">-</p>
-                                                        <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                    </td>
-                                                    <td>
-                                                        <p class="text-xs font-weight-bold mb-0 align-middle text-center">-</p>
-                                                        <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                    </td>
-                                                    <td>
-                                                        <p class="text-xs font-weight-bold mb-0 align-middle text-center">-</p>
-                                                        <!-- <p class="text-xs text-secondary mb-0"></p> -->
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                            <i class="fas fa-light fa-eye"></i>
-                                                        </a>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="badge badge-sm bg-gradient-success">-</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="badge badge-sm bg-warning">Ubah</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="badge badge-sm bg-danger">Hapus</span>
-                                                    </td>
-                                                    <!-- <td>
-                                                            <button class="btn btn-icon btn-warning btn-sm align-middle" type="button">
-                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button class="btn btn-icon btn-danger btn-sm justify-content-middle" type="button">
-                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
-                                                            </button>
-                                                        </td> -->
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
+                                <button class="btn btn-primary w-100 text-xs" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleuser" aria-expanded="false" aria-controls="collapseExample">
+                                    Hak Akses Pengguna
+                                </button>
+                                <div class="collapse" id="collapseExampleuser">
+                                    <div class="card card-body pb-0">
+                                        <?php foreach ($accounts as $account) {
+                                            if ($account->group_id == "1") { ?>
+                                                <p class="text-xs"><?= $account->fullname; ?>/<?= $account->username; ?></p>
+                                        <?php }
+                                        } ?>
+                                        <button class="btn btn-secondary w-100" type="button">
+                                            +&nbsp; Tambahkan Hak Akses Pengguna
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -270,41 +299,45 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <footer class="footer pt-3  ">
-                <div class="container-fluid">
-                    <div class="row align-items-center justify-content-lg-between">
-                        <div class="col-lg-6 mb-lg-0 mb-4">
-                            <div class="copyright text-center text-sm text-muted text-lg-start">
-                                © <script>
-                                    document.write(new Date().getFullYear())
-                                </script>,
-                                made with <i class="fa fa-heart"></i> by
-                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                                for a better web.
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                                </li>
-                            </ul>
-                        </div>
+
+
+    <footer class=" footer pt-3 ">
+        <div class=" container-fluid">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="copyright text-center text-sm text-muted text-lg-start">
+                        © <script>
+                            document.write(new Date().getFullYear())
+                        </script>,
+                        made with <i class="fa fa-heart"></i> by
+                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                        for a better web.
                     </div>
                 </div>
-            </footer>
+                <div class="col-lg-6">
+                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                        <li class="nav-item">
+                            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <!-- Assets Table End -->
+    </footer>
+    </div>
+    <!-- Assets Table End -->
 
 
 

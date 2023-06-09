@@ -73,8 +73,8 @@
                                     <div class="mb-3">
                                         <small class="form-text text-muted">Choose your identity number type</small>
                                         <select class="form-control" name="identifier">
-                                            <option value="1">NIM</option>
-                                            <option value="2">NIP</option>
+                                            <option value="NIM">NIM</option>
+                                            <option value="NIP">NIP</option>
                                         </select>
                                     </div>
                                     <!-- <div class="mb-3">
@@ -89,7 +89,7 @@
                                             <option value="Teknokimia Nuklir">Teknokimia Nuklir</option>
                                             <option value="Elektronika Instrumentasi">Elektronika Instrumentasi</option>
                                             <option value="Elektronika Mekanika">Elektronika Mekanika</option>
-                                            <option value="Lecturer">Lecturer</option>
+                                            <option value="Dosen/Staf">Dosen/Staf</option>
                                         </select>
                                     </div>
 

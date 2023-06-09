@@ -35,7 +35,7 @@ class ManageAccountController extends BaseController
         ];
 
         // dd($data);
-        return view('account/index', $data);
+        return view('manage/account/index', $data);
     }
 
 
@@ -57,7 +57,7 @@ class ManageAccountController extends BaseController
         ];
 
         // dd($data);
-        return view('account/edit', $data);
+        return view('manage/account/edit', $data);
     }
 
     public function update($userid)
@@ -81,9 +81,6 @@ class ManageAccountController extends BaseController
         $builder->where('user_id', $userid)->update([
             'group_id' => $this->request->getVar('group_id')
         ]);
-
-
-
 
         return redirect()->to(url_to('account.manage'));
     }

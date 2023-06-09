@@ -235,11 +235,19 @@
                                     </div>
                                     <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
                                         <label class="form-control-label" for="identifier">Jenis Identitas</label>
-                                        <input class="form-control" type="text" id="identifier" name="identifier" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $account->identifier; ?>">
+                                        <select class="form-control" id="identifier" name="identifier">
+                                            <option value="NIM">NIM</option>
+                                            <option value="NIP">NIP</option>
+                                        </select>
                                     </div>
                                     <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
                                         <label class="form-control-label" for="major">Program Studi/Profesi</label>
-                                        <input class="form-control" type="text" id="major" name="major" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $account->major; ?>">
+                                        <select class="form-control" id="major" name="major">
+                                            <option value="Teknokimia Nuklir">Teknokimia Nuklir</option>
+                                            <option value="Elektronika Instrumentasi">Elektronika Instrumentasi</option>
+                                            <option value="Elektronika Mekanika">Elektronika Mekanika</option>
+                                            <option value="Dosen/Staf">Dosen/Staf</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -247,10 +255,12 @@
                                 <div class="form-group row">
                                     <div class="col-12 col-sm-6">
                                         <label for="status">Status</label>
-                                        <input class="form-control" type="text" id="status" name="status" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $account->status; ?>">
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="Aktif">Aktif</option>
+                                            <option value="Tidak Aktif">Tidak Aktif</option>
+                                        </select>
                                     </div>
 
-                                    <!-- belom jalan -->
                                     <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                         <label for="group_id">Peran</label>
                                         <select class="form-control" id="group_id" name="group_id">
