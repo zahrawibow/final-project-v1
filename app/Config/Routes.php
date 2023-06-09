@@ -104,8 +104,15 @@ $routes->group('practicum', static function ($routes) {
 // Schedule Routes
 $routes->get('/schedule', 'ScheduleController::index');
 
+
+$routes->group('myprofile', static function ($routes) {
+    $routes->get('/', 'ProfileController::index', ['as' => 'myprofile.index']);
+    $routes->get('edit/(:segment)', 'ProfileController::edit/$1', ['as' => 'myprofile.edit']);
+});
+
 // Profile Routes
-$routes->get('/myprofile', 'ProfileController::index');
+// $routes->get('/myprofile', 'ProfileController::index');
+// $routes->get('edit/(:segment)', 'ManageAccountController::edit/$1', ['as' => 'account.edit']);
 
 
 //---------------------------ADMIN ROLE-------------------------------

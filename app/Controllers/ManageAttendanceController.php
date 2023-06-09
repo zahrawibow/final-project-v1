@@ -6,7 +6,7 @@ use App\Models\AttendanceModel;
 
 class ManageAttendanceController extends BaseController
 {
-    protected $attendanceModel;
+
     protected $attendances;
 
     public function __construct()

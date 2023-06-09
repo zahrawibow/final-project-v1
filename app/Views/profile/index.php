@@ -84,53 +84,30 @@
                     <div class="card-header pb-0 p-3">
                         <h6 class="mb-0">Aktivitas Anda</h6>
                     </div>
-                    <div class="card-body p-3">
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder">
+                    <div class="card-body p-3 overflow-y-scroll" style="height: 200px;">
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder ms-2">
                             Satu Pekan Terakhir
                         </h6>
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked="" />
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Email me when someone follows me</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1" />
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked="" />
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
-                                </div>
-                            </li>
-                        </ul>
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">
-                            Application
-                        </h6>
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3" />
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">New launches and projects</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked="" />
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Monthly product updates</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0 pb-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5" />
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Kunjungan Laboratorium</p>
+                                <?php foreach ($attendances as $attend) : ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Melakukan kunjungan laboratorium pada waktu <?= $attend->created_at; ?> dengan kegiatan <?= $attend->activity; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Pemakaian Aset</p>
+                                <?php foreach ($logs as $log) : ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Menggunakan aset <?= $log->name; ?> pada kegiatan <?= $log->purpose; ?>, tanggal <?= $log->logscreated; ?> mulai pukul <?= $log->start_time; ?> sampai pukul <?= $log->end_time; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,7 +120,7 @@
                                 <h6 class="mb-0">Informasi Profil</h6>
                             </div>
                             <div class="col-md-4 text-end">
-                                <a href="javascript:;">
+                                <a href="<?= url_to('myprofile.edit', user()->id); ?>">
                                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile" data-bs-original-title="Edit Profile"></i><span class="sr-only">Edit Profile</span>
                                 </a>
                             </div>
@@ -153,33 +130,35 @@
                         <p class="text-sm">
                             <?= (user()->description ?? 'Kosong'); ?>
                         </p>
-                        <hr class="horizontal gray-light my-4" />
+                        <hr class="horizontal gray-light my-1" />
                         <ul class="list-group">
                             <li class="list-group-item border-0 ps-0 pt-0 text-sm">
                                 <strong class="text-dark">Nama Lengkap :</strong> &nbsp; <?= user()->fullname; ?>
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
-                                <strong class="text-dark">Mobile:</strong> &nbsp; (44) 123
-                                1234 123
+                                <strong class="text-dark">Nama Pengguna :</strong> &nbsp; <?= user()->username; ?>
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
-                                <strong class="text-dark">Email:</strong> &nbsp;
+                                <strong class="text-dark">Alamat Surel :</strong> &nbsp;
                                 <?= user()->email; ?>
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
-                                <strong class="text-dark">Location:</strong> &nbsp; USA
+                                <strong class="text-dark">Jenis Identitas/Nomor :</strong> &nbsp; <?= user()->identifier; ?>/<?= user()->identity_number; ?>
                             </li>
-                            <li class="list-group-item border-0 ps-0 pb-0">
-                                <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                                <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
-                                </a>
-                                <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
-                                </a>
-                                <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
-                                </a>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Jurusan/Profesi :</strong> &nbsp; <?= user()->major; ?>
+                            </li>
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Status :</strong> &nbsp; Aktif
+                            </li>
+
+                            <li class="list-group-item border-0 ps-0 text-sm">
+                                <strong class="text-dark">Peran :</strong>
+                                <?php if ($accounts[0]->name == "admin") : ?>
+                                    <span class="badge badge-sm bg-gradient-primary">Admin</span>
+                                <?php else : ?>
+                                    <span class="badge badge-sm bg-gradient-secondary">Pengguna</span>
+                                <?php endif; ?>
                             </li>
                         </ul>
                     </div>
@@ -189,61 +168,14 @@
             <div class="col-12 col-xl-4 mt-xl-0 mt-4">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
-                        <h6 class="mb-0">Tanggungan Pinjaman dan Praktikum</h6>
+                        <h6 class="mb-0">Pinjaman dan Praktikum</h6>
                     </div>
                     <div class="card-body p-3">
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                <div class="avatar me-3">
-                                    <img src="./profile_files/kal-visuals-square.jpg" alt="kal" class="border-radius-lg shadow" />
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Sophie B.</h6>
-                                    <p class="mb-0 text-xs">Hi! I need more information..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                <div class="avatar me-3">
-                                    <img src="./profile_files/marie.jpg" alt="kal" class="border-radius-lg shadow" />
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Anne Marie</h6>
-                                    <p class="mb-0 text-xs">Awesome work, can you..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                <div class="avatar me-3">
-                                    <img src="./profile_files/ivana-square.jpg" alt="kal" class="border-radius-lg shadow" />
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Ivanna</h6>
-                                    <p class="mb-0 text-xs">About files I can..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                <div class="avatar me-3">
-                                    <img src="./profile_files/team-4.jpg" alt="kal" class="border-radius-lg shadow" />
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Peterson</h6>
-                                    <p class="mb-0 text-xs">Have a great afternoon..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                            <li class="list-group-item border-0 d-flex align-items-center px-0">
-                                <div class="avatar me-3">
-                                    <img src="./profile_files/team-3.jpg" alt="kal" class="border-radius-lg shadow" />
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Nick Daniel</h6>
-                                    <p class="mb-0 text-xs">Hi! I need more information..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                        </ul>
+                        <div class="card card-frame ">
+                            <div class="card-body">
+                                This is some text within a card body.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
