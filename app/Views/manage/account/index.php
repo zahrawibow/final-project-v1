@@ -183,7 +183,7 @@
                             </div>
                             <div>
                                 <h5 class="mb-0"><strong><?= $account->fullname; ?></strong></h5>
-                                <p class="mb-0 font-weight-bold text-sm mt-2"><?= $account->username; ?>/<?= $account->email; ?></p>
+                                <p class="mb-0 font-weight-bold text-sm mt-2"><?= $account->username; ?> / <?= $account->email; ?></p>
                                 <p class="mb-0 font-weight-bold text-sm"><?= $account->identifier; ?> <?= $account->identity_number; ?></p>
                                 <p class="mb-0 font-weight-bold text-sm"><?= $account->major; ?></p>
                                 <?php if ($account->status == "Aktif") : ?>
@@ -197,6 +197,12 @@
                                 <?php else : ?>
                                     <span class="badge badge-sm bg-gradient-secondary">Pengguna</span>
                                 <?php endif; ?>
+
+                                <?php foreach ($laboratorians as $labor) : ?>
+                                    <?php if ($account->userid == $labor->user_id) : ?>
+                                        <span class="badge badge-sm bg-gradient-success">Laboratorian</span>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -209,7 +215,7 @@
                         <div class="card-header bg-transparent pb-0">
                             <p class="text-white text-sm text-center"><strong>DAFTAR PERAN AKUN</strong></p>
                         </div>
-                        <div class="card-body bg-gradient-dark p-3">
+                        <div class="card-body bg-gradient-dark p-3 rounded rounded-8">
                             <div class="accordion" id="accordionRental">
                                 <div class="accordion-item mb-3">
                                     <p class="accordion-header text-xs" id="headingOne">
@@ -234,12 +240,30 @@
                                 <div class="accordion-item mb-3">
                                     <p class="accordion-header text-xs" id="headingTwo">
                                         <button class="accordion-button font-weight-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Akun Pengguna
+                                            Akun Laboratorian
                                             <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                             <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                         </button>
                                     </p>
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionRental">
+                                        <ul class="list-group bg-dark">
+                                            <?php foreach ($laboratorians as $labor) : ?>
+                                                <li class="list-group-item bg-success text-white text-xs" value="<?= $labor->id; ?>">
+                                                    <?= $labor->fullname ?> / <?= $labor->username ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-item mb-3">
+                                    <p class="accordion-header text-xs" id="headingThree">
+                                        <button class="accordion-button font-weight-bold text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Akun Pengguna
+                                            <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                            <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
+                                        </button>
+                                    </p>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionRental">
                                         <ul class="list-group bg-dark">
                                             <?php foreach ($accounts as $account) {
                                                 if ($account->group_id == "2") { ?>
@@ -261,7 +285,7 @@
                         <div class="card-header bg-transparent pb-0">
                             <p class="text-white text-sm text-center"><strong>DAFTAR HAK AKSES PERAN</strong></p>
                         </div>
-                        <div class="card-body bg-gradient-dark p-3">
+                        <div class="card-body bg-gradient-dark p-3 rounded rounded-8">
                             <div class="col">
                                 <button class="btn btn-primary w-100 text-xs" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleadmin" aria-expanded="false" aria-controls="collapseExample">
                                     Hak Akses Admin

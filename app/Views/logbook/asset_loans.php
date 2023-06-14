@@ -199,22 +199,26 @@
                         <div class="col-12 col-lg-8 m-auto">
                             <form class="multisteps-form__form mb-8" style="height: 395px">
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Form Peminjaman</h5>
+                                    <h4 class="font-weight-bolder text-center">Form Peminjaman</h4>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
-
-                                            <div class="row">
+                                            <div class="row text-center">
                                                 <div class="form-group col-12 col-sm-6">
                                                     <label for="asset_id">Aset</label>
-                                                    <select class="form-control" id="aset_id" name="asset_id">
+                                                    <select class="form-control" id="asset_id" name="asset_id">
+                                                        <option value="">Pilih Aset</option>
                                                         <?php foreach ($assets as $asset) : ?>
-                                                            <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
+                                                            <option value="<?= $asset['id']; ?>">
+                                                                <?= $asset['name']; ?>
+                                                            </option>
                                                         <?php endforeach; ?>
                                                     </select>
+                                                    <!-- <input type="hidden" value="<?= $asset['merk']; ?>" id="merk" name="merk"> -->
                                                 </div>
                                                 <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                                     <label for="purpose">Keperluan</label>
                                                     <select class="form-control" id="purpose" name="purpose">
+                                                        <option value="">Pilih Keperluan</option>
                                                         <option value="Praktikum">Praktikum</option>
                                                         <option value="Ujian Praktikum">Ujian Praktikum</option>
                                                         <option value="Penelitian">Penelitian</option>
@@ -224,7 +228,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row">
+                                            <div class="row text-center">
                                                 <div class="form-group col-12 col-sm-6">
                                                     <label class="form-control-label" for="loan_time">Tanggal Peminjaman</label>
                                                     <input class="form-control" type="date" id="loan_time" name="loan_time">
@@ -238,33 +242,47 @@
 
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">
-                                                Next
+                                                Selanjutnya
                                             </button>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Media</h5>
+                                    <h4 class="font-weight-bolder text-center">Konfirmasi Peminjaman</h4>
                                     <div class="multisteps-form__content">
-                                        <div class="row mt-3">
-                                            <div class="col-12">
-                                                <label>Product images</label>
-                                                <div action="/file-upload" class="form-control dropzone dz-clickable" id="productImg">
-                                                    <div class="dz-default dz-message">
-                                                        <button class="dz-button" type="button">
-                                                            Drop files here to upload
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                        <div class="row mt-2">
+                                            <div class="card-body p-3">
+                                                <hr class="horizontal gray-light my-1" />
+                                                <ul class="list-group">
+                                                    <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                                                        <p class="text-secondary mb-1">Identitas Peminjam</p>
+                                                        <p class="mb-0 font-weight-bold px-4"><strong><?= (user()->fullname); ?></strong></p>
+                                                        <p class="text-sm mb-0 px-4"><?= (user()->username); ?> / <?= (user()->email); ?></p>
+                                                        <p class="text-sm mb-0 px-4"><?= user()->major; ?></p>
+                                                        <p class="text-sm mb-0 px-4"><?= user()->identifier; ?>. <?= user()->identity_number; ?></p>
+                                                        <p class="text-sm mb-0 px-4"> Pengguna <?= user()->status; ?></p>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                                        <p class="text-secondary mb-1">Detail Aset</p>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                                        <p class="text-secondary mb-1">Detail Peminjaman</p>
+                                                        <p class="mb-0 font-weight-bold px-4" id="purpose_show"><strong></strong></p>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm">
+                                                        <p class="text-secondary mb-1">Surat Peminjaman Aset, terlampir dibawah</p>
+
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">
-                                                Prev
+                                                Sebelumnya
                                             </button>
                                             <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">
-                                                Next
+                                                Konfirmasi
                                             </button>
                                         </div>
                                     </div>
@@ -367,4 +385,18 @@
         </footer>
     </div>
 </main>
+
+<script>
+    $("#asset_id").change(function(e) {
+        e.preventDefault();
+        $("#asset_show").html($("#asset_id option:selected").html());
+    });
+</script>
+<script>
+    $("#purpose").change(function(e) {
+        e.preventDefault();
+        $("#purpose_show").html($("#purpose option:selected").html());
+    });
+</script>
+
 <?= $this->endSection(); ?>

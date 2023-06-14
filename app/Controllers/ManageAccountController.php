@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 use CodeIgniter\Database\Query;
+use Config\App;
 use \Myth\Auth\Models\GroupModel;
 use \Myth\Auth\Models\UserModel;
+use App\Models\LaboratoriansModel;
 
 
 class ManageAccountController extends BaseController
@@ -12,26 +14,41 @@ class ManageAccountController extends BaseController
 
     protected $userModel;
     protected $groupModel;
+    protected $laboratoriansModel;
 
 
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->groupModel = new GroupModel();
+        $this->laboratoriansModel = new LaboratoriansModel();
     }
 
     public function index()
     {
+
         $db = \Config\Database::connect();
         $builder = $db->table('users');
         $builder->select('users.id as userid, fullname, username, email, user_image, identity_number, identifier, major, status, auth_groups_users.group_id, auth_groups.name');
         $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
         $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        // $builder->join('laboratorians', 'laboratorians.user_id = users.id');
         $query = $builder->get();
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('users.id as userid, fullname, username, laboratorians.*');
+        $builder->join('laboratorians', 'laboratorians.user_id = users.id');
+        // $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        // $builder->join('laboratorians', 'laboratorians.user_id = users.id');
+        $laboratorians = $builder->get();
+
+
 
         $data = [
             'title' => 'Manage Account',
-            'accounts' => $query->getResult()
+            'accounts' => $query->getResult(),
+            'laboratorians' => $laboratorians->getResult()
         ];
 
         // dd($data);
@@ -62,8 +79,6 @@ class ManageAccountController extends BaseController
 
     public function update($userid)
     {
-        // dd($this->request->getVar());
-
         $this->userModel->save([
             'id' => $userid,
             'fullname' => $this->request->getVar('fullname'),
@@ -92,6 +107,7 @@ class ManageAccountController extends BaseController
 
     //     return redirect()->to(url_to('practicum.manage'));
     // }
+
     public function delete($userid)
     {
 

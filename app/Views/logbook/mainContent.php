@@ -331,71 +331,11 @@
                                 <!-- <b>500</b> Messages -->
                             </li>
                         </ul>
-                        <a class="btn bg-gradient-dark w-100 mt-4 mb-0" href="/assetloans">
+                        <a class="btn bg-gradient-dark w-100 mt-4 mb-0" href="/asset-loans">
                             Get started
                         </a>
                     </div>
                 </div>
-
-                <form action="/storedloans" method="post">
-                    <div class="form group modal fade" id="loan" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <div class="card card-plain">
-                                        <div class="card-header pb-0 text-left">
-                                            <h4 class="font-weight-bolder text-info text-gradient text-center">Form Peminjaman Aset</h4>
-                                            <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai dengan aset yang akan dipinjam serta keterangan yang diperlukan</p>
-                                        </div>
-                                        <div class="card-body">
-                                            <form role="form text-left">
-                                                <div class="form-group">
-                                                    <label for="aset_id">Aset</label>
-                                                    <select class="form-control" id="aset_id" name="aset_id">
-                                                        <?php foreach ($assets as $asset) : ?>
-                                                            <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="purpose">Keperluan</label>
-                                                    <select class="form-control" id="purpose" name="purpose">
-                                                        <option value="Praktikum">Praktikum</option>
-                                                        <option value="Ujian Praktikum">Ujian Praktikum</option>
-                                                        <option value="Penelitian">Penelitian</option>
-                                                        <option value="Tugas Akhir">Tugas Akhir</option>
-                                                        <option value="Magang/PKL">Magang/PKL</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="form-group col-12 col-sm-6">
-                                                        <label class="form-control-label" for="loan_time">Tanggal Peminjaman</label>
-                                                        <input class="form-control" type="date" id="loan_time" name="loan_time">
-                                                    </div>
-                                                    <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
-                                                        <label for="permission_tax" class="form-label">Surat Peminjaman Aset</label>
-                                                        <input class="form-control" type="file" id="permission_tax" multiple name="permission_tax">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="currant_condition">Kondisi Aset Sebelum Peminjaman</label>
-                                                    <textarea class="form-control" id="currant_condition" rows="2" name="currant_condition"></textarea>
-                                                </div>
-
-                                                <div class="text-center">
-                                                    <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-2 mb-0">Submit</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
             </div>
 
             <div class="col-md-4 mb-4">

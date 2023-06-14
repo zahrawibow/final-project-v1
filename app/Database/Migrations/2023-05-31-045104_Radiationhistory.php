@@ -52,7 +52,7 @@ class Radiationhistory extends Migration
                 'type' => 'DATETIME',
                 'default' => new RawSql('CURRENT_TIMESTAMP')
             ],
-            
+
         ];
         $this->forge->addField('id');
         $this->forge->addForeignKey('user_id', 'users', 'id');

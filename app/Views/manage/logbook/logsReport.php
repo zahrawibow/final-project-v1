@@ -188,7 +188,7 @@
                                                 <?php foreach ($logs as $log) : ?>
                                                     <tr>
                                                         <td>
-                                                            <div class="d-flex px-3 py-1">
+                                                            <div class="d-flex py-1">
                                                                 <div class="d-flex flex-column justify-content-center">
                                                                     <h6 class="mb-0 text-sm"><?= $log['fullname']; ?></h6>
                                                                 </div>

@@ -30,6 +30,7 @@
     <!-- CSS Files -->
     <!-- <link id="pagestyle" href="" rel="stylesheet" /> -->
     <link id="pagestyle" href="<?= base_url('assets/css/soft-ui-dashboard.min.css'); ?>" rel="stylesheet" />
+    <script src="<?= base_url('assets/js/jquery-3.7.0.min.js'); ?>"></script>
 </head>
 <style>
     .uppercase-text {
@@ -332,6 +333,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="<?= base_url('assets/js/soft-ui-dashboard.min.js'); ?>"></script>
+
 </body>
 
 </html>

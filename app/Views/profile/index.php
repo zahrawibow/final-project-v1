@@ -63,7 +63,7 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="<?= base_url("assets/img/" . (user()->user_image ?? 'default-pic.png')); ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm" />
+                        <img src="<?= base_url("assets/img/" . (user()->user_image ?? 'default-pic.png')); ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm" id="profile-picture" />
                     </div>
                 </div>
                 <div class="col-auto my-auto">
@@ -88,7 +88,7 @@
                         <h6 class="text-uppercase text-body text-xs font-weight-bolder ms-2">
                             Satu Pekan Terakhir
                         </h6>
-                        <div class="card card-frame mb-2">
+                        <!-- <div class="card card-frame mb-2">
                             <div class="card-body">
                                 <p class="card-title text-info text-gradient text-ms font-weight-bolder">Kunjungan Laboratorium</p>
                                 <?php foreach ($attendances as $attend) : ?>
@@ -97,8 +97,22 @@
                                     </blockquote>
                                 <?php endforeach; ?>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Kunjungan Laboratorium</p>
+                                <?php foreach ($attendances as $attend) : ?>
+                                    <?php
+                                    $createdAt = date('Y-m-d', strtotime($attend->created_at));
+                                    ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Melakukan kunjungan laboratorium pada tanggal <?= $createdAt; ?> dengan kegiatan <?= $attend->activity; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+
+                        <!-- <div class="card card-frame mb-2">
                             <div class="card-body">
                                 <p class="card-title text-info text-gradient text-ms font-weight-bolder">Pemakaian Aset</p>
                                 <?php foreach ($logs as $log) : ?>
@@ -107,7 +121,77 @@
                                     </blockquote>
                                 <?php endforeach; ?>
                             </div>
+                        </div> -->
+                        <!-- <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Pemakaian Aset</p>
+                                <?php foreach ($logs as $log) : ?>
+                                    <?php
+                                    $logscreated = date('Y-m-d', strtotime($log->logscreated));
+                                    ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Menggunakan aset <?= $log->name; ?> pada kegiatan <?= $log->purpose; ?>, tanggal <?= $logscreated; ?> mulai pukul <?= $log->start_time; ?> sampai pukul <?= $log->end_time; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
+                        </div> -->
+                        <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Pemakaian Aset</p>
+                                <?php foreach ($logs as $log) : ?>
+                                    <?php
+                                    $logscreated = date('Y-m-d', strtotime($log->logscreated));
+                                    $startTime = date('H:i', strtotime($log->start_time));
+                                    $endTime = date('H:i', strtotime($log->end_time));
+                                    ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Menggunakan aset <?= $log->name; ?> pada kegiatan <?= $log->purpose; ?>, tanggal <?= $logscreated; ?> mulai pukul <?= $startTime; ?> sampai pukul <?= $endTime; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
+
+
+                        <!-- <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Paparan Radiasi</p>
+                                <?php foreach ($radiations as $rad) : ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Terpapar radiasi dari sumber <?= $rad->radioisotope; ?> saat kegiatan <?= $rad->activity; ?> menggunakan aset <?= $rad->name; ?> pada tanggal <?= $rad->created_at; ?> mulai pukul <?= $rad->start_time; ?> sampai pukul <?= $rad->end_time; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
+                        </div> -->
+                        <!-- <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Paparan Radiasi</p>
+                                <?php foreach ($radiations as $rad) : ?>
+                                    <?php
+                                    $createdAt = date('Y-m-d', strtotime($rad->created_at));
+                                    ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Terpapar radiasi dari sumber <?= $rad->radioisotope; ?> saat kegiatan <?= $rad->activity; ?> menggunakan aset <?= $rad->name; ?> pada tanggal <?= $createdAt; ?> mulai pukul <?= $rad->start_time; ?> sampai pukul <?= $rad->end_time; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
+                        </div> -->
+                        <div class="card card-frame mb-2">
+                            <div class="card-body">
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Paparan Radiasi</p>
+                                <?php foreach ($radiations as $rad) : ?>
+                                    <?php
+                                    $createdAt = date('Y-m-d', strtotime($rad->created_at));
+                                    $startTime = date('H:i', strtotime($rad->start_time));
+                                    $endTime = date('H:i', strtotime($rad->end_time));
+                                    ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Terpapar radiasi dari sumber <?= $rad->radioisotope; ?> saat kegiatan <?= $rad->activity; ?> menggunakan aset <?= $rad->name; ?> pada tanggal <?= $createdAt; ?> mulai pukul <?= $startTime; ?> sampai pukul <?= $endTime; ?>.</p>
+                                    </blockquote>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -143,7 +227,7 @@
                                 <?= user()->email; ?>
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
-                                <strong class="text-dark">Jenis Identitas/Nomor :</strong> &nbsp; <?= user()->identifier; ?>/<?= user()->identity_number; ?>
+                                <strong class="text-dark">Jenis Identitas / Nomor :</strong> &nbsp; <?= user()->identifier; ?> / <?= user()->identity_number; ?>
                             </li>
                             <li class="list-group-item border-0 ps-0 text-sm">
                                 <strong class="text-dark">Jurusan/Profesi :</strong> &nbsp; <?= user()->major; ?>

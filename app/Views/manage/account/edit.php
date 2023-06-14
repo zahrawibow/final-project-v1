@@ -185,7 +185,6 @@
                                 <p class="mb-0 font-weight-bold text-sm"><?= $account->username; ?> / <?= $account->email; ?></p>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -251,7 +250,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="form-group row">
                                     <div class="col-12 col-sm-6">
                                         <label for="status">Status</label>
@@ -286,7 +284,6 @@
                         </div>
                     </div>
                 </div>
-
             </form>
         <?php endforeach; ?>
 

@@ -46,12 +46,12 @@ $routes->group('attendance', static function ($routes) {
 
 // Logbook Routes
 $routes->get('/logbook', 'LogbookController::index');
-$routes->get('/assetloans', 'LogbookController::asset_loans');
 
 // Logbook Manage Routes (Admin previleges)
-$routes->group('loans', static function ($routes) {
+$routes->group('asset-loans', static function ($routes) {
+    $routes->get('/', 'LogbookController::asset_loans', ['as' => 'asset.loan']); //non-controller
     $routes->post('store', 'LogbookController::stored_loaning', ['as' => 'loan.store']); //non-controller
-    $routes->get('manage', 'ManageLogsController::index', ['as' => 'log.manage', 'filter' => 'role:admin']); //non-controller
+    // $routes->get('manage', 'ManageLogsController::index', ['as' => 'log.manage', 'filter' => 'role:admin']); //non-controller
 });
 
 // Logbook Manage Routes (Admin previleges)
@@ -108,6 +108,8 @@ $routes->get('/schedule', 'ScheduleController::index');
 $routes->group('myprofile', static function ($routes) {
     $routes->get('/', 'ProfileController::index', ['as' => 'myprofile.index']);
     $routes->get('edit/(:segment)', 'ProfileController::edit/$1', ['as' => 'myprofile.edit']);
+    $routes->post('update/(:segment)', 'ProfileController::update/$1', ['as' => 'myprofile.stored']);
+    // $routes->post('update/(:segment)', 'ManageAccountController::update/$1', ['as' => 'account.update']);
 });
 
 // Profile Routes
