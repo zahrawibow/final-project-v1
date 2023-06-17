@@ -39,11 +39,11 @@
                     </a>
                     <div class="collapse" id="adminNavBar">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <!-- <li class="nav-item active">
                                 <a class="nav-link active" href="/testing"> </span>
                                     <span class="sidenav-normal">Kelola Pagu Utama</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= url_to('attendance.manage'); ?>"> </span>
                                     <span class="sidenav-normal">Kelola Daftar Kunjungan</span>

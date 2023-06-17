@@ -5,12 +5,14 @@ namespace App\Controllers;
 use App\Models\PracticumModel;
 use App\Models\AssetModel;
 use App\Models\LaboratoriansModel;
+use App\Models\TeamsModel;
 
 class ManagePracticumController extends BaseController
 {
     protected $practicumModel;
     protected $assetModel;
     protected $laboratoriansModel;
+    protected $teamsModel;
 
 
     public function __construct()
@@ -18,6 +20,7 @@ class ManagePracticumController extends BaseController
         $this->practicumModel = new PracticumModel();
         $this->assetModel = new AssetModel();
         $this->laboratoriansModel = new LaboratoriansModel();
+        $this->teamsModel = new TeamsModel();
     }
 
     public function index()
@@ -31,13 +34,21 @@ class ManagePracticumController extends BaseController
             ->get()
             ->getResultArray();
 
-
+        $db      = \Config\Database::connect();
+        $builder = $db->table('teams');
+        $team = $builder->select('teams.*, users.fullname')
+            ->join('users', 'teams.id = users.team_id')
+            ->get()
+            ->getResultArray();
 
         $data = [
             'title' => 'Manage Practicum',
             'practicum' => $practicum,
+            'teamjoin' => $team,
+            'teams' => $this->teamsModel->getTeamsData(),
             // 'assets' => $this->assetModel->getAssetData()
         ];
+        // dd($data);
         return view('manage/practicum/index', $data);
     }
 
@@ -57,6 +68,25 @@ class ManagePracticumController extends BaseController
             'laboratorians' => $laboratorian
         ];
         return view('/manage/practicum/create', $data);
+    }
+
+    public function create_team()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('teams');
+        $team = $builder->select('teams.*, users.fullname')
+            ->join('users', 'teams.id = users.team_id')
+            ->get()
+            ->getResultArray();
+
+        $data = [
+            'title' => 'Create Practicum',
+            // 'practicum' => $this->practicumModel->getPracticumData(),
+            // 'assets' => $this->assetModel->getAssetData(),
+            'team' => $team
+        ];
+        dd($team);
+        return view('/manage/practicum/create_team', $data);
     }
 
     public function stored_practicum()
@@ -86,27 +116,6 @@ class ManagePracticumController extends BaseController
     }
 
 
-    // public function edit($id)
-    // {
-    //     $db = \Config\Database::connect();
-    //     $builder = $db->table('practicums');
-    //     $practicum = $builder->select('practicums.*, laboratorians.user_id as userlaboratorian, users.*, assets.*')
-    //         ->join('laboratorians', 'practicums.laboratorian_id = laboratorians.id')
-    //         ->join('users', 'users.id = laboratorians.user_id')
-    //         ->join('assets', 'practicums.asset_id = assets.id') // Tambahkan operasi JOIN untuk tabel assets
-    //         ->get()
-    //         ->getResultArray();
-
-
-    //     dd($practicum);
-    //     $data = [
-    //         'title' => 'Manage Practicum',
-    //         'practicum' => $practicum,
-    //         'assets' => $this->assetModel->getAssetData()
-    //     ];
-    //     return view('manage/practicum/edit', $data);
-    // }
-
     public function edit($id)
     {
         $db      = \Config\Database::connect();
@@ -125,6 +134,26 @@ class ManagePracticumController extends BaseController
 
         // dd($data);
         return view('manage/practicum/edit', $data);
+    }
+
+    public function edit_team($id)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('teams');
+        $team = $builder->select('teams.*, users.fullname')
+            ->join('users', 'teams.id = users.team_id')
+            ->get()
+            ->getResultArray();
+
+        $data = [
+            'title' => 'Edit Detail',
+            // 'practicum' => $this->practicumModel->getPracticumData($id),
+            'teamjoin' => $team,
+            'teams' => $this->teamsModel->getTeamsData($id)
+        ];
+
+        // dd($data);
+        return view('manage/practicum/edit_team', $data);
     }
 
     public function update($id)

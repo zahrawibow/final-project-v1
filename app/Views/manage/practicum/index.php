@@ -256,16 +256,6 @@
                                                                 <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>
                                                             </td>
                                                         </form>
-                                                        <!-- <td>
-                                                            <button class="btn btn-icon btn-warning btn-sm align-middle" type="button">
-                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button class="btn btn-icon btn-danger btn-sm justify-content-middle" type="button">
-                                                                <span class="btn-inner--icon"><i class="ni ni-button-play"></i></span>
-                                                            </button>
-                                                        </td> -->
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
@@ -278,29 +268,48 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 mb-md-0 mb-4 mt-4">
+            <div class="col-lg-12 mb-md-0 mb-4 mt-4">
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-lg-6 col-7">
                                 <h6>Kelompok Praktikum</h6>
-                                <p class="text-sm mb-0">
-                                    <i class="fa fa-check text-info" aria-hidden="true"></i>
-                                    <span class="font-weight-bold ms-1"></span> Semester VIII
-                                </p>
+                            </div>
+                        </div>
+                        <div class="col-14 mt-2 pb-0">
+                            <div class="alert alert-dark pb-0" role="alert">
+                                <div class="d-lg-flex">
+                                    <div>
+                                        <h6 class="text-white mb-0">Tambahkan Kelompok</h6>
+                                        <p class="text-white text-xs text-secondary mb-3">
+                                            Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                        </p>
+                                    </div>
+
+                                    <div class="ms-auto my-auto mt-lg-0 mt-4">
+                                        <div class="ms-auto my-auto">
+                                            <a href="<?= url_to('team.create'); ?>" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">Tambahkan</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body px-0 pb-2">
+                    <div class="card-body px-0 pb-2 pt-0">
                         <div class="table-responsive">
+
                             <table class="table align-items-center mb-0">
+
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Nama Kelompok
+                                            Kelompok
                                         </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Anggota
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs text-center font-weight-bolder opacity-7">
+                                            Semester
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Mata Kuliah
@@ -309,36 +318,52 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-3 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">A</h6>
+
+                                    <?php foreach ($teams as $team) : ?>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex ps-3">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm"><?= $team['team']; ?></h6>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group mt-2">
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                    <img src="../assets/img/team-1.jpg" alt="team1" />
+                                            </td>
+                                            <td>
+                                                <div class="d-flex row text-center text-sm ps-0">
+                                                    <span class="text-xs font-weight-bold text-center">
+                                                        <?php foreach ($teamjoin as $t) : ?>
+                                                            <?php if ($t['team'] == $team['team']) : ?>
+                                                                <?= $t['fullname'] ?> <br>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold text-center">
+                                                    <?= $team['semester']; ?>
+                                                </span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-xs font-weight-bold">
+                                                    <?= $team['lesson']; ?>
+                                                </span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm py-0 px-0">
+                                                <a href="<?= url_to('team.edit', $team['id']); ?>">
+                                                    <button type="submit" class="badge badge-sm bg-warning border-0">Ubah</button>
                                                 </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                    <img src="../assets/img/team-2.jpg" alt="team2" />
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                                                    <img src="../assets/img/team-3.jpg" alt="team3" />
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                    <img src="../assets/img/team-1.jpg" alt="team4" />
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold">
-                                                Praktikum Instrumentasi Radiologi dan Kedokteran Nuklir
-                                            </span>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <form action="" method="post">
+                                                <td class="align-middle text-center text-sm ms-0">
+                                                    <?= csrf_field(); ?>
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                    <?php endforeach; ?>
+
                                 </tbody>
 
                             </table>
