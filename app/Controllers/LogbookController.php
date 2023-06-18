@@ -71,15 +71,49 @@ class LogbookController extends BaseController
 
     public function stored_loaning()
     {
-        $this->loansModel->save([
-            'asset_id' => $this->request->getVar('asset_id'),
-            'user_id' => user_id(),
-            'purpose' => $this->request->getVar('purpose'),
-            'loan_time' => $this->request->getVar('loan_time'),
-            'permission_tax' => $this->request->getVar('permission_tax')
+        if (!$this->request->isAJAX()) :
+            return json_encode('fasfas');
+        endif;
+
+        $validation = \Config\Services::validation();
+
+        $validation->setRules([
+            'asset_id' => 'required',
+            'purpose' => 'required',
+            'loan_time' => 'required'
         ]);
 
-        return redirect()->to('/logbook');
+        $data = [
+            'asset_id' => $this->request->getVar('asset_id'),
+            'purpose' => $this->request->getVar('purpose'),
+            'loan_time' => $this->request->getVar('loan_time'),
+        ];
+
+        if (!$validation->run($data)) :
+            return response()->setContentType('application/json')->setStatusCode(404);
+        endif;
+
+        $tool = $this->assetModel->where('id', $data['asset_id'])->first();
+
+        $data += [
+            'user_id' => user_id(),
+            'current_condition' => $tool['condition']
+        ];
+
+        $this->loansModel->insert($data);
+
+        return response()->setContentType('application/json')->setStatusCode(200)->setJSON($data);
+
+
+        // $this->loansModel->save([
+        //     'asset_id' => $this->request->getVar('asset_id'),
+        //     'user_id' => user_id(),
+        //     'purpose' => $this->request->getVar('purpose'),
+        //     'loan_time' => $this->request->getVar('loan_time'),
+        //     'permission_tax' => $this->request->getVar('permission_tax')
+        // ]);
+
+        // return redirect()->to('/logbook');
     }
 
 

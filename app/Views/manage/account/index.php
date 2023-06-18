@@ -163,10 +163,10 @@
     <!-- Assets Table Start-->
     <div class="container-fluid py-4">
         <div class="row gx-4">
-            <div class="col-lg-7">
+            <div class="col-lg-7 overflow-y-scroll" style="height: 500px;">
                 <?php foreach ($accounts as $account) : ?>
-                    <div class="card card-frame mb-3">
-                        <div class="card-body d-flex gap-4">
+                    <div class="card card-frame mb-3 ">
+                        <div class="card-body d-flex gap-4 ">
                             <div class="avatar-xxl position-relative">
                                 <img src="<?= base_url("assets/img/" . (user()->user_image ?? 'default-pic.png')); ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm" />
 
