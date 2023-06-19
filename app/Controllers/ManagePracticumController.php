@@ -6,6 +6,8 @@ use App\Models\PracticumModel;
 use App\Models\AssetModel;
 use App\Models\LaboratoriansModel;
 use App\Models\TeamsModel;
+use Myth\Auth\Entities\User;
+use \Myth\Auth\Models\UserModel;
 
 class ManagePracticumController extends BaseController
 {
@@ -13,6 +15,7 @@ class ManagePracticumController extends BaseController
     protected $assetModel;
     protected $laboratoriansModel;
     protected $teamsModel;
+    protected $userModel;
 
 
     public function __construct()
@@ -21,6 +24,7 @@ class ManagePracticumController extends BaseController
         $this->assetModel = new AssetModel();
         $this->laboratoriansModel = new LaboratoriansModel();
         $this->teamsModel = new TeamsModel();
+        $this->userModel = new UserModel();
     }
 
     public function index()
@@ -138,17 +142,19 @@ class ManagePracticumController extends BaseController
 
     public function edit_team($id)
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('teams');
-        $team = $builder->select('teams.*, users.fullname')
-            ->join('users', 'teams.id = users.team_id')
-            ->get()
-            ->getResultArray();
+        // $db      = \Config\Database::connect();
+        // $builder = $db->table('users');
+        // $team = $builder->select('users.*, teams.id as teamsid, team, lesson, semester')
+        //     ->join('teams', 'teams.id = users.team_id')
+        //     ->get()
+        //     ->getResultArray();
+        $users = new \Myth\Auth\Models\UserModel();
 
         $data = [
             'title' => 'Edit Detail',
             // 'practicum' => $this->practicumModel->getPracticumData($id),
-            'teamjoin' => $team,
+            // 'teamjoin' => $team,
+            'users' => $users->findAll(),
             'teams' => $this->teamsModel->getTeamsData($id)
         ];
 

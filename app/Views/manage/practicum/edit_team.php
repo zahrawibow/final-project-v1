@@ -60,94 +60,61 @@
                         <div class="form-group row">
                             <div class="col-12 col-sm-3">
                                 <div class="form-group">
-                                    <label for="laboratorian_id">Nama Kelompok</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="<?= $teams['team']; ?>">
+                                    <label for="team">Nama Kelompok</label>
+                                    <input type="text" class="form-control" id="team" name="team" placeholder="name@example.com" value="<?= $teams['team']; ?>">
                                 </div>
                             </div>
                             <div class="col-12 col-sm-3">
                                 <div class="form-group">
-                                    <label for="laboratorian_id">Semester</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="<?= $teams['semester']; ?>">
+                                    <label for="semester">Semester</label>
+                                    <input type="text" class="form-control" id="semester" name="semester" placeholder="name@example.com" value="<?= $teams['semester']; ?>">
                                 </div>
                             </div>
 
                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                 <div class="form-group">
-                                    <label for="asset_id">Mata Kuliah</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="<?= $teams['lesson']; ?>">
+                                    <label for="lesson">Mata Kuliah</label>
+                                    <input type="text" class="form-control" id="lesson" name="lesson" placeholder="name@example.com" value="<?= $teams['lesson']; ?>">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <input type="text" class="form-control" placeholder="Input 2">
-                        </div>
-
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <select class="form-select">
-                                <option selected>Select Option</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <input type="text" class="form-control" placeholder="Input 2">
-                        </div>
-
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <select class="form-select">
-                                <option selected>Select Option</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <input type="text" class="form-control" placeholder="Input 2">
-                        </div>
-
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <select class="form-select">
-                                <option selected>Select Option</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <input type="text" class="form-control" placeholder="Input 2">
-                        </div>
-
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <select class="form-select">
-                                <option selected>Select Option</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <input type="text" class="form-control" placeholder="Input 2">
-                        </div>
-
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Input 1">
-                            <select class="form-select">
-                                <option selected>Select Option</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </select>
+                        <label for="team_id">Anggota Kelompok</label>
+                        <div class="card">
+                            <div class="table-responsive">
+                                <table class="table align-items-center mb-0">
+                                    <tbody>
+                                        <?php foreach ($users as $user) : ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="form-check justify-content-center">
+                                                            <input class="form-check-input" type="checkbox" value="<?= $teams['id']; ?>" id="flexCheckDefault">
+                                                        </div>
+                                                        <div>
+                                                            <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-xs"><?= $user->fullname; ?></h6>
+                                                            <p class="text-xs text-secondary mb-0"><?= $user->username; ?></p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <p class="font-weight-bold text-xs font-weight-bold mb-0"><?= $user->email; ?></p>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs font-weight-bold mb-0"><?= $user->major; ?></p>
+                                                    <p class="text-xs text-secondary mb-0"><?= $user->identifier; ?> <?= $user->identity_number; ?></p>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm badge-success"><?= $user->status; ?></span>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                     </div>

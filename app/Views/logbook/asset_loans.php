@@ -264,15 +264,13 @@
                                                         <p class="text-sm mb-0 px-4"> Pengguna <?= user()->status; ?></p>
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm">
-                                                        <p class="text-secondary mb-1">Detail Aset</p>
-                                                    </li>
-                                                    <li class="list-group-item border-0 ps-0 text-sm">
                                                         <p class="text-secondary mb-1">Detail Peminjaman</p>
-                                                        <p class="mb-0 font-weight-bold px-4" id="purpose_show"><strong></strong></p>
+                                                        <p class="mb-0 font-weight-bold text-md px-4" id="asset_show"></p>
+                                                        <p class="mb-0 font-weight-bold text-sm px-4" id="purpose_show"></p>
+                                                        <p class="mb-0 font-weight-bold text-sm px-4" id="loantime_show"></p>
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm">
                                                         <p class="text-secondary mb-1">Surat Peminjaman Aset, terlampir dibawah</p>
-
                                                     </li>
                                                 </ul>
                                             </div>
@@ -396,6 +394,12 @@
     $("#purpose").change(function(e) {
         e.preventDefault();
         $("#purpose_show").html($("#purpose option:selected").html());
+    });
+</script>
+<script>
+    $("#loan_time").change(function(e) {
+        e.preventDefault();
+        $("#loan-time-show").html($("#loan_time").html());
     });
 </script>
 
