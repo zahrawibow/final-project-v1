@@ -182,13 +182,13 @@
                                 </button>
                             </div> -->
                             <div class="multisteps-form__progress">
-                                <button class="multisteps-form__progress-btn js-active" type="button" title="Product Info">
+                                <button class="multisteps-form__progress-btn js-active" id="step1" type="button" title="Product Info">
                                     <span>Form Peminjaman</span>
                                 </button>
-                                <button class="multisteps-form__progress-btn" type="button" title="Media">
+                                <button class="multisteps-form__progress-btn" type="button" id="step2" title="Media">
                                     Konfirmasi Peminjaman
                                 </button>
-                                <button class="multisteps-form__progress-btn" type="button" title="Socials">
+                                <button class="multisteps-form__progress-btn" type="button" id="step3" title="Socials">
                                     Keterangan
                                 </button>
                             </div>
@@ -197,7 +197,7 @@
 
                     <div class="row">
                         <div class="col-12 col-lg-8 m-auto">
-                            <form class="multisteps-form__form mb-8" style="height: 395px">
+                            <form class="multisteps-form__form mb-8" style="height: 395px" id="loan-form">
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                                     <h4 class="font-weight-bolder text-center">Form Peminjaman</h4>
                                     <div class="multisteps-form__content">
@@ -248,7 +248,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" id="step2-form" data-animation="FadeIn">
                                     <h4 class="font-weight-bolder text-center">Konfirmasi Peminjaman</h4>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-2">
@@ -264,14 +264,25 @@
                                                         <p class="text-sm mb-0 px-4"> Pengguna <?= user()->status; ?></p>
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm">
+
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <p class="text-secondary mb-1">Detail Aset</p>
+
+                                                            <a href="#" class="badge bg-gradient-primary" onclick="testButton()">Cek disini</a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm">
                                                         <p class="text-secondary mb-1">Detail Peminjaman</p>
-                                                        <p class="mb-0 font-weight-bold text-md px-4" id="asset_show"></p>
-                                                        <p class="mb-0 font-weight-bold text-sm px-4" id="purpose_show"></p>
-                                                        <p class="mb-0 font-weight-bold text-sm px-4" id="loantime_show"></p>
+
+                                                        <p class="mb-0 font-weight-bold px-4" id="asset_show"><strong>-</strong></p>
+                                                        <p class="mb-0 font-weight-bold px-4" id="purpose_show"><strong>-</strong></p>
+                                                        <p class="mb-0 font-weight-bold px-4" id="loan-time-show"><strong>-</strong></p>
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm">
                                                         <p class="text-secondary mb-1">Surat Peminjaman Aset, terlampir dibawah</p>
-                                                    </li>
+                                                        <p><span id="permission-tax-show">-</span></p>
+
+                                                    </li>                                               
                                                 </ul>
                                             </div>
                                         </div>
@@ -279,17 +290,18 @@
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">
                                                 Sebelumnya
                                             </button>
-                                            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">
+                                            <!-- <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next"> -->
+                                            <button class="btn bg-gradient-dark ms-auto mb-0" onclick="submitLoan()" type="button" title="Next">
                                                 Konfirmasi
                                             </button>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Socials</h5>
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" id="step3-form" data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder" id="loan-form-status-title">Data belum diisi</h5>
                                     <div class="multisteps-form__content">
-                                        <div class="row mt-3">
+                                        <!-- <div class="row mt-3">
                                             <div class="col-12">
                                                 <label>Shoppify Handle</label>
                                                 <input class="multisteps-form__input form-control" type="text" placeholder="@soft" onfocus="focused(this)" onfocusout="defocused(this)" />
@@ -312,35 +324,11 @@
                                                     Next
                                                 </button>
                                             </div>
-                                        </div>
+                                        </div> -->
+                                        <p id="loan-form-report">Anda belum melakukan pengajuan dan pengisian data</p>
                                     </div>
                                 </div>
 
-                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white h-100" data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Pricing</h5>
-                                    <div class="multisteps-form__content mt-3">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <label>Price</label>
-                                                <input class="multisteps-form__input form-control" type="text" placeholder="99.00" onfocus="focused(this)" onfocusout="defocused(this)" />
-                                            </div>
-
-                                            <div class="col-5">
-                                                <label>SKU</label>
-                                                <input class="multisteps-form__input form-control" type="text" placeholder="71283476591" onfocus="focused(this)" onfocusout="defocused(this)" />
-                                            </div>
-                                        </div>
-
-                                        <div class="button-row d-flex mt-4">
-                                            <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">
-                                                Prev
-                                            </button>
-                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">
-                                                Send
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>
@@ -395,12 +383,88 @@
         e.preventDefault();
         $("#purpose_show").html($("#purpose option:selected").html());
     });
-</script>
-<script>
+
     $("#loan_time").change(function(e) {
         e.preventDefault();
-        $("#loan-time-show").html($("#loan_time").html());
+        $("#loan-time-show").html($(this).val());
     });
+
+    $("#permission_tax").change(function(e) {
+        e.preventDefault();
+        $("#permission-tax-show").html("Sudah diisi <i class='fas fa-check-circle'></i>");
+    });
+
+    function testButton() {
+        let timerInterval
+        Swal.fire({
+            title: 'Auto close alert!',
+            html: 'I will close in <b></b> milliseconds.',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    }
+
+    function submitLoan() {
+        const data = $('#loan-form').serialize();
+
+        $.ajax({
+            type: "POST",
+            url: "<?= url_to('loan.store'); ?>",
+            data: data,
+            dataType: "json",
+            beforeSend: testButton(),
+            success: function(response) {
+                Swal.fire({
+                    title: 'Berhasil',
+                    confirmButtonText: 'OK!',
+                    icon: 'success',
+                    allowOutsideClick: false,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        Swal.fire('Saved!', 'Tunggu ajuan anda diverifikasi oleh pengelola', 'success');
+
+                        $("#loan-form-status-title").html("Sukses!");
+                        $("#loan-form-report").html("Ajuan kamu sudah disimpan. Silakan tunggu pengelola laboratorium melakukan verifikasi data.");
+                        $("#step1").addClass('d-none');
+                        $("#step2").addClass('d-none');
+                        $("#step2-form").addClass('d-none');
+                        $("#step1").removeClass('js-active');
+
+                        $("#step3").addClass('js-active');
+                        $("#step3-form").addClass('js-active');
+
+                    }
+                })
+
+                console.log(response);
+            },
+            error: (response) => {
+                Swal.fire(
+                    'Gagal!',
+                    'Cek kembali data - data anda',
+                    'error'
+                )
+
+                console.log(response);
+            }
+        });
+    }
 </script>
 
 <?= $this->endSection(); ?>

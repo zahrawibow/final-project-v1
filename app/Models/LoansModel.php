@@ -8,7 +8,7 @@ class LoansModel extends Model
 {
     protected $table      = 'asset_loans';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['aset_id', 'user_id', 'purpose', 'loan_time', 'permission_tax', 'currant_condition'];
+    protected $allowedFields = ['asset_id', 'user_id', 'purpose', 'loan_time', 'permission_tax', 'current_condition'];
 
     // protected $useAutoIncrement = true;
 
