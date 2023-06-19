@@ -264,6 +264,7 @@
                                                         <p class="text-sm mb-0 px-4"> Pengguna <?= user()->status; ?></p>
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm">
+
                                                         <div class="d-flex justify-content-between align-items-center">
                                                             <p class="text-secondary mb-1">Detail Aset</p>
 
@@ -281,7 +282,7 @@
                                                         <p class="text-secondary mb-1">Surat Peminjaman Aset, terlampir dibawah</p>
                                                         <p><span id="permission-tax-show">-</span></p>
 
-                                                    </li>
+                                                    </li>                                               
                                                 </ul>
                                             </div>
                                         </div>

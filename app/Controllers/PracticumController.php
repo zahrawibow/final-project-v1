@@ -32,4 +32,13 @@ class PracticumController extends BaseController
         ];
         return view('practicum/mainContent', $data);
     }
+
+    public function detail($id)
+    {
+        $data = [
+            'title' => 'Practicum Detail',
+            'practicum' => $this->practicumModel->getPracticumData($id)
+        ];
+        return view('practicum/detail', $data);
+    }
 }

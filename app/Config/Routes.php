@@ -85,15 +85,17 @@ $routes->group('asset', static function ($routes) {
 // Practicum Routes
 $routes->group('practicum', static function ($routes) {
     $routes->get('/', 'PracticumController::index', ['as' => 'practicum.index']);
-    $routes->get('modules', 'PracticumController::show_module', ['as' => 'practicum.module']);
-    $routes->get('schedules', 'PracticumController::show_schedule', ['as' => 'practicum.schedule']);
-    $routes->get('teams', 'PracticumController::show_team', ['as' => 'practicum.teams']);
+    $routes->get('detail/(:any)', 'PracticumController::detail/$1', ['as' => 'practicum.detail']);
+    // $routes->get('schedules', 'PracticumController::show_schedule', ['as' => 'practicum.schedule']);
+    // $routes->get('teams', 'PracticumController::show_team', ['as' => 'practicum.teams']);
 
     // Manage practicum & admin previleges
     $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
         $routes->get('manage', 'ManagePracticumController::index', ['as' => 'practicum.manage']); //non-controller
         $routes->get('create', 'ManagePracticumController::create', ['as' => 'practicum.create']); //non-controller
+        $routes->get('create-team', 'ManagePracticumController::create_team', ['as' => 'team.create']); //non-controller
         $routes->get('edit/(:segment)', 'ManagePracticumController::edit/$1', ['as' => 'practicum.edit']);
+        $routes->get('edit-team/(:segment)', 'ManagePracticumController::edit_team/$1', ['as' => 'team.edit']);
         $routes->post('update/(:segment)', 'ManagePracticumController::update/$1', ['as' => 'practicum.update']);
         $routes->post('store', 'ManagePracticumController::stored_practicum', ['as' => 'practicum.store']); //non-controller
         $routes->delete('delete/(:num)', 'ManagePracticumController::delete/$1', ['as' => 'practicum.delete']);

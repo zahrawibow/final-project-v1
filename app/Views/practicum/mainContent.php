@@ -148,26 +148,6 @@
         </div>
     </nav>
 
-    <!-- <div class="wrap animate pop">
-        <div class="overlay">
-            <div class="overlay-content animate slide-left delay-2">
-                <h1 class="animate slide-left pop delay-4">Trees</h1>
-                <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
-            </div>
-            <div class="image-content animate slide delay-5"></div>
-            <div class="dots animate">
-                <div class="dot animate slide-up delay-6"></div>
-                <div class="dot animate slide-up delay-7"></div>
-                <div class="dot animate slide-up delay-8"></div>
-            </div>
-        </div>
-        <div class="text">
-            <p>Trees are woody perennial plants that are a member of the kingdom <em>Plantae</em>. All species of trees are grouped by their genus, family, and order. This helps make identifying and studying trees easier.</p>
-            <p>Apart from providing oxygen for the planet and beauty when they bloom or turn color, trees are very useful. Certain species of hardwood and softwood trees are excellent for timber, making furniture, and paper.</p>
-            <p>When managed properly, trees are a good source of renewable energy and construction material.</p>
-        </div>
-    </div> -->
-
     <div class="container-fluid py-4">
         <div class="row">
             <?php foreach ($practicum as $prac) : ?>
@@ -179,17 +159,12 @@
                                 <div class="cover">
                                     <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
                                 </div>
-                                <!-- <div class="user">
-                                    <img class="img-circle" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
-                                    <div class="text-ms text-center"><?= $prac['team']; ?></div>
-                                </div> -->
+
                                 <div class="content">
                                     <div class="main text-center mt-2">
                                         <h5><strong><?= $prac['title']; ?></strong></h5>
                                         <p class="mt-2 mb-0 text-sm"><?= $prac['fullname']; ?></p>
 
-                                        <!-- <p class="profession">Pengampu Praktikum</p> -->
-                                        <!-- <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p> -->
                                     </div>
                                     <div class="footer text-xs mt-2">
                                         <i class="fa fa-mail-forward text-center"></i> Auto Rotation
@@ -198,7 +173,7 @@
                             </div>
                             <!-- end front panel -->
 
-                            <div class="back">
+                            <!-- <div class="back">
                                 <div class="header">
                                     <h4 class="motto mt-4">Deskripsi Singkat</h4>
                                 </div>
@@ -206,11 +181,41 @@
                                     <div class="main pt-0">
                                         <h6 class="text-center text-xs px-1"><?= $prac['description']; ?></h6>
                                     </div>
-                                    <a href="javascript:;" class="btn bg-gradient-dark w-100 mt-5 mb-0" data-bs-toggle="modal" data-bs-target="#use">
+                                    <a href="/practicum/detail" class="btn bg-gradient-dark w-100 mt-5 mb-0">
                                         Get started
                                     </a>
                                 </div>
-                            </div> <!-- end back panel -->
+                            </div> end back panel -->
+
+                            <div class="back">
+                                <div class="header mb-0">
+                                    <h4 class="motto mt-4">Deskripsi Singkat</h4>
+                                </div>
+                                <div class="content mt-0">
+                                    <div class="main pt-0">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm mt-0" disabled>Kelompok <?= $prac['team']; ?></button>
+
+                                        <h6 class="text-center text-xs px-1">
+                                            <?php
+                                            $description = $prac['description'];
+                                            $maxCharacters = 100; // Jumlah karakter maksimal yang ingin ditampilkan
+
+                                            if (strlen($description) > $maxCharacters) {
+                                                $shortDescription = substr($description, 0, $maxCharacters) . "...";
+                                                echo $shortDescription;
+                                            } else {
+                                                echo $description;
+                                            }
+                                            ?>
+                                        </h6>
+                                    </div>
+
+                                    <a href="<?= url_to('practicum.detail', $prac['id']); ?>" class="btn bg-gradient-dark w-100 mt-5 mb-0">
+                                        Memulai
+                                    </a>
+                                </div>
+                            </div>
+
                         </div> <!-- end card -->
                     </div> <!-- end card-container -->
                 </div>

@@ -212,7 +212,6 @@
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div>
-                                                                    <!-- <img src="../assets/img/nama foto" class="avatar avatar-sm me-3" alt="user1"> -->
                                                                     <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" class="avatar avatar-sm me-3" alt="user1">
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
@@ -223,7 +222,6 @@
                                                         </td>
                                                         <td>
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $asset['series']; ?></p>
-                                                            <!-- <p class="text-xs text-secondary mb-0"></p> -->
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
                                                             <span class="badge badge-sm bg-gradient-success"><?= $asset['status']; ?></span>
