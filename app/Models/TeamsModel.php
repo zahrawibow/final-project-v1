@@ -8,7 +8,7 @@ class TeamsModel extends Model
 {
     protected $table      = 'teams';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['id', 'team', 'lesson'];
+    protected $allowedFields = ['id', 'team', 'lesson', 'semester'];
 
     // protected $useAutoIncrement = true;
 

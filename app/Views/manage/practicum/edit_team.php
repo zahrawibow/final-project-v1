@@ -37,90 +37,92 @@
 
     <div class="container-fluid py-4">
 
-        <!-- <form action="/practicum/update/" method="post"> -->
-        <?= csrf_field(); ?>
-        <div class="row px-3">
-            <div class="col-lg-6">
-                <h3>Ubah Kelompok</h3>
-                <p class="text-secondary text-sm">Isi form ubah kelompok untuk mengubah data kelompok praktikum pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
+        <form action="/practicum/update-team/<?= $teams['id']; ?>" method="post">
+            <!-- <form action="/practicum/update/" method="post"> -->
+            <?= csrf_field(); ?>
+            <div class="row px-3">
+                <div class="col-lg-6">
+                    <h3>Ubah Kelompok</h3>
+                    <p class="text-secondary text-sm">Isi form ubah kelompok untuk mengubah data kelompok praktikum pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
+                </div>
+
+                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
+                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Ubah</button>
+                </div>
             </div>
 
-            <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
-                <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Ubah</button>
-            </div>
-        </div>
+            <div class="row mt-3">
+                <div class="col-lg-12 mt-lg-0 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder">Detail Kelompok</h5>
 
+                            <input type="hidden" id="id" name="id" value="<?= $teams['id']; ?>">
 
-        <div class="row mt-3">
-            <div class="col-lg-12 mt-lg-0 mt-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="font-weight-bolder">Detail Kelompok</h5>
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-3">
+                                    <div class="form-group">
+                                        <label for="team">Nama Kelompok</label>
+                                        <input type="text" class="form-control" id="team" name="team" value="<?= $teams['team']; ?>">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-3">
+                                    <div class="form-group">
+                                        <label for="semester">Semester</label>
+                                        <input type="text" class="form-control" id="semester" name="semester" value="<?= $teams['semester']; ?>">
+                                    </div>
+                                </div>
 
-                        <div class="form-group row">
-                            <div class="col-12 col-sm-3">
-                                <div class="form-group">
-                                    <label for="team">Nama Kelompok</label>
-                                    <input type="text" class="form-control" id="team" name="team" placeholder="name@example.com" value="<?= $teams['team']; ?>">
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <div class="form-group">
+                                        <label for="lesson">Mata Kuliah</label>
+                                        <input type="text" class="form-control" id="lesson" name="lesson" value="<?= $teams['lesson']; ?>">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-3">
-                                <div class="form-group">
-                                    <label for="semester">Semester</label>
-                                    <input type="text" class="form-control" id="semester" name="semester" placeholder="name@example.com" value="<?= $teams['semester']; ?>">
+
+                            <label>Anggota Kelompok</label>
+                            <div class="card">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center mb-0">
+                                        <tbody>
+                                            <?php foreach ($users as $user) : ?>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div class="form-check justify-content-center">
+                                                                <input class="form-check-input" type="checkbox" name="id_user[]" value="<?= $user->id; ?>" id="flexCheckDefault">
+                                                            </div>
+                                                            <div>
+                                                                <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-xs"><?= $user->fullname; ?></h6>
+                                                                <p class="text-xs text-secondary mb-0"><?= $user->username; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <p class="font-weight-bold text-xs font-weight-bold mb-0"><?= $user->email; ?></p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="text-xs font-weight-bold mb-0"><?= $user->major; ?></p>
+                                                        <p class="text-xs text-secondary mb-0"><?= $user->identifier; ?> <?= $user->identity_number; ?></p>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="badge badge-sm badge-success"><?= $user->status; ?></span>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
-                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                <div class="form-group">
-                                    <label for="lesson">Mata Kuliah</label>
-                                    <input type="text" class="form-control" id="lesson" name="lesson" placeholder="name@example.com" value="<?= $teams['lesson']; ?>">
-                                </div>
-                            </div>
                         </div>
-
-                        <label for="team_id">Anggota Kelompok</label>
-                        <div class="card">
-                            <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
-                                    <tbody>
-                                        <?php foreach ($users as $user) : ?>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div class="form-check justify-content-center">
-                                                            <input class="form-check-input" type="checkbox" value="<?= $teams['id']; ?>" id="flexCheckDefault">
-                                                        </div>
-                                                        <div>
-                                                            <img src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-2.jpg" class="avatar avatar-sm me-3">
-                                                        </div>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-xs"><?= $user->fullname; ?></h6>
-                                                            <p class="text-xs text-secondary mb-0"><?= $user->username; ?></p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle">
-                                                    <p class="font-weight-bold text-xs font-weight-bold mb-0"><?= $user->email; ?></p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-xs font-weight-bold mb-0"><?= $user->major; ?></p>
-                                                    <p class="text-xs text-secondary mb-0"><?= $user->identifier; ?> <?= $user->identity_number; ?></p>
-                                                </td>
-                                                <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm badge-success"><?= $user->status; ?></span>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
-        </div>
         </form>
 
 

@@ -46,7 +46,8 @@ class UserSeeder extends Seeder
                 'password_hash' => password_hash(base64_encode(hash('sha384', 'password', true)), PASSWORD_DEFAULT),
                 'created_at' => Time::now('Asia/Jakarta'),
                 'updated_at' => Time::now('Asia/Jakarta'),
-                'description' => $faker->paragraph(4)
+                'description' => $faker->paragraph(4),
+                'team_id' => $faker->numberBetween(1, 3)
             ];
 
             $user = $this->db->table('users')->insert($data);

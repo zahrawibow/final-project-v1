@@ -96,8 +96,10 @@ $routes->group('practicum', static function ($routes) {
         $routes->get('create-team', 'ManagePracticumController::create_team', ['as' => 'team.create']); //non-controller
         $routes->get('edit/(:segment)', 'ManagePracticumController::edit/$1', ['as' => 'practicum.edit']);
         $routes->get('edit-team/(:segment)', 'ManagePracticumController::edit_team/$1', ['as' => 'team.edit']);
+        $routes->post('update-team/(:segment)', 'ManagePracticumController::update_team/$1', ['as' => 'team.update']);
         $routes->post('update/(:segment)', 'ManagePracticumController::update/$1', ['as' => 'practicum.update']);
         $routes->post('store', 'ManagePracticumController::stored_practicum', ['as' => 'practicum.store']); //non-controller
+        $routes->post('store-team', 'ManagePracticumController::stored_team', ['as' => 'team.store']); //non-controller
         $routes->delete('delete/(:num)', 'ManagePracticumController::delete/$1', ['as' => 'practicum.delete']);
     });
 });

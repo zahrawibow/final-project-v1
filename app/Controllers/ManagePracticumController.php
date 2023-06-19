@@ -76,20 +76,22 @@ class ManagePracticumController extends BaseController
 
     public function create_team()
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('teams');
-        $team = $builder->select('teams.*, users.fullname')
-            ->join('users', 'teams.id = users.team_id')
-            ->get()
-            ->getResultArray();
+        // $db      = \Config\Database::connect();
+        // $builder = $db->table('teams');
+        // $team = $builder->select('teams.*, users.fullname')
+        //     ->join('users', 'teams.id = users.team_id')
+        //     ->get()
+        //     ->getResultArray();
+        $users = new \Myth\Auth\Models\UserModel();
 
         $data = [
             'title' => 'Create Practicum',
+            'users' => $users->findAll(),
             // 'practicum' => $this->practicumModel->getPracticumData(),
             // 'assets' => $this->assetModel->getAssetData(),
-            'team' => $team
+            // 'team' => $team
         ];
-        dd($team);
+        // dd($data);
         return view('/manage/practicum/create_team', $data);
     }
 
@@ -108,6 +110,27 @@ class ManagePracticumController extends BaseController
             'prac_status' => $this->request->getVar('prac_status')
         ]);
 
+        return redirect()->to(url_to('practicum.manage'));
+    }
+
+    public function stored_team()
+    {
+        $dataUser = $this->request->getVar('id_user');
+
+        $team = $this->teamsModel->insert([
+            'team' => $this->request->getVar('team'),
+            'lesson' => $this->request->getVar('lesson'),
+            'semester' => $this->request->getVar('semester'),
+        ]);
+
+        // Masukkan user baru
+        foreach ($dataUser as $user) :
+            $this->userModel->update($user, [
+                'team_id' => $team
+            ]);
+        endforeach;
+
+        // dd($dataUser);
         return redirect()->to(url_to('practicum.manage'));
     }
 
@@ -180,6 +203,34 @@ class ManagePracticumController extends BaseController
             'prac_status' => $this->request->getVar('prac_status')
         ]);
 
+        return redirect()->to(url_to('practicum.manage'));
+    }
+
+    public function update_team($id)
+    {
+
+        $teamId = $this->request->getVar('id');
+        $dataUser = $this->request->getVar('id_user');
+
+        $this->teamsModel->save([
+            'id' => $id,
+            'team' => $this->request->getVar('team'),
+            'lesson' => $this->request->getVar('lesson'),
+            'semester' => $this->request->getVar('semester'),
+        ]);
+
+        // Reset kelompok terkait
+        $this->userModel->where('team_id', $teamId)->set(['team_id' => null])->update();
+        // $this->userModel->where('team_id', $teamId)->update();
+
+        // Masukkan user baru
+        foreach ($dataUser as $user) :
+            $this->userModel->update($user, [
+                'team_id' => $teamId
+            ]);
+        endforeach;
+
+        // dd($dataUser);
         return redirect()->to(url_to('practicum.manage'));
     }
 }
