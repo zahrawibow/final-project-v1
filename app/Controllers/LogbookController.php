@@ -87,6 +87,7 @@ class LogbookController extends BaseController
             'asset_id' => $this->request->getVar('asset_id'),
             'purpose' => $this->request->getVar('purpose'),
             'loan_time' => $this->request->getVar('loan_time'),
+            'status' => $this->request->getVar('status'),
         ];
 
         if (!$validation->run($data)) :
