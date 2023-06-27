@@ -51,7 +51,8 @@ $routes->get('/logbook', 'LogbookController::index');
 $routes->group('asset-loans', static function ($routes) {
     $routes->get('/', 'LogbookController::asset_loans', ['as' => 'asset.loan']); //non-controller
     $routes->post('store', 'LogbookController::stored_loaning', ['as' => 'loan.store']); //non-controller
-    // $routes->get('manage', 'ManageLogsController::index', ['as' => 'log.manage', 'filter' => 'role:admin']); //non-controller
+    $routes->post('verified', 'ManageLoansController::verified', ['as' => 'loan.verified']); //non-controller
+    $routes->get('manage', 'ManageLoansController::index', ['as' => 'loans.manage', 'filter' => 'role:admin']); //non-controller
 });
 
 // Logbook Manage Routes (Admin previleges)
@@ -96,8 +97,10 @@ $routes->group('practicum', static function ($routes) {
         $routes->get('create-team', 'ManagePracticumController::create_team', ['as' => 'team.create']); //non-controller
         $routes->get('edit/(:segment)', 'ManagePracticumController::edit/$1', ['as' => 'practicum.edit']);
         $routes->get('edit-team/(:segment)', 'ManagePracticumController::edit_team/$1', ['as' => 'team.edit']);
+        $routes->post('update-team/(:segment)', 'ManagePracticumController::update_team/$1', ['as' => 'team.update']);
         $routes->post('update/(:segment)', 'ManagePracticumController::update/$1', ['as' => 'practicum.update']);
         $routes->post('store', 'ManagePracticumController::stored_practicum', ['as' => 'practicum.store']); //non-controller
+        $routes->post('store-team', 'ManagePracticumController::stored_team', ['as' => 'team.store']); //non-controller
         $routes->delete('delete/(:num)', 'ManagePracticumController::delete/$1', ['as' => 'practicum.delete']);
     });
 });

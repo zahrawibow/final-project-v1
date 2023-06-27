@@ -8,7 +8,7 @@ class LoansModel extends Model
 {
     protected $table      = 'asset_loans';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['asset_id', 'user_id', 'purpose', 'loan_time', 'permission_tax', 'current_condition'];
+    protected $allowedFields = ['asset_id', 'user_id', 'purpose', 'loan_time', 'permission_tax', 'current_condition', 'status', 'validation', 'validator', 'return_time'];
 
     // protected $useAutoIncrement = true;
 
@@ -39,5 +39,8 @@ class LoansModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
-
+    public function getLoansData()
+    {
+        return $this->findAll();
+    }
 }

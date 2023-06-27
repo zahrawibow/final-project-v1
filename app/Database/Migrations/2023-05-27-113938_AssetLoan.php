@@ -34,6 +34,25 @@ class AssetLoan extends Migration
                 'constraint' => 255,
                 'null' => true
             ],
+            'validation' => [
+                'type' => 'varchar',
+                'constraint' => 255,
+                'null' => true
+            ],
+            'validator' => [
+                'type' => 'varchar',
+                'constraint' => 255,
+                'null' => true
+            ],
+            'status' => [
+                'type' => 'varchar',
+                'constraint' => 255,
+                'null' => true
+            ],
+            'return_time' => [
+                'type' => 'date',
+                'null' => true
+            ],
             'current_condition' => [
                 'type' => 'varchar',
                 'constraint' => 255,

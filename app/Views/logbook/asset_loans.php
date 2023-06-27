@@ -204,6 +204,8 @@
                                         <div class="row mt-3">
                                             <div class="row text-center">
                                                 <div class="form-group col-12 col-sm-6">
+                                                    <input type="hidden" name="status" id="status" value="Pending">
+
                                                     <label for="asset_id">Aset</label>
                                                     <select class="form-control" id="asset_id" name="asset_id">
                                                         <option value="">Pilih Aset</option>
@@ -282,7 +284,7 @@
                                                         <p class="text-secondary mb-1">Surat Peminjaman Aset, terlampir dibawah</p>
                                                         <p><span id="permission-tax-show">-</span></p>
 
-                                                    </li>                                               
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
