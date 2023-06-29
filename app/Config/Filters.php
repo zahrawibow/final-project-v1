@@ -37,7 +37,8 @@ class Filters extends BaseConfig
             // 'invalidchars',
             'login' => [
                 'except' => [
-                    '/home'
+                    '/home',
+                    '/api/*'
                 ]
             ]
         ],

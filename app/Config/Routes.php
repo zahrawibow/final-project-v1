@@ -146,6 +146,14 @@ $routes->group('manage-account', ['filter' => 'role:admin'], static function ($r
     // $routes->post('storedacc', 'AccountController::stored_acc'); //non-controller
 });
 
+// API
+$routes->group('api', static function ($routes) {
+    $routes->resource('asset', ['controller' => 'API\Asset']);
+    $routes->resource('asset-loan', ['controller' => 'API\AssetLoan']);
+    $routes->resource('attendance', ['controller' => 'API\Attendance']);
+    $routes->resource('radiation-history', ['controller' => 'API\RadiationHistory']);
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

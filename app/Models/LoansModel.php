@@ -43,4 +43,23 @@ class LoansModel extends Model
     {
         return $this->findAll();
     }
+
+    public function allWithRelatedData($limit = null, $offset = null)
+    {
+        return $this->select('asset_loans.*,users.fullname as user_fullname,assets.name as asset_name,assets.inventory_number')
+            ->join('users', 'users.id = asset_loans.user_id')
+            ->join('assets', 'assets.id=asset_loans.asset_id')
+            ->get($limit, $offset)
+            ->getResultArray();
+    }
+
+    public function singleWithRelatedData($id)
+    {
+        return $this->select('asset_loans.*,users.fullname as user_fullname,assets.name as asset_name,assets.inventory_number')
+            ->join('users', 'users.id = asset_loans.user_id')
+            ->join('assets', 'assets.id=asset_loans.asset_id')
+            ->where('asset_loans.id', $id)
+            ->get()
+            ->getResultArray();
+    }
 }
