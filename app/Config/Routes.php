@@ -51,7 +51,8 @@ $routes->get('/logbook', 'LogbookController::index');
 $routes->group('asset-loans', static function ($routes) {
     $routes->get('/', 'LogbookController::asset_loans', ['as' => 'asset.loan']); //non-controller
     $routes->post('store', 'LogbookController::stored_loaning', ['as' => 'loan.store']); //non-controller
-    $routes->post('verified', 'ManageLoansController::verified', ['as' => 'loan.verified']); //non-controller
+    $routes->post('verified/(:any)', 'ManageLoansController::verified/$1', ['as' => 'loan.verified']); //non-controller
+    $routes->post('returned/(:any)', 'ManageLoansController::returned/$1', ['as' => 'return.verified']); //non-controller
     $routes->get('manage', 'ManageLoansController::index', ['as' => 'loans.manage', 'filter' => 'role:admin']); //non-controller
 });
 

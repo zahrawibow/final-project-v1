@@ -49,7 +49,7 @@ class LogbookController extends BaseController
     {
         $data = [
             'title' => 'Peminjaman Aset',
-            'assets' => $this->assetModel->getAssetData()
+            'assets' => $this->assetModel->getAssetForLoans()
         ];
         return view('logbook/asset_loans', $data);
     }

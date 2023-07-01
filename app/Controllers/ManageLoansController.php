@@ -34,7 +34,44 @@ class ManageLoansController extends BaseController
         return view('manage/logbook/loansreport', $data);
     }
 
-    public function verified()
+    public function verified($id)
     {
+        $this->loansModel->save([
+            'id' => $id,
+            'status' => $this->request->getVar('status'),
+            'validator' => user_id()
+        ]);
+
+        $asset_id = $this->loansModel->where('id', $id)->findColumn('asset_id');
+
+        if ($this->request->getVar('status') == "Verified") {
+            $this->assetModel->save([
+                'id' => $asset_id,
+                'status' => 'Dipinjam'
+            ]);
+        }
+
+        // return view('manage/logbook/loansreport');
+        return redirect()->back();
+    }
+
+    public function returned($id)
+    {
+        $this->loansModel->save([
+            'id' => $id,
+            'status' => $this->request->getVar('status'),
+            'validator' => user_id()
+        ]);
+
+        $asset_id = $this->loansModel->where('id', $id)->findColumn('asset_id');
+
+        $this->assetModel->save([
+            'id' => $asset_id,
+            'status' => 'Tersedia',
+            'return_time' => now()
+        ]);
+
+
+        return redirect()->back();
     }
 }

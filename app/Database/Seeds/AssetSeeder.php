@@ -34,6 +34,7 @@ class AssetSeeder extends Seeder
                 'location' => $faker->word(),
                 'description' => $faker->sentence(),
                 'purchase_date' => $faker->date(),
+                'status' => 'Tersedia',
                 'price' => $faker->numberBetween(1, 3000) * 1000,
                 'user_id' => 1,
             ];

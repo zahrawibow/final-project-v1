@@ -66,4 +66,9 @@ class AssetModel extends Model
         }
         return $this->where('slug', $slug)->first();
     }
+
+    public function getAssetForLoans()
+    {
+        return $this->where('status !=', 'Dipinjam')->findAll();
+    }
 }

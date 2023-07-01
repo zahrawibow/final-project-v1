@@ -224,7 +224,11 @@
                                                             <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $asset['series']; ?></p>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-gradient-success"><?= $asset['status']; ?></span>
+                                                            <?php if ($asset['status'] == "Tersedia") : ?>
+                                                                <span class="badge badge-sm bg-gradient-success"><?= $asset['status']; ?></span>
+                                                            <?php elseif ($asset['status'] == "Dipinjam") : ?>
+                                                                <span class="badge badge-sm bg-gradient-danger"><?= $asset['status']; ?></span>
+                                                            <?php endif; ?>
                                                         </td>
                                                         <td class="align-middle text-center">
                                                             <span class="text-secondary text-xs font-weight-bold">23/04/18</span>

@@ -215,7 +215,6 @@
                                                             </option>
                                                         <?php endforeach; ?>
                                                     </select>
-                                                    <!-- <input type="hidden" value="<?= $asset['merk']; ?>" id="merk" name="merk"> -->
                                                 </div>
                                                 <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                                     <label for="purpose">Keperluan</label>

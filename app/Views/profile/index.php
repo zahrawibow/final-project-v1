@@ -98,6 +98,7 @@
                                 <?php endforeach; ?>
                             </div>
                         </div> -->
+
                         <div class="card card-frame mb-2">
                             <div class="card-body">
                                 <p class="card-title text-info text-gradient text-ms font-weight-bolder">Kunjungan Laboratorium</p>
@@ -254,10 +255,29 @@
                     <div class="card-header pb-0 p-3">
                         <h6 class="mb-0">Pinjaman dan Praktikum</h6>
                     </div>
-                    <div class="card-body p-3">
+
+                    <div class="card-body p-3 overflow-y-scroll" style="height: 200px;">
+                        <h6 class="text-uppercase text-body text-xs font-weight-bolder ms-2">
+                            Tanggungan Semester Ini
+                        </h6>
+
                         <div class="card card-frame ">
                             <div class="card-body">
-                                This is some text within a card body.
+                                <p class="card-title text-info text-gradient text-ms font-weight-bolder">Kunjungan Laboratorium</p>
+
+                                <div class="alert alert-warning alert-dismissible fade show text-xs" role="alert">
+                                    <strong>Tenggat Peminjaman</strong>Tenggat peminjaman aset paling lama dikembalikan 7 (tujuh) hari kerja setelah tanggal peminjaman yang diajukan
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+
+                                <?php foreach ($loans as $loan) : ?>
+                                    <?php
+                                    $loanTime = date('Y-m-d', strtotime($loan->loan_time));
+                                    ?>
+                                    <blockquote class="blockquote text-white mb-0">
+                                        <p class="text-dark ms-3 mb-3 text-sm">Melakukan Peminjaman Aset <?= $loan->name; ?> untuk tanggal <?= $loanTime; ?> yang akan digunakan untuk <?= $loan->purpose; ?> dengan keterangan peminjaman <?= $loan->loanstatus; ?></p>
+                                    </blockquote>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

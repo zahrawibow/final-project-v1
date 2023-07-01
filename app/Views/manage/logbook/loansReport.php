@@ -195,24 +195,42 @@
                                                             </a>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-gradient-secondary"><?= $loan['status']; ?></span>
+                                                            <?php if ($loan['status'] == 'Pending') : ?>
+                                                                <span class="badge badge-sm bg-gradient-secondary">Menunggu Verifikasi</span>
+                                                            <?php elseif ($loan['status'] == 'Verified') : ?>
+                                                                <span class="badge badge-sm bg-gradient-warning">Terverifikasi Dipinjam</span>
+                                                            <?php elseif ($loan['status'] == 'Rejected') : ?>
+                                                                <span class="badge badge-sm bg-gradient-danger">Pinjaman Ditolak</span>
+                                                            <?php elseif ($loan['status'] == 'Returned') : ?>
+                                                                <span class="badge badge-sm bg-gradient-success">Terverifikasi Dikembalikan</span>
+                                                            <?php endif; ?>
                                                         </td>
-                                                        <form action="" method="post">
-                                                            <td class="align-middle text-center text-sm">
-                                                                <button class="badge badge-icon w-100 bg-success badge-lg border-0 mt-2 mb-2" type="submit" name="status" value="Verified">
-                                                                    <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span> &nbsp;
-                                                                    <span class="btn-inner--text">Verifikasi Pinjam</span>
-                                                                </button> <br>
-                                                                <button class="badge badge-icon w-100 bg-danger badge-lg border-0 mb-2" type="button">
-                                                                    <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span> &nbsp;
-                                                                    <span class="btn-inner--text">Tolak Pinjam</span>
-                                                                </button> <br>
-                                                                <button class="badge badge-icon w-100 bg-warning badge-lg border-0" type="button">
-                                                                    <span class="btn-inner--icon"><i class="ni ni-active-40"></i></span> &nbsp;
-                                                                    <span class="btn-inner--text">Verifikasi Kembali</span>
-                                                                </button> <br>
-                                                            </td>
-                                                        </form>
+
+                                                        <td class="align-middle text-center text-sm">
+                                                            <?php if ($loan['status'] !== 'Verified' && $loan['status'] !== 'Rejected' && $loan['status'] !== 'Returned') : ?>
+                                                                <form action="<?= url_to('loan.verified', $loan['id']); ?>" method="post">
+                                                                    <button class="badge badge-icon w-100 bg-success badge-lg border-0 mt-2 mb-2" type="submit" name="status" value="Verified">
+                                                                        <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span> &nbsp;
+                                                                        <span class="btn-inner--text">Verifikasi Pinjam</span>
+                                                                    </button> <br>
+                                                                    <button class="badge badge-icon w-100 bg-danger badge-lg border-0 mb-2" type="submit" name="status" value="Rejected">
+                                                                        <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span> &nbsp;
+                                                                        <span class="btn-inner--text">Tolak Pinjam</span>
+                                                                    </button> <br>
+                                                                </form>
+                                                            <?php endif; ?>
+
+                                                            <?php if ($loan['status'] == 'Verified') : ?>
+                                                                <form action="<?= url_to('return.verified', $loan['id']); ?>" method="post">
+                                                                    <button class="badge badge-icon w-100 bg-warning badge-lg border-0" type="submit" name="status" value="Returned">
+                                                                        <span class="btn-inner--icon"><i class="ni ni-active-40"></i></span> &nbsp;
+                                                                        <span class="btn-inner--text">Verifikasi Kembali</span>
+                                                                    </button> <br>
+                                                                </form>
+                                                            <?php endif; ?>
+
+
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

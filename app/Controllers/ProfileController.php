@@ -48,11 +48,20 @@ class ProfileController extends BaseController
         $builder->join('assets', 'asset_logs.asset_id = assets.id');
         $logs = $builder->get();
 
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->where('users.id', user_id())
+            ->select('asset_loans.status as loanstatus, purpose, loan_time, users.id as userid, assets.name');
+        $builder->join('asset_loans', 'users.id = asset_loans.user_id');
+        $builder->join('assets', 'asset_loans.asset_id = assets.id');
+        $loans = $builder->get();
+
         $data = [
             'title' => 'My Profile',
             'accounts' => $accounts->getResult(),
             'attendances' => $attendances->getResult(),
             'logs' => $logs->getResult(),
+            'loans' => $loans->getResult(),
             'radiations' => $radiations->getResult()
         ];
         // dd($data);
