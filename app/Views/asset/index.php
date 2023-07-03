@@ -63,13 +63,13 @@
                         </a>
                     </li> -->
                     <!-- notifikasi -->
-                    <li class="nav-item px-3 d-flex align-items-center">
+                    <!-- <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
                             <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer" aria-hidden="true"></i>
                         </a>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                    <li class="nav-item dropdown px-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bell cursor-pointer" aria-hidden="true"></i>
                         </a>
@@ -184,7 +184,7 @@
 
                                             <div class="ms-auto my-auto mt-lg-0 mt-4">
                                                 <div class="ms-auto my-auto">
-                                                    <a href="/asset/create" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
+                                                    <a href="/asset/create" class="btn bg-gradient-primary btn-sm mb-4">+&nbsp; Tambahkan</a>
                                                 </div>
                                             </div>
                                         </div>

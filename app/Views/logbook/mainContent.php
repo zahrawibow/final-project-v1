@@ -162,7 +162,15 @@
 
     <div class="container-fluid py-4">
 
-
+        <?php if (session()->has('errors')) : ?>
+            <div class="alert alert-danger text-white">
+                <ul class="mb-0">
+                    <?php foreach (session('errors') as $error) : ?>
+                        <li><?= $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card move-on-hover card bg-cover">

@@ -223,28 +223,38 @@
                         <div class="card-body">
                             <h5 class="font-weight-bolder">Informasi Aset</h5>
 
+                            <?php if (session()->has('errors')) : ?>
+                                <div class="alert alert-danger text-white">
+                                    <ul class="mb-0">
+                                        <?php foreach (session('errors') as $error) : ?>
+                                            <li><?= $error; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
+
 
                             <div class="form-group row">
                                 <div class="col-12 col-sm-6">
                                     <label for="name">Nama</label>
-                                    <input class="form-control" type="text" id="name" name="name" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input class="form-control <?= isset(session('errors')['name']) ? 'is-invalid' : ''; ?>" type="text" id="name" name="name" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= old('name'); ?>">
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label for="merk">Merk</label>
-                                    <input class="form-control" type="text" id="merk" name="merk" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input class="form-control <?= isset(session('errors')['merk']) ? 'is-invalid' : ''; ?>" type="text" id="merk" name="merk" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= old('merk'); ?>">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-12 col-sm-6">
                                     <label for="series">Seri</label>
-                                    <input class="form-control" type="text" id="series" name="series" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input class="form-control <?= isset(session('errors')['series']) ? 'is-invalid' : ''; ?>" type="text" id="series" name="series" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= old('series'); ?>">
                                 </div>
                                 <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label for="price">Harga</label>
                                     <div class="input-group">
                                         <span class="input-group-text">Rp</span>
-                                        <input type="text" id="price" name="price" class="form-control" aria-label="Amount (to the nearest rupiah)">
+                                        <input type="text" id="price" name="price" class="form-control <?= isset(session('errors')['price']) ? 'is-invalid' : ''; ?>" aria-label="Amount (to the nearest rupiah)" value="<?= old('price'); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -252,33 +262,33 @@
                             <div class="form-group row">
                                 <div class="col-12 col-sm-6">
                                     <label for="count">Jumlah</label>
-                                    <input class="form-control" type="int" id="count" name="count" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input class="form-control <?= isset(session('errors')['count']) ? 'is-invalid' : ''; ?>" type="int" id="count" name="count" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= old('count'); ?>">
                                 </div>
                                 <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label class="form-control-label" for="purchase_date">Tanggal Pembelian</label>
-                                    <input class="form-control" type="date" id="purchase_date" name="purchase_date">
+                                    <input class="form-control <?= isset(session('errors')['purchase_date']) ? 'is-invalid' : ''; ?>" type="date" id="purchase_date" name="purchase_date" value="<?= old('purchase_date'); ?>">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-12 col-sm-6">
                                     <label for="condition">Kondisi</label>
-                                    <input class="form-control" type="text" id="condition" name="condition" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input class="form-control <?= isset(session('errors')['condition']) ? 'is-invalid' : ''; ?>" type="text" id="condition" name="condition" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= old('condition'); ?>">
                                 </div>
                                 <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label class="form-control-label" for="status">Status</label>
-                                    <input class="form-control" type="text" id="status" name="status">
+                                    <input class="form-control <?= isset(session('errors')['status']) ? 'is-invalid' : ''; ?>" type="text" id="status" name="status" value="<?= old('status'); ?>">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-12 col-sm-6">
                                     <label for="location">Lokasi</label>
-                                    <input class="form-control" type="text" id="location" name="location" onfocus="focused(this)" onfocusout="defocused(this)">
+                                    <input class="form-control <?= isset(session('errors')['location']) ? 'is-invalid' : ''; ?>" type="text" id="location" name="location" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= old('location'); ?>">
                                 </div>
                                 <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label class="form-control-label" for="inventory_number">Nomor Inventaris</label>
-                                    <input class="form-control" type="text" id="inventory_number" name="inventory_number">
+                                    <input class="form-control <?= isset(session('errors')['inventory_number']) ? 'is-invalid' : ''; ?>" type="text" id="inventory_number" name="inventory_number" value="<?= old('inventory_number'); ?>">
                                 </div>
                             </div>
 

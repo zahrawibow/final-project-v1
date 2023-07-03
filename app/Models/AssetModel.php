@@ -43,8 +43,54 @@ class AssetModel extends Model
     // protected $deletedField  = 'deleted_at';
 
     // Validation
-    // protected $validationRules      = [];
-    // protected $validationMessages   = [];
+    protected $validationRules      = [
+        'name' => 'required|alpha_numeric_punct|min_length[3]',
+        'merk' => 'required|min_length[3]',
+        'series' => 'required|min_length[3]',
+        'count' => 'required|integer|greater_than[0]',
+        'price' => 'permit_empty|greater_than[1000]',
+        'status' => 'required',
+        'condition' => 'required',
+        'purchase_date' => 'required|date_not_future',
+        'location' => 'required',
+        'inventory_number' => 'permit_empty|min_length[4]'
+    ];
+    protected $validationMessages   = [
+        'name' => [
+            'required' => 'Nama aset harus diisi!',
+            'alpha_numeric_punct' => 'Nama aset tidak valid',
+            'min_length' => 'Nama aset minimum 3 karakter'
+        ],
+        'merk' => [
+            'required' => 'Merk aset harus diisi!',
+            'min_length' => 'Merk aset minimum 3 karakter'
+        ],
+        'series' => [
+            'required' => 'Seri aset harus diisi!',
+            'min_length' => 'Seri aset minimum 3 karakter'
+        ],
+        'count' => [
+            'required' => 'Jumlah aset harus diisi!',
+            'integer' => 'Jumlah aset tidak valid',
+            'greater_than' => 'Jumlah aset tidak valid'
+        ],
+        'status' => [
+            'required' => 'Status wajib diisi!'
+        ],
+        'condition' => [
+            'required' => 'Kondisi aset wajib diisi!'
+        ],
+        'purchase_date' => [
+            'required' => 'Tanggal pengadaan wajib diisi!',
+            'date_not_future' => 'Tanggal pengadaan tidak valid'
+        ],
+        'location' => [
+            'required' => 'Lokasi aset wajib diisi!'
+        ],
+        'inventory_number' => [
+            'min_length' => 'Nomor Inventaris tidak valid'
+        ]
+    ];
     // protected $skipValidation       = false;
     // protected $cleanValidationRules = true;
 

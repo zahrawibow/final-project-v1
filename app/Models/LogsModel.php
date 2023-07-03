@@ -25,8 +25,33 @@ class LogsModel extends Model
     // protected $deletedField  = 'deleted_at';
 
     // Validation
-    // protected $validationRules      = [];
-    // protected $validationMessages   = [];
+    protected $validationRules      = [
+        'asset_id' => 'required',
+        'purpose' => 'required',
+        'start_time' => 'required|rational_start_time',
+        'end_time' => 'required|rational_end_time[start_time]',
+        'currant_condition' => 'required|min_lenght[4]'
+    ];
+    protected $validationMessages   = [
+        'asset_id' => [
+            'required' => 'Aset harus dipilih',
+        ],
+        'purpose' => [
+            'required' => 'Keperluan harus diisi',
+        ],
+        'start_time' => [
+            'required' => 'Waktu mulai harus diisi',
+            'rational_start_time' => 'Waktu mulai tidak valid'
+        ],
+        'end_time' => [
+            'required' => 'Waktu selesai harus diisi',
+            'rational_end_time' => 'Waktu selesai tidak valid'
+        ],
+        'currant_condition' => [
+            'required' => 'Kondisi saat ini harus diisi',
+            'min_length' => 'Kondisi saat ini tidak valid'
+        ]
+    ];
     // protected $skipValidation       = false;
     // protected $cleanValidationRules = true;
 

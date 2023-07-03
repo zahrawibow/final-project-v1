@@ -97,7 +97,7 @@ class ManagePracticumController extends BaseController
 
     public function stored_practicum()
     {
-        $this->practicumModel->save([
+        $data = [
             'title' => $this->request->getVar('title'),
             'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
@@ -108,7 +108,12 @@ class ManagePracticumController extends BaseController
             'prac_location' => $this->request->getVar('prac_location'),
             'description' => $this->request->getVar('description'),
             'prac_status' => $this->request->getVar('prac_status')
-        ]);
+        ];
+
+        if ($this->practicumModel->save($data) == false) :
+            return redirect()->back()->with('errors', $this->practicumModel->errors());
+        endif;
+
 
         return redirect()->to(url_to('practicum.manage'));
     }
