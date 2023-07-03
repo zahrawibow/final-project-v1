@@ -20,8 +20,10 @@ class AssetsController extends BaseController
 
     public function create()
     {
+        session();
         $data = [
             'title' => 'Create Asset',
+            'validation' => \config\Services::validation()
         ];
         return view('asset/create', $data);
     }
@@ -38,7 +40,8 @@ class AssetsController extends BaseController
     public function stored_asset()
     {
         $slug = url_title($this->request->getVar('name'), '-', true) . Time::now()->getTimeStamp();
-        $this->assetModel->save([
+
+        $data = [
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
             'merk' => $this->request->getVar('merk'),
@@ -56,7 +59,10 @@ class AssetsController extends BaseController
             'manual' => $this->request->getVar('manual'),
             // 'lisence' => $this->request->getVar('lisence'),
             'user_id' => user_id()
-        ]);
+        ];
+        if ($this->assetModel->save($data) === false) :
+            return redirect()->back()->withInput()->with('errors', $this->assetModel->errors());
+        endif;
 
 
         // session()->setFlashdata('succes', 'Data berhasil ditambahkan'); buat sweet alert
@@ -83,7 +89,8 @@ class AssetsController extends BaseController
         // dd($this->request->getVar());
 
         $slug = url_title($this->request->getVar('name'), '-', true) . Time::now()->getTimeStamp();
-        $this->assetModel->save([
+
+        $data = [
             'id' => $id,
             'name' => $this->request->getVar('name'),
             'slug' => $slug,
@@ -102,7 +109,11 @@ class AssetsController extends BaseController
             'manual' => $this->request->getVar('manual'),
             // 'lisence' => $this->request->getVar('lisence'),
             'user_id' => user_id()
-        ]);
+        ];
+
+        if ($this->assetModel->save($data) == false) :
+            return redirect()->back();
+        endif;
         return redirect()->to('/asset');
     }
 }

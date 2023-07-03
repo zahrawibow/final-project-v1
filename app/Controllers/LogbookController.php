@@ -56,7 +56,7 @@ class LogbookController extends BaseController
 
     public function stored_logging()
     {
-        $this->logsModel->save([
+        $data = [
             'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
             'purpose' => $this->request->getVar('purpose'),
@@ -64,7 +64,12 @@ class LogbookController extends BaseController
             'start_time' => $this->request->getVar('start_time'),
             'end_time' => $this->request->getVar('end_time'),
             'currant_condition' => $this->request->getVar('currant_condition')
-        ]);
+        ];
+
+        if ($this->logsModel->save($data) == false) :
+            return redirect()->back()->with('errors', $this->logsModel->errors());
+        endif;
+
 
         return redirect()->to('/logbook');
     }
@@ -120,7 +125,7 @@ class LogbookController extends BaseController
 
     public function stored_radiation()
     {
-        $this->radiationModel->save([
+        $data = [
             'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
             'activity' => $this->request->getVar('activity'),
@@ -129,7 +134,11 @@ class LogbookController extends BaseController
             'end_time' => $this->request->getVar('end_time'),
             'radioisotope' => $this->request->getVar('radioisotope'),
             'radiation' => $this->request->getVar('radiation')
-        ]);
+        ];
+
+        if ($this->radiationModel->save($data) == false) :
+            return redirect()->back()->with('errors', $this->radiationModel->errors());
+        endif;
 
         return redirect()->to('/logbook');
     }

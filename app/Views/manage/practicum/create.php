@@ -191,6 +191,15 @@
                         <div class="card-body">
                             <h5 class="font-weight-bolder">Informasi Praktikum</h5>
 
+                            <?php if (session()->has('errors')) : ?>
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0 text-white">
+                                        <?php foreach (session('errors') as $error) : ?>
+                                            <li><?= $error; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
 
                             <div class="form-group">
                                 <label for="title">Judul</label>
