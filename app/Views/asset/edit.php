@@ -234,7 +234,15 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="font-weight-bolder">Informasi Aset</h5>
-
+                            <?php if (session()->has('errors')) : ?>
+                                <div class="alert alert-danger text-white">
+                                    <ul class="mb-0">
+                                        <?php foreach (session('errors') as $error) : ?>
+                                            <li><?= $error; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <label for="name">Nama</label>

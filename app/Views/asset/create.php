@@ -164,7 +164,7 @@
 
     <div class="container-fluid py-4">
 
-        <form action="<?= url_to('asset.store'); ?>" method="post">
+        <form action="<?= url_to('asset.store'); ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <div class="row px-3">
                 <div class="col-lg-6">
@@ -183,28 +183,28 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="font-weight-bolder">Foto Aset</h5>
-                            <form action="/file-upload" class="form-control" id="tool-img1" name="tool-img1">
-                                <div class="form-group">
-                                    <label for="tool-img1" class="form-label"> Jatuhkan atau Pilih File Disini</label>
-                                    <input class="form-control" type="file" id="tool-img1" multiple name="tool-img1">
-                                </div>
-                            </form>
+                            <!-- <form action="/file-upload" class="form-control" id="tool-img1" name="tool-img1"> -->
+                            <div class="form-group">
+                                <label for="tool-img1" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                <input class="form-control" type="file" id="tool-img1" multiple name="tool-img">
+                            </div>
+                            <!-- </form> -->
 
                             <h5 class="font-weight-bolder mt-4">Spesifikasi</h5>
-                            <form action="/file-upload" class="form-control" id="spec" name="spec">
-                                <div class="form-group">
-                                    <label for="spec" class="form-label"> Jatuhkan atau Pilih File Disini</label>
-                                    <input class="form-control" type="file" id="spec" multiple name="spec">
-                                </div>
-                            </form>
+                            <!-- <form action="/file-upload" class="form-control" id="spec" name="spec"> -->
+                            <div class="form-group">
+                                <label for="spec" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                <input class="form-control" type="file" id="spec" multiple name="spec">
+                            </div>
+                            <!-- </form> -->
 
                             <h5 class="font-weight-bolder mt-4">Buku Manual</h5>
-                            <form action="/file-upload" class="form-control" id="manual" name="manual">
-                                <div class="form-group">
-                                    <label for="manual" class="form-label"> Jatuhkan atau Pilih File Disini</label>
-                                    <input class="form-control" type="file" id="manual" multiple name="manual">
-                                </div>
-                            </form>
+                            <!-- <form action="/file-upload" class="form-control" id="manual" name="manual"> -->
+                            <div class="form-group">
+                                <label for="manual" class="form-label"> Jatuhkan atau Pilih File Disini</label>
+                                <input class="form-control" type="file" id="manual" multiple name="manual">
+                            </div>
+                            <!-- </form> -->
 
 
                             <h5 class="font-weight-bolder mt-4">Lisensi</h5>
