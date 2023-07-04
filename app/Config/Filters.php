@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\JwtFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -24,6 +25,7 @@ class Filters extends BaseConfig
         'login'      => \Myth\Auth\Filters\LoginFilter::class,
         'role'       => \Myth\Auth\Filters\RoleFilter::class,
         'permission' => \Myth\Auth\Filters\PermissionFilter::class,
+        'authentication' => JwtFilter::class
     ];
 
     /**
@@ -40,7 +42,7 @@ class Filters extends BaseConfig
                     '/home',
                     '/api/*'
                 ]
-            ]
+            ],
         ],
         'after' => [
             'toolbar',
@@ -70,6 +72,14 @@ class Filters extends BaseConfig
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
     public array $filters = [
-        // 'login' => ['before' => ['!home']]
+        // 'authentication' => [
+        //     'except' => [
+        //         'api/sign-in',
+        //         'api/sign-up'
+        //     ],
+        //     'before' => [
+        //         'api/*'
+        //     ]
+        // ]
     ];
 }

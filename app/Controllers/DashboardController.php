@@ -43,6 +43,7 @@ class DashboardController extends BaseController
         ];
         return view('dashboard/radioisotope', $data);
     }
+
     public function stored_attendance()
     {
         $this->attendanceModel->save([

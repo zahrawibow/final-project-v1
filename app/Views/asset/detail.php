@@ -39,8 +39,8 @@
             </nav>
 
 
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                <!-- search bar -->
+            <!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
 
@@ -55,7 +55,7 @@
                         </a>
                     </li>
 
-                    <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
                                 <i class="sidenav-toggler-line"></i>
@@ -63,8 +63,8 @@
                                 <i class="sidenav-toggler-line"></i>
                             </div>
                         </a>
-                    </li> -->
-                    <!-- notifikasi -->
+                    </li>
+                    
                     <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
                             <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer" aria-hidden="true"></i>
@@ -157,7 +157,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
 
@@ -219,67 +219,25 @@
 
                                 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="pswp__bg"></div>
-
                                     <div class="pswp__scroll-wrap">
                                         <div class="pswp__container">
                                             <div class="pswp__item"></div>
                                             <div class="pswp__item"></div>
                                             <div class="pswp__item"></div>
                                         </div>
-
-                                        <!-- harusnya muncul kalo gambarnya diklik -->
-                                        <!-- <div class="pswp__ui pswp__ui--hidden">
-                                            <div class="pswp__top-bar">
-                                                <div class="pswp__counter"></div>
-                                                <button class="btn btn-white btn-sm pswp__button pswp__button--close">
-                                                    Close (Esc)
-                                                </button>
-                                                <button class="btn btn-white btn-sm pswp__button pswp__button--fs">
-                                                    Fullscreen
-                                                </button>
-                                                <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--left">
-                                                    Prev
-                                                </button>
-                                                <button class="btn btn-white btn-sm pswp__button pswp__button--arrow--right">
-                                                    Next
-                                                </button>
-
-                                                <div class="pswp__preloader">
-                                                    <div class="pswp__preloader__icn">
-                                                        <div class="pswp__preloader__cut">
-                                                            <div class="pswp__preloader__donut"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                                <div class="pswp__share-tooltip"></div>
-                                            </div>
-                                            <div class="pswp__caption">
-                                                <div class="pswp__caption__center"></div>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
 
                                 <div class="d-grid d-md-flex justify-content-md-between mt-2">
-                                    <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#import" name="spec">
-                                        SPEC
-                                    </button>
-
-                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="manual">
+                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1 w-100" data-type="csv" type="button" name="manual">
                                         Manual
-                                    </button>
-
-                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="license">
-                                        License
                                     </button>
                                 </div>
                             </div>
 
 
                             <div class="col-lg-7 mx-auto">
-                                <div class="nav-wrapper position-relative end-0 mb-3">
+                                <!-- <div class="nav-wrapper position-relative end-0 mb-3">
                                     <ul class="nav nav-pills nav-fill p-1" role="tablist">
                                         <li class="nav-item active" type="button">
                                             <a class="nav-link mb-0 px-0 py-1 active text-sm" data-bs-toggle="tab" data-bs-target="#detail" role="tab" aria-controls="tab" aria-selected="true" id="detail-tab"> Detail
@@ -292,14 +250,14 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
 
                                 <div class="tab-content tab-content-basic">
 
                                     <div id="detail" class="tab-pane fade show active" role="tabpanel" aria-labelledby="detail-tab">
-                                        <h2 class="mt-lg-0 mt-3 px-1">
+                                        <h3 class="mt-lg-0 mt-3 px-1">
                                             <?= $assets['name']; ?>
-                                        </h2>
+                                        </h3>
 
                                         <div class="row">
                                             <div class="col-12 col-sm-6">
@@ -350,9 +308,13 @@
                                         <p class="text-sm text-secondary px-1"><?= $assets['description']; ?></p>
                                     </div>
 
+
+                                    <!-- 
                                     <div id="maintenance" class="tab pane fade" role="tabpanel" aria-labelledby="maintenance-tab">
-                                        <h4 class="mt-lg-0 mt-3">Perawatan <?= $assets['name']; ?></h4>
-                                    </div>
+
+                                        <h3 class="mt-lg-0 mt-3 px-1">Perawatan <?= $assets['name']; ?></h3>
+
+                                    </div> -->
                                 </div>
 
                                 <div class="tab-content">

@@ -3,10 +3,10 @@
 namespace App\Controllers\API;
 
 use App\Helpers\CustomAPIResponse;
-use App\Models\RadiationModel;
+use App\Models\LogsModel;
 use CodeIgniter\RESTful\ResourceController;
 
-class RadiationHistory extends ResourceController
+class Asset extends ResourceController
 {
     use CustomAPIResponse;
 
@@ -17,13 +17,14 @@ class RadiationHistory extends ResourceController
 
     public function __construct()
     {
-        $this->model = new RadiationModel();
+        $this->model = new LogsModel();
     }
     /**
      * Return an array of resource objects, themselves in array format
      *
      * @return mixed
      */
+
     public function index()
     {
         $limit = $this->request->getVar('limit');
@@ -31,11 +32,7 @@ class RadiationHistory extends ResourceController
 
         $data = $this->model->findAll($limit ?? $this->limit, $offset ?? $this->offset);
 
-        if (!$data) :
-            return $this->emptyResponse();
-        endif;
-
-        return $this->successResponse($data, 'Semua Data Penerimaan Dosis Radiasi');
+        return $this->successResponse($data, "Semua Data Aset");
     }
 
     /**
@@ -54,7 +51,7 @@ class RadiationHistory extends ResourceController
         endif;
 
         // Jika sukses
-        return $this->successResponse($data, "Data Kunjungan dengan ID-$id");
+        return $this->successResponse($data, "Data Aset ID-$id");
     }
 
     /**
@@ -67,12 +64,11 @@ class RadiationHistory extends ResourceController
         $data = [
             'asset_id' => $this->request->getVar('asset_id'),
             'user_id' => user_id(),
-            'activity' => $this->request->getVar('activity'),
+            'purpose' => $this->request->getVar('purpose'),
             'laboratorian_id' => $this->request->getVar('laboratorian_id'),
             'start_time' => $this->request->getVar('start_time'),
             'end_time' => $this->request->getVar('end_time'),
-            'radioisotope' => $this->request->getVar('radioisotope'),
-            'radiation' => $this->request->getVar('radiation')
+            'currant_condition' => $this->request->getVar('currant_condition')
         ];
 
         if (!$this->model->save($data)) {
