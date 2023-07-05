@@ -9,11 +9,13 @@ class DashboardController extends BaseController
 {
     protected $attendanceModel;
     protected $assetCount;
+    protected $client;
 
     public function __construct()
     {
         $this->attendanceModel = new AttendanceModel();
         $this->assetCount = (new AssetModel())->countAllResults();
+        $this->client = \Config\Services::curlrequest();
     }
 
     public function index()
@@ -21,7 +23,8 @@ class DashboardController extends BaseController
         $data = [
             'title' => 'Pagu Utama',
             'asset_count' => $this->assetCount,
-            'visitors' => $this->attendanceModel->countAllResults()
+            'visitors' => $this->attendanceModel->countAllResults(),
+
         ];
 
         return view('dashboard/index', $data);
@@ -40,6 +43,7 @@ class DashboardController extends BaseController
     {
         $data = [
             'title' => 'Informasi Radiosiotop',
+            'nuclides' => $this->getNuclideData()
         ];
         return view('dashboard/radioisotope', $data);
     }
@@ -55,5 +59,33 @@ class DashboardController extends BaseController
 
         return redirect()->to('/');
         // return view('dashboard/radioisotope', $data);
+    }
+
+    public function getNuclideData()
+    {
+        $url =  'https://www-nds.iaea.org/relnsd/v1/data?fields=levels&nuclides=60co';
+
+        $response = $this->client->request('get', $url)->getBody();
+
+        $response = explode("\n", $response);
+        $headers = explode(',', array_shift($response));
+
+        $data = [];
+        foreach ($response as $key => $value) :
+            $data[$key] = explode(',', $value);
+        endforeach;
+
+        // $data[0][0] = "aaaa";
+
+        $finalData = [];
+        foreach ($data as $key => $value) :
+            if (count($value) > 1) :
+                foreach ($value as $index => $val) :
+                    $finalData[$key][$headers[$index]] = $val;
+                endforeach;
+            endif;
+        endforeach;
+
+        return $finalData;
     }
 }
