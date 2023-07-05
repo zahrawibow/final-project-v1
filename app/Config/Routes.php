@@ -72,6 +72,7 @@ $routes->group('radiation', static function ($routes) {
 $routes->group('asset', static function ($routes) {
     $routes->get('/', 'AssetsController::index', ['as' => 'asset.index']);
     $routes->get('detail/(:any)', 'AssetsController::show_detail/$1', ['as' => 'asset.detail']);
+    $routes->post('download', 'AssetsController::download', ['as' => 'asset.download']);
 
     // Manage Assets Routes & Admin previleges
     $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
@@ -174,6 +175,7 @@ $routes->group('api', static function ($routes) {
         $routes->resource('attendance', ['controller' => 'API\Attendance']);
         $routes->resource('radiation-history', ['controller' => 'API\RadiationHistory']);
     });
+
 });
 
 /*

@@ -192,9 +192,9 @@
 
                         <div class="row">
                             <div class="col-xl-5 col-lg-5 text-center">
-                                <img class="w-100 border-radius-lg shadow-lg mx-auto" src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" alt="chair" />
+                                <img class="w-100 border-radius-lg shadow-lg mx-auto" src="<?= base_url('img/' . $assets['asset_images']); ?>" alt="chair" />
 
-                                <div class="my-gallery d-flex justify-content-md-between mt-4" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
+                                <!-- <div class="my-gallery d-flex justify-content-md-between mt-4" itemscope="" itemtype="http://schema.org/ImageGallery" data-pswp-uid="1">
                                     <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
                                         <a href="./productdetail_files/chair-pink.jpg" itemprop="contentUrl" data-size="500x600">
                                             <img class="w-85 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-pink.jpg" alt="Image description" />
@@ -215,7 +215,7 @@
                                             <img class="w-90 min-height-100 max-height-100 border-radius-lg shadow" src="<?= base_url(); ?>../assets/productdetail_files/chair-wood.jpg" itemprop="thumbnail" alt="Image description" />
                                         </a>
                                     </figure>
-                                </div>
+                                </div> -->
 
                                 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="pswp__bg"></div>
@@ -228,10 +228,23 @@
                                     </div>
                                 </div>
 
-                                <div class="d-grid d-md-flex justify-content-md-between mt-2">
-                                    <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1 w-100" data-type="csv" type="button" name="manual">
-                                        Manual
-                                    </button>
+
+                                <div class="d-grid d-md-flex justify-content-center mt-2">
+                                    <form action="<?= url_to('asset.download'); ?>" method="post">
+                                        <?= csrf_field(); ?>
+                                        <!-- <button type="button" class="btn btn-outline-primary btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#import" name="spec">
+                                            SPEC
+                                    </button> -->
+
+                                        <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" type="submit" name="manual" value="<?= $assets['manual']; ?>">
+                                            Manual
+                                        </button>
+
+                                        <!-- <button class="btn btn-outline-primary btn-sm mb-0 mt-sm-0 mt-1" data-type="csv" type="button" name="license">
+                                        License
+                                    </button> -->
+                                    </form>
+
                                 </div>
                             </div>
 

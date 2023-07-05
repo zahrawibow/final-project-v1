@@ -95,6 +95,11 @@ class Asset extends Migration
                 'unsigned' => true,
                 'null' => false
             ],
+            'asset_images' => [
+                'type' => 'varchar',
+                'constraint' => 255,
+                'null' => true
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'default' => new RawSql('CURRENT_TIMESTAMP')
