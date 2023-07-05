@@ -310,7 +310,7 @@
                                 Radioisotope information is one of the most important data to support in using some assets in this laboratory.
                                 Its directly provide from the International Atomic Energy Agency
                             </p>
-                            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
+                            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="<?= base_url('/iaea'); ?>">
                                 Access Data
                                 <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                             </a>
