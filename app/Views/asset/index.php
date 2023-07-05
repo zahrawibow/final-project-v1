@@ -36,12 +36,11 @@
             </nav>
 
 
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                <!-- search bar -->
+            <!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here..." onfocus="focused(this)" onfocusout="defocused(this)" />
+
                     </div>
                 </div>
 
@@ -53,7 +52,7 @@
                         </a>
                     </li>
 
-                    <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
                                 <i class="sidenav-toggler-line"></i>
@@ -61,15 +60,15 @@
                                 <i class="sidenav-toggler-line"></i>
                             </div>
                         </a>
-                    </li> -->
-                    <!-- notifikasi -->
-                    <!-- <li class="nav-item px-3 d-flex align-items-center">
+                    </li>
+                    
+                    <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
                             <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer" aria-hidden="true"></i>
                         </a>
-                    </li> -->
+                    </li>
 
-                    <li class="nav-item dropdown px-2 d-flex align-items-center">
+                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bell cursor-pointer" aria-hidden="true"></i>
                         </a>
@@ -155,7 +154,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
     <!-- Header Page end-->
@@ -240,12 +239,6 @@
                                                         </td>
 
                                                         <?php if (in_groups('admin')) : ?>
-                                                            <!-- <td class="align-middle text-center text-sm">
-                                                                <a href="/asset/edit/<?= $asset['slug']; ?>">
-                                                                    <button type="submit" class="badge badge-sm bg-warning border-0">Ubah</button>
-                                                                </a>
-                                                            </td> -->
-
                                                             <form action="<?= url_to('asset.delete', $asset['id']); ?>" method="post">
                                                                 <?= csrf_field(); ?>
                                                                 <td class="align-middle text-center text-sm">

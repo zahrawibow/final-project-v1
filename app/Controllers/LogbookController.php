@@ -38,7 +38,7 @@ class LogbookController extends BaseController
             ->getResultArray();
 
         $data = [
-            'title' => 'Log Aset',
+            'title' => 'Activities Log',
             'assets' => $this->assetModel->getAssetData(),
             'laboratorians' => $laboratorian
         ];
@@ -109,17 +109,6 @@ class LogbookController extends BaseController
         $this->loansModel->insert($data);
 
         return response()->setContentType('application/json')->setStatusCode(200)->setJSON($data);
-
-
-        // $this->loansModel->save([
-        //     'asset_id' => $this->request->getVar('asset_id'),
-        //     'user_id' => user_id(),
-        //     'purpose' => $this->request->getVar('purpose'),
-        //     'loan_time' => $this->request->getVar('loan_time'),
-        //     'permission_tax' => $this->request->getVar('permission_tax')
-        // ]);
-
-        // return redirect()->to('/logbook');
     }
 
 

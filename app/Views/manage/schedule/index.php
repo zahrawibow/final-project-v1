@@ -27,10 +27,10 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Praktikum
+                        Kelola Agenda Kegiatan
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
+                <h6 class="font-weight-bolder mb-0">Daftar Agenda Kegiatan</h6>
             </nav>
 
             <!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -157,81 +157,153 @@
 
     <div class="container-fluid py-4">
         <div class="row">
-            <?php foreach ($practicum as $prac) : ?>
+            <div class="col-12">
+                <!-- <div class="card mb-4"> -->
+                <div class="card">
+                    <!-- tabel aset -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-14">
+                                <div class="alert alert-dark pb-0" role="alert">
+                                    <div class="d-lg-flex">
+                                        <div>
+                                            <h6 class="text-white mb-0">Tambahkan Agenda</h6>
+                                            <p class="text-white text-xs text-secondary mb-0">
+                                                Hanya admin yang dapat menambahkan, merubah, serta menghapus data
+                                            </p>
+                                        </div>
 
-                <div class="col-md-4 mb-4">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="front">
-                                <div class="cover">
-                                    <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
-                                </div>
-
-                                <div class="content">
-                                    <div class="main text-center mt-2">
-                                        <h5><strong><?= $prac['title']; ?></strong></h5>
-                                        <p class="mt-2 mb-0 text-sm"><?= $prac['fullname']; ?></p>
-
-                                    </div>
-                                    <div class="footer text-xs mt-2">
-                                        <i class="fa fa-mail-forward text-center"></i> Auto Rotation
+                                        <div class="ms-auto my-auto mt-lg-0 mt-4">
+                                            <div class="ms-auto my-auto">
+                                                <a href="<?= url_to('schedule.create'); ?>" class="btn bg-gradient-primary btn-sm mb-4" target="_blank">+&nbsp; Tambahkan</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end front panel -->
 
-                            <!-- <div class="back">
-                                <div class="header">
-                                    <h4 class="motto mt-4">Deskripsi Singkat</h4>
+                            <!-- Harusnya sweet alert -->
+                            <!-- <?php if (session()->getFlashdata('succes')) : ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Berhasil!!</strong> <?= session()->getFlashdata('succes'); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <div class="content">
-                                    <div class="main pt-0">
-                                        <h6 class="text-center text-xs px-1"><?= $prac['description']; ?></h6>
+                            <?php endif; ?> -->
+
+                            <div class="table-responsive p-0">
+                                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                                    <div class="dataTable-container">
+                                        <table class="table align-items-center mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Kegiatan</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 align-middle text-center">Pengampu</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lokasi</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Waktu Mulai</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Waktu Selesai</th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deskripsi</i></th>
+                                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</i></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <?php foreach ($schedule as $s) : ?>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <div class="d-flex flex-column">
+                                                                    <h6 class="mb-0 text-sm"><?= $s['activity_name'] ?></h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $s['fullname'] ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $s['activity_location'] ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $s['date'] ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $s['start_time'] ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $s['end_time'] ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0 align-middle text-center"><?= $s['description'] ?></p>
+                                                        </td>
+
+                                                        <td class="align-middle text-center text-sm">
+                                                            <?php if ($s['activity_status']  == "Belum Dilaksanakan") : ?>
+                                                                <span class="badge badge-sm bg-gradient-danger"><?= $s['activity_status'] ?></span>
+                                                            <?php elseif ($s['activity_status']  == "Sudah Terlaksana") : ?>
+                                                                <span class="badge badge-sm bg-gradient-success"><?= $s['activity_status'] ?></span>
+                                                            <?php endif; ?>
+                                                        </td>
+
+                                                        <td class="align-middle text-center text-sm py-0 px-0">
+                                                            <a href="<?= url_to('schedule.edit', $s['id']); ?>">
+                                                                <button type="submit" class="badge badge-sm bg-warning border-0">Ubah</button>
+                                                            </a>
+                                                        </td>
+                                                        <form action="<?= url_to('schedule.delete', $s['id']); ?>" method="post">
+                                                            <td class="align-middle text-center text-sm py-0">
+                                                                <?= csrf_field(); ?>
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button type="submit" class="badge badge-sm bg-danger border-0">Hapus</button>
+                                                            </td>
+                                                        </form>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <a href="/practicum/detail" class="btn bg-gradient-dark w-100 mt-5 mb-0">
-                                        Get started
-                                    </a>
-                                </div>
-                            </div> end back panel -->
-
-                            <div class="back">
-                                <div class="header mb-0">
-                                    <h4 class="motto mt-4">Deskripsi Singkat</h4>
-                                </div>
-                                <div class="content mt-0">
-                                    <div class="main pt-0">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm mt-0" disabled>Kelompok <?= $prac['team']; ?></button>
-
-                                        <h6 class="text-center text-xs px-1">
-                                            <?php
-                                            $description = $prac['description'];
-                                            $maxCharacters = 100; // Jumlah karakter maksimal yang ingin ditampilkan
-
-                                            if (strlen($description) > $maxCharacters) {
-                                                $shortDescription = substr($description, 0, $maxCharacters) . "...";
-                                                echo $shortDescription;
-                                            } else {
-                                                echo $description;
-                                            }
-                                            ?>
-                                        </h6>
-                                    </div>
-
-                                    <a href="<?= url_to('practicum.detail', $prac['id']); ?>" class="btn bg-gradient-dark w-100 mt-5 mb-0">
-                                        Memulai
-                                    </a>
                                 </div>
                             </div>
-
-                        </div> <!-- end card -->
-                    </div> <!-- end card-container -->
+                        </div>
+                    </div>
                 </div>
-            <?php endforeach; ?>
+            </div>
+
+            <footer class="footer pt-3  ">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-6 mb-lg-0 mb-4">
+                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                                © <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                made with <i class="fa fa-heart"></i> by
+                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                                for a better web.
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </div>
+        <!-- Assets Table End -->
+
+
 
 </main>
-
-<script src="../../assets/js/plugins/threejs.js"></script>
-<script src="../../assets/js/plugins/orbit-controls.js"></script>
 <?= $this->endSection(); ?>

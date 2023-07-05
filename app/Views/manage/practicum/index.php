@@ -27,18 +27,17 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Praktikum
+                        Kelola Praktikum
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
+                <h6 class="font-weight-bolder mb-0">Daftar Praktikum</h6>
             </nav>
 
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                <!-- search bar -->
+            <!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here..." onfocus="focused(this)" onfocusout="defocused(this)" />
+
                     </div>
                 </div>
 
@@ -50,8 +49,16 @@
                         </a>
                     </li>
 
-
-                    <!-- notifikasi -->
+                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                            </div>
+                        </a>
+                    </li>
+                    
                     <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
                             <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer" aria-hidden="true"></i>
@@ -144,7 +151,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
 
@@ -241,7 +248,11 @@
                                                             </a>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="badge badge-sm bg-gradient-success"><?= $prac['prac_status']; ?></span>
+                                                            <?php if ($prac['prac_status']  == "Belum Terlaksana") : ?>
+                                                                <span class="badge badge-sm bg-gradient-danger"><?= $prac['prac_status'] ?></span>
+                                                            <?php elseif ($prac['prac_status']  == "Sudah Terlaksana") : ?>
+                                                                <span class="badge badge-sm bg-gradient-success"><?= $prac['prac_status'] ?></span>
+                                                            <?php endif; ?>
                                                         </td>
 
                                                         <td class="align-middle text-center text-sm py-0 px-0">

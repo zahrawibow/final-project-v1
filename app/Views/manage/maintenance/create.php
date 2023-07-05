@@ -27,10 +27,10 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Pagu Utama
+                        Praktikum
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Pagu Utama</h6>
+                <h6 class="font-weight-bolder mb-0">Praktikum Radiologi dan Kedokteran Nuklir</h6>
             </nav>
 
             <!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -154,111 +154,72 @@
             </div> -->
         </div>
     </nav>
-
     <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-lg-7 position-relative z-index-2">
-                <div class="card card-plain mb-4">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="d-flex flex-column h-100">
-                                    <h2 class="font-weight-bolder mb-0">
-                                        Lini Informasi
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+        <form action="<?= url_to('maintenance.store'); ?>" method="post">
+            <?= csrf_field(); ?>
+            <div class="row px-3">
+                <div class="col-lg-6">
+                    <h3>Tambah Perawatan Aset</h3>
+                    <p class="text-secondary text-sm">Isi form tambah perawatan untuk menambah data perawatan aset pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
                 </div>
-                <div class="row">
-                    <div class="col-lg-5 col-sm-6">
-                        <div class="card mb-4">
-                            <div class="card-body p-3">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="numbers">
-                                            <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                                                Pengunjung
-                                            </p>
-                                            <h5 class="font-weight-bolder mb-0">
-                                                <?= $visitors; ?>
-                                                <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
-                                            </h5>
-                                        </div>
+
+                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
+                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Tambah</button>
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-lg-12 mt-lg-0 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder">Informasi Perawatan</h5>
+
+                            <?php if (session()->has('errors')) : ?>
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0 text-white">
+                                        <?php foreach (session('errors') as $error) : ?>
+                                            <li><?= $error; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="form-group">
+                                <label for="maintenance_name">Nama Perawatan</label>
+                                <input class="form-control" type="text" id="maintenance_name" name="maintenance_name" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="asset_id">Aset</label>
+                                <select class="form-control" id="asset_id" name="asset_id">
+                                    <?php foreach ($assets as $asset) : ?>
+                                        <option value="<?= $asset['id']; ?>"><?= $asset['name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="date">Tanggal Perawatan</label>
+                                        <input class="form-control" type="date" id="date" name="date" onfocus="focused(this)" onfocusout="defocused(this)">
                                     </div>
-                                    <div class="col-4 text-end">
-                                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                        </div>
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <input class="form-control" type="text" id="status" name="status" onfocus="focused(this)" onfocusout="defocused(this)">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body p-3">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="numbers">
-                                            <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                                                Agenda
-                                            </p>
-                                            <h5 class="font-weight-bolder mb-0">
-                                                2,300
-                                                <!-- <span class="text-success text-sm font-weight-bolder">+3%</span> -->
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 text-end">
-                                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-sm-6 mt-sm-0 mt-4">
-                        <div class="card mb-4">
-                            <div class="card-body p-3">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="numbers">
-                                            <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                                                Aset Lab
-                                            </p>
-                                            <h5 class="font-weight-bolder mb-0">
-                                                <?= $asset_count; ?>
-                                                <!-- <span class="text-danger text-sm font-weight-bolder">-2%</span> -->
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 text-end">
-                                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body p-3">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="numbers">
-                                            <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                                                Status
-                                            </p>
-                                            <h5 class="font-weight-bolder mb-0 text-sm">
-                                                <Table>Dapat Dikunjungi</Table>
-                                                <!-- <span class="text-success text-sm font-weight-bolder">+5%</span> -->
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 text-end">
-                                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                                        </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <label class="mt-2" for="description">Deksripsi</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -266,132 +227,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-lg-7 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-lg-7">
-                                <div class="d-flex flex-column h-100">
-                                    <p class="text-sm mb-1 pt-2 text-bold">Radiology and Nuclear Medicine Lab</p>
-                                    <h5 class="font-weight-bolder">Attendance</h5>
-                                    <p class="mb-5 pt-3">
-                                        Visitors, please fill this attendance form before you access the laboratory.
-                                    </p>
-                                    <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto stretched-link" data-bs-toggle="modal" data-bs-target="#attendance">
-                                        Fill Form
-                                        <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                                <div class="bg-gradient-primary border-radius-lg h-100">
-                                    <img src="../assets/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves" />
-                                    <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                                        <img class="w-100 position-relative z-index-2 pt-4" src="../assets/img/illustrations/rocket-white.png" alt="rocket" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="card h-100 p-3">
-                    <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('../assets/img/ivancik.jpg')">
-                        <span class="mask bg-gradient-dark"></span>
-                        <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                            <h5 class="text-white font-weight-bolder mb-4 pt-2">
-                                Work with the IAEA
-                            </h5>
-                            <p class="text-white text-sm">
-                                Radioisotope information is one of the most important data to support in using some assets in this laboratory.
-                                Its directly provide from the International Atomic Energy Agency
-                            </p>
-                            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                                Access Data
-                                <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
 
 
-        <div class="row">
-            <div class="col-12">
-                <div id="globe" class="position-absolute end-0 top-10 mt-sm-3 mt-7 me-lg-7">
-                    <canvas width="500px" height="350px" class="w-lg-100 h-lg-100 w-75 h-75 me-lg-0 me-n10 mt-lg-5"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group modal fade" id="attendance" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body p-0">
-                        <div class="card card-plain">
-                            <div class="card-header pb-0 text-left">
-                                <h4 class="font-weight-bolder text-info text-gradient text-center">Form Kunjungan</h4>
-                                <p class="mb-0 text-center text-secondary">Isi form dibawah sesuai kegiatan yang akan kamu lakukan</p>
-                            </div>
-
-                            <div class="card-body">
-                                <form action="<?= url_to('attendance.store'); ?>" method="post" id="attendance-form">
-                                    <form role="form text-left" class="form-control" id="activity">
-                                        <div class="form-group">
-                                            <label for="activity">Kegiatan</label>
-                                            <select class="form-control" id="activity" name="activity">
-                                                <option value="Kunjungan Biasa">Kunjungan biasa</option>
-                                                <option value="Kuliah/Praktikum">Kuliah/Praktikum</option>
-                                                <option value="Ujian Praktikum">Ujian Praktikum</option>
-                                                <option value="Penelitian">Penelitian</option>
-                                                <option value="Tugas Akhir">Tugas Akhir</option>
-                                                <option value="Magang/PKL">Magang/PKL</option>
-                                                <option value="Rapat/Pertemuan">Rapat/Pertemuan</option>
-                                                <option value="Sosialisasi">Sosialisasi/Kunjungan</option>
-                                                <option value="Pengabdian Masyarakat">Pengabdian Masyarakat</option>
-                                                <option value="Perawatan Alat">Perawatan Alat</option>
-                                                <option value="Peminjaman Alat">Peminjaman Alat</option>
-                                                <option value="Pengembalian Alat">Pengembalian Alat</option>
-                                                <option value="Lainnya">Lainnya</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <!-- <form class="form-control" id="description" name="description"> -->
-                                            <label for="description">Keterangan</label>
-                                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                                            <!-- </form> -->
-                                        </div>
-                                    </form>
-
-                                    <div class="form group text-center">
-                                        <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0" form="attendance-form">Submit</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer pt-3">
+        <footer class="footer pt-3  ">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-6 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            2023, made with
-                            <i class="fa fa-heart" aria-hidden="true"></i> by
+                            © <script>
+                                document.write(new Date().getFullYear())
+                            </script>2023,
+                            made with <i class="fa fa-heart" aria-hidden="true"></i> by
                             <a href="https://www.creative-tim.com/" class="font-weight-bold" target="_blank">Creative Tim</a>
                             for a better web.
                         </div>
@@ -414,18 +261,12 @@
                     </div>
                 </div>
             </div>
+            <script src="../../assets/js/plugins/dropzone.min.js"></script>
         </footer>
     </div>
 
-    <div class="ps__rail-x" style="left: 0px; bottom: 0px">
-        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px"></div>
-    </div>
-
-    <div class="ps__rail-y" style="top: 0px; height: 580px; right: 0px">
-        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 167px"></div>
-    </div>
 </main>
 
-<script src="../../assets/js/plugins/threejs.js"></script>
-<script src="../../assets/js/plugins/orbit-controls.js"></script>
+
+
 <?= $this->endSection(); ?>

@@ -79,7 +79,6 @@ $routes->group('asset', static function ($routes) {
         $routes->get('create', 'AssetsController::create', ['as' => 'asset.create']);
         $routes->post('storedasset', 'AssetsController::stored_asset', ['as' => 'asset.store']);
         $routes->get('edit/(:segment)', 'AssetsController::edit/$1', ['as' => 'asset.edit']);
-        // $routes->post('updatedasset', 'AssetsController::updated_asset', ['as' => 'asset.update']);
         $routes->delete('delete/(:num)', 'AssetsController::delete/$1', ['as' => 'asset.delete']);
         $routes->post('update/(:segment)', 'AssetsController::update/$1', ['as' => 'asset.update']);
     });
@@ -89,8 +88,6 @@ $routes->group('asset', static function ($routes) {
 $routes->group('practicum', static function ($routes) {
     $routes->get('/', 'PracticumController::index', ['as' => 'practicum.index']);
     $routes->get('detail/(:any)', 'PracticumController::detail/$1', ['as' => 'practicum.detail']);
-    // $routes->get('schedules', 'PracticumController::show_schedule', ['as' => 'practicum.schedule']);
-    // $routes->get('teams', 'PracticumController::show_team', ['as' => 'practicum.teams']);
 
     // Manage practicum & admin previleges
     $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
@@ -109,9 +106,31 @@ $routes->group('practicum', static function ($routes) {
 
 
 // Schedule Routes
-$routes->get('/schedule', 'ScheduleController::index');
+$routes->group('schedule', static function ($routes) {
+    $routes->get('/', 'ScheduleController::index', ['as' => 'schedule.index']);
 
+    $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
+        $routes->get('manage', 'ScheduleController::manage_index', ['as' => 'schedule.manage']); //non-controller
+        $routes->get('create', 'ScheduleController::create', ['as' => 'schedule.create']); //non-controller
+        $routes->post('store', 'ScheduleController::stored_schedule', ['as' => 'schedule.store']); //non-controller
+        $routes->get('edit/(:segment)', 'ScheduleController::edit/$1', ['as' => 'schedule.edit']);
+        $routes->post('update/(:segment)', 'ScheduleController::update/$1', ['as' => 'schedule.update']);
+        $routes->delete('delete/(:num)', 'ScheduleController::delete/$1', ['as' => 'schedule.delete']);
+    });
+});
 
+$routes->group('maintenance', static function ($routes) {
+    $routes->group('', ['filter' => 'role:admin'], static function ($routes) {
+        $routes->get('manage', 'ManageMaintenanceController::index', ['as' => 'maintenance.manage']); //non-controller
+        $routes->get('create', 'ManageMaintenanceController::create', ['as' => 'maintenance.create']); //non-controller
+        $routes->post('store', 'ManageMaintenanceController::stored_maintenance', ['as' => 'maintenance.store']); //non-controller
+        $routes->get('edit/(:segment)', 'ManageMaintenanceController::edit/$1', ['as' => 'maintenance.edit']);
+        $routes->post('update/(:segment)', 'ManageMaintenanceController::update/$1', ['as' => 'maintenance.update']);
+        $routes->delete('delete/(:num)', 'ManageMaintenanceController::delete/$1', ['as' => 'maintenance.delete']);
+    });
+});
+
+//My Profile Routes
 $routes->group('myprofile', static function ($routes) {
     $routes->get('/', 'ProfileController::index', ['as' => 'myprofile.index']);
     $routes->get('edit/(:segment)', 'ProfileController::edit/$1', ['as' => 'myprofile.edit']);
@@ -119,9 +138,6 @@ $routes->group('myprofile', static function ($routes) {
     // $routes->post('update/(:segment)', 'ManageAccountController::update/$1', ['as' => 'account.update']);
 });
 
-// Profile Routes
-// $routes->get('/myprofile', 'ProfileController::index');
-// $routes->get('edit/(:segment)', 'ManageAccountController::edit/$1', ['as' => 'account.edit']);
 
 
 //---------------------------ADMIN ROLE-------------------------------
@@ -150,15 +166,16 @@ $routes->group('manage-account', ['filter' => 'role:admin'], static function ($r
 
 // API
 $routes->group('api', static function ($routes) {
-    $routes->resource('asset', ['controller' => 'API\Asset']);
-    $routes->resource('asset-loan', ['controller' => 'API\AssetLoan']);
-    $routes->resource('asset-log', ['controller' => 'API\AssetLog']);
-    $routes->resource('attendance', ['controller' => 'API\Attendance']);
-    $routes->resource('radiation-history', ['controller' => 'API\RadiationHistory']);
+    $routes->post('sign-in', 'API\Authentication::index');
 
-    // Verified
+    $routes->group('', ['filter' => 'authentication'], static function ($routes) {
+        $routes->resource('asset', ['controller' => 'API\Asset']);
+        $routes->resource('asset-loan', ['controller' => 'API\AssetLoan']);
+        $routes->resource('asset-log', ['controller' => 'API\AssetLog']);
+        $routes->resource('attendance', ['controller' => 'API\Attendance']);
+        $routes->resource('radiation-history', ['controller' => 'API\RadiationHistory']);
+    });
 
-    // Returning
 });
 
 /*

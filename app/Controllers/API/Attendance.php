@@ -11,6 +11,7 @@ class Attendance extends ResourceController
     use CustomAPIResponse;
 
     protected $model;
+
     protected $limit = 10;
     protected $offset = 0;
 
@@ -23,6 +24,7 @@ class Attendance extends ResourceController
      *
      * @return mixed
      */
+
     public function index()
     {
         $limit = $this->request->getVar('limit');
@@ -30,7 +32,7 @@ class Attendance extends ResourceController
 
         $data = $this->model->findAll($limit ?? $this->limit, $offset ?? $this->offset);
 
-        return $this->successResponse($data);
+        return $this->successResponse($data, "Semua Data Kunjungan Laboratorium");
     }
 
     /**
@@ -40,17 +42,16 @@ class Attendance extends ResourceController
      */
     public function show($id = null)
     {
-        //
-    }
+        // Cari di database
+        $data = $this->model->find($id);
 
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
-    public function new()
-    {
-        //
+        // Jika ID tidak ditemukan
+        if (!$data) :
+            return $this->emptyResponse();
+        endif;
+
+        // Jika sukses
+        return $this->successResponse($data, "Data Kunjungan dengan ID-$id");
     }
 
     /**
@@ -60,36 +61,17 @@ class Attendance extends ResourceController
      */
     public function create()
     {
-        //
-    }
+        $data = [
+            'activity' => $this->request->getVar('activity'),
+            'description' => $this->request->getVar('description'),
+            'user_id' => user_id(),
+        ];
 
-    /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
-    public function edit($id = null)
-    {
-        //
-    }
+        if (!$this->model->save($data)) {
+            return $this->successResponse($this->model->errors(), 'Tidak Berhasil Menambah Data', 404, false);
+        }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
-    {
-        //
-    }
-
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        //
+        // Jika sukses
+        return $this->successResponse($data, "Berhasil Menambah Data" . $data['name']);
     }
 }

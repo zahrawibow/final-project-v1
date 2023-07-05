@@ -154,84 +154,134 @@
             </div> -->
         </div>
     </nav>
-
     <div class="container-fluid py-4">
-        <div class="row">
-            <?php foreach ($practicum as $prac) : ?>
 
-                <div class="col-md-4 mb-4">
-                    <div class="card-container">
-                        <div class="card">
-                            <div class="front">
-                                <div class="cover">
-                                    <img src="<?= base_url(); ?>../assets/productdetail_files/photo-1616627781431-23b776aad6b2" />
-                                </div>
-
-                                <div class="content">
-                                    <div class="main text-center mt-2">
-                                        <h5><strong><?= $prac['title']; ?></strong></h5>
-                                        <p class="mt-2 mb-0 text-sm"><?= $prac['fullname']; ?></p>
-
-                                    </div>
-                                    <div class="footer text-xs mt-2">
-                                        <i class="fa fa-mail-forward text-center"></i> Auto Rotation
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end front panel -->
-
-                            <!-- <div class="back">
-                                <div class="header">
-                                    <h4 class="motto mt-4">Deskripsi Singkat</h4>
-                                </div>
-                                <div class="content">
-                                    <div class="main pt-0">
-                                        <h6 class="text-center text-xs px-1"><?= $prac['description']; ?></h6>
-                                    </div>
-                                    <a href="/practicum/detail" class="btn bg-gradient-dark w-100 mt-5 mb-0">
-                                        Get started
-                                    </a>
-                                </div>
-                            </div> end back panel -->
-
-                            <div class="back">
-                                <div class="header mb-0">
-                                    <h4 class="motto mt-4">Deskripsi Singkat</h4>
-                                </div>
-                                <div class="content mt-0">
-                                    <div class="main pt-0">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm mt-0" disabled>Kelompok <?= $prac['team']; ?></button>
-
-                                        <h6 class="text-center text-xs px-1">
-                                            <?php
-                                            $description = $prac['description'];
-                                            $maxCharacters = 100; // Jumlah karakter maksimal yang ingin ditampilkan
-
-                                            if (strlen($description) > $maxCharacters) {
-                                                $shortDescription = substr($description, 0, $maxCharacters) . "...";
-                                                echo $shortDescription;
-                                            } else {
-                                                echo $description;
-                                            }
-                                            ?>
-                                        </h6>
-                                    </div>
-
-                                    <a href="<?= url_to('practicum.detail', $prac['id']); ?>" class="btn bg-gradient-dark w-100 mt-5 mb-0">
-                                        Memulai
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div> <!-- end card -->
-                    </div> <!-- end card-container -->
+        <form action="<?= url_to('schedule.store'); ?>" method="post">
+            <?= csrf_field(); ?>
+            <div class="row px-3">
+                <div class="col-lg-6">
+                    <h3>Tambah Agenda Kegiatan</h3>
+                    <p class="text-secondary text-sm">Isi form tambah Agenda untuk menambah Agenda Kegiatan pada Laboratorium Radiologi dan Kedokteran Nuklir</p>
                 </div>
-            <?php endforeach; ?>
-        </div>
+
+                <div class="form-group col-lg-6 text-right d-flex flex-column justify-content-center">
+                    <button type="submit" class="btn bg-gradient-primary mb-0 ms-lg-auto me-lg-0 me-auto mt-lg-0 mt-2">Tambah</button>
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-lg-12 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="font-weight-bolder">Informasi Agenda Kegiatan</h5>
+
+                            <?php if (session()->has('errors')) : ?>
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0 text-white">
+                                        <?php foreach (session('errors') as $error) : ?>
+                                            <li><?= $error; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="form-group">
+                                <label for="activity_name">Nama Kegiatan</label>
+                                <input class="form-control" type="text" id="activity_name" name="activity_name" onfocus="focused(this)" onfocusout="defocused(this)">
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <label for="laboratorian_id">Pengampu</label>
+                                    <select class="form-control" id="laboratorian_id" name="laboratorian_id">
+                                        <?php foreach ($laboratorians as $laboratorian) : ?>
+                                            <option value="<?= $laboratorian['id']; ?>"><?= $laboratorian['fullname']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-4">
+                                    <label for="date">Tanggal</label>
+                                    <input class="form-control" type="date" id="date" name="date" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="start_time">Waktu Mulai</label>
+                                    <input class="form-control" type="time" id="start_time" name="start_time">
+                                </div>
+                                <div class="form-group col-12 col-sm-4 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="end_time">Waktu Selesai</label>
+                                    <input class="form-control" type="time" id="end_time" name="end_time">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-12 col-sm-6">
+                                    <label for="activity_location">Lokasi</label>
+                                    <input class="form-control" type="text" id="activity_location" name="activity_location" onfocus="focused(this)" onfocusout="defocused(this)">
+                                </div>
+                                <div class="form-group col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label class="form-control-label" for="prac_status">Status</label>
+                                    <input class="form-control" type="text" id="activity_status" name="activity_status">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <label class="mt-2" for="description">Deksripsi</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <footer class="footer pt-3  ">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="copyright text-center text-sm text-muted text-lg-start">
+                            © <script>
+                                document.write(new Date().getFullYear())
+                            </script>2023,
+                            made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                            <a href="https://www.creative-tim.com/" class="font-weight-bold" target="_blank">Creative Tim</a>
+                            for a better web.
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script src="../../assets/js/plugins/dropzone.min.js"></script>
+        </footer>
     </div>
 
 </main>
 
-<script src="../../assets/js/plugins/threejs.js"></script>
-<script src="../../assets/js/plugins/orbit-controls.js"></script>
+
+
 <?= $this->endSection(); ?>

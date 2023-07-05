@@ -29,20 +29,19 @@
                         <a class="opacity-5 text-dark" href="javascript:;">Halaman</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
-                        Log Aset
+                        Log Kegiatan
                     </li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Form Log Penggunaan Aset</h6>
+                <h6 class="font-weight-bolder mb-0">Form Log Kegiatan Laboratorium</h6>
             </nav>
 
 
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                <!-- search bar -->
+            <!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <!-- <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here..." onfocus="focused(this)" onfocusout="defocused(this)" />
-                    </div> -->
+                    <div class="input-group">
+
+                    </div>
                 </div>
 
                 <ul class="navbar-nav justify-content-end">
@@ -53,7 +52,7 @@
                         </a>
                     </li>
 
-                    <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body" id="iconNavbarSidenav">
                             <div class="sidenav-toggler-inner">
                                 <i class="sidenav-toggler-line"></i>
@@ -61,8 +60,8 @@
                                 <i class="sidenav-toggler-line"></i>
                             </div>
                         </a>
-                    </li> -->
-                    <!-- notifikasi -->
+                    </li>
+                    
                     <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link p-0 text-body">
                             <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer" aria-hidden="true"></i>
@@ -155,7 +154,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
     <!-- Header Page end-->

@@ -10,7 +10,6 @@ class AssetLoan extends ResourceController
 {
     use CustomAPIResponse;
 
-    protected $db;
     protected $model;
 
     protected $limit = 10;
@@ -40,7 +39,7 @@ class AssetLoan extends ResourceController
             return $this->emptyResponse();
         endif;
 
-        return $this->successResponse($data, 'Semua data peminjaman');
+        return $this->successResponse($data, 'Semua Data Peminjaman');
     }
 
     /**
@@ -55,17 +54,7 @@ class AssetLoan extends ResourceController
         if (!$data) :
             return $this->emptyResponse();
         endif;
-        return $this->successResponse($data, "Data ID-$id peminjaman");
-    }
-
-    /**
-     * Return a new resource object, with default properties
-     *
-     * @return mixed
-     */
-    public function new()
-    {
-        //
+        return $this->successResponse($data, "Data Pinjaman dengan ID $id");
     }
 
     /**
@@ -75,36 +64,18 @@ class AssetLoan extends ResourceController
      */
     public function create()
     {
-        //
-    }
+        $data = [
+            'asset_id' => $this->request->getVar('asset_id'),
+            'purpose' => $this->request->getVar('purpose'),
+            'loan_time' => $this->request->getVar('loan_time'),
+            'status' => $this->request->getVar('status'),
+        ];
 
-    /**
-     * Return the editable properties of a resource object
-     *
-     * @return mixed
-     */
-    public function edit($id = null)
-    {
-        //
-    }
+        if (!$this->model->save($data)) {
+            return $this->successResponse($this->model->errors(), 'Tidak Berhasil Menambah', 404, false);
+        }
 
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
-    public function update($id = null)
-    {
-        //
-    }
-
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        //
+        // Jika sukses
+        return $this->successResponse($data, "Berhasil Menambah Data" . $data['name']);
     }
 }

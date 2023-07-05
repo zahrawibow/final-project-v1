@@ -68,7 +68,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/managesche">
+                                <a class="nav-link" href="<?= url_to('maintenance.manage'); ?>">
+                                    <span class="sidenav-mini-icon"> </span>
+                                    <span class="sidenav-normal">Kelola Perawatan Aset</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= url_to('schedule.manage'); ?>">
                                     <span class="sidenav-mini-icon"> S </span>
                                     <span class="sidenav-normal">Kelola Agenda Kegiatan </span>
                                 </a>
@@ -136,7 +142,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Log Aset</span>
+                    <span class="nav-link-text ms-1">Log Kegiatan</span>
                 </a>
             </li>
 
